@@ -1,0 +1,1 @@
+An IRC bot in pure C, for Windows using WinSock2.
