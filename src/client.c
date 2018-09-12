@@ -8,6 +8,13 @@ IRC_Connection* client_create(char addr[], char port[], int recvbuflen,
     IRC_Connection* temp = malloc(sizeof(IRC_Connection));
 
     temp->i_result = 0;
+    temp->ai_ptr = NULL;
+    temp->ai_result = NULL;
+    ZeroMemory(&temp->hints, sizeof(temp->hints));
+
+    temp->hints.ai_family = AF_UNSPEC;
+    temp->hints.ai_socktype = SOCK_STREAM;
+    temp->hints.ai_protocol = IPPROTO_TCP;
 
     strcpy(temp->ipv4_addr, addr);
     strcpy(temp->port, port);
