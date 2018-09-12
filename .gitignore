@@ -1,3 +1,4 @@
 src/obj
 build
+.vscode
 *.exe
