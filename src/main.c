@@ -1,6 +1,7 @@
 #include "client/client.h"
 #include "server/irc_server.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include <winsock2.h>
 
 /* TODO: list of things I'd like to have:
@@ -11,7 +12,6 @@
  * automatic response to common IRC queries
  * some ice cream
  */
-
 
 int init_winsock()
 {
