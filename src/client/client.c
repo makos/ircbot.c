@@ -6,26 +6,21 @@
 #include <string.h>
 #include <winsock2.h>
 
-static void client_zero_buffers(IRC_Client *client)
-{
-    for (int i = 0; i < MAXBUFLEN; i++) {
-        client->recvbuf[i] = 0;
-    }
-}
-
 IRC_Client *client_create()
 {
     IRC_Client *temp = malloc(sizeof(IRC_Client));
+    temp->server = NULL;
 
-    client_zero_buffers(temp);
+    client_clear_buffer(temp);
 
     return temp;
 }
 
 int client_connect(IRC_Client *client, IRC_Server *server)
 {
+    client->server = server;
     if (server->ai_result == NULL) {
-        printf("client_connect(): addrinfo * is NULL\n");
+        printf("client_connect(): addrinfo is NULL\n");
         return ERROR;
     }
     client->connect_socket =
@@ -56,8 +51,10 @@ int client_send(IRC_Client *client, const char msg[])
         closesocket(client->connect_socket);
         return ERROR;
     }
+    printf("SENT: %s", msg);
     return OK;
 }
+
 
 int client_receive(IRC_Client *client)
 {
@@ -76,4 +73,38 @@ int client_receive(IRC_Client *client)
 void client_disconnect(IRC_Client *client)
 {
     closesocket(client->connect_socket);
+}
+
+int client_parse(IRC_Client *client)
+{
+    char *result = strstr(client->recvbuf, "PING");
+    if (result == NULL) {
+        return ERROR;
+    }
+
+    return client_pong(client);
+}
+
+int client_pong(IRC_Client *client)
+{
+    // PING sends an unique ID to be sent back with the PONG message.
+    // This captures that ID and sends it back.
+    char *pong = malloc(32 * sizeof(char));
+    char *ping_id = strtok(client->recvbuf, ":");
+    while (strcmp(ping_id, "PING ") == 0) {
+        ping_id = strtok(NULL, ":");
+    }
+    strcpy(pong, "PONG ");
+    strcat(pong, ping_id);
+    strcat(pong, "\n");
+
+    if (client_send(client, pong) == ERROR) {
+        return ERROR;
+    }
+    return OK;
+}
+
+void client_clear_buffer(IRC_Client *client)
+{
+    memset(client->recvbuf, 0, MAXBUFLEN * sizeof(char));
 }

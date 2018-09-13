@@ -51,6 +51,9 @@ int main()
         for (int i = 0; i < bytes; i++) {
             printf("%c", client->recvbuf[i]);
         }
+
+        client_parse(client);
+        client_clear_buffer(client);
     } while (bytes > 0);
 
     client_disconnect(client);
