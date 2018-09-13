@@ -1,14 +1,20 @@
-#include <stdlib.h>
+#include "client.h"
+#include <WS2tcpip.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <winsock2.h>
-#include <WS2tcpip.h>
-#include "client.h"
 #include "server/irc_server.h"
+
+static void client_zero_buffers(IRC_Client *client)
+{
+    for (int i = 0; i < MAXBUFLEN; i++) {
+        client->recvbuf[i] = 0;
+    }
+}
 
 IRC_Client *client_create()
 {
-    // int result = 0;
     IRC_Client *temp = malloc(sizeof(IRC_Client));
 
     client_zero_buffers(temp);
@@ -20,14 +26,14 @@ int client_connect(IRC_Client *client, IRC_Server *server)
 {
     if (server->ai_result == NULL) {
         printf("client_connect(): addrinfo * is NULL\n");
-        return 0;
+        return ERROR;
     }
     client->connect_socket =
         socket(server->ai_result->ai_family, server->ai_result->ai_socktype,
                server->ai_result->ai_protocol);
     if (client->connect_socket == INVALID_SOCKET) {
         printf("client_connect(): INVALID_SOCKET\n");
-        return 0;
+        return ERROR;
     }
 
     int result = connect(client->connect_socket, server->ai_result->ai_addr,
@@ -35,11 +41,11 @@ int client_connect(IRC_Client *client, IRC_Server *server)
     if (result == SOCKET_ERROR) {
         closesocket(client->connect_socket);
         printf("client_connect(): error %d\n", result);
-        return 0;
+        return ERROR;
     }
 
     freeaddrinfo(server->ai_result);
-    return 1;
+    return OK;
 }
 
 int client_send(IRC_Client *client, const char msg[])
@@ -48,9 +54,9 @@ int client_send(IRC_Client *client, const char msg[])
     if (result == SOCKET_ERROR) {
         printf("client_send(): error %d\n", result);
         closesocket(client->connect_socket);
-        return 0;
+        return ERROR;
     }
-    return 1;
+    return OK;
 }
 
 int client_receive(IRC_Client *client)
@@ -70,12 +76,4 @@ int client_receive(IRC_Client *client)
 void client_disconnect(IRC_Client *client)
 {
     closesocket(client->connect_socket);
-}
-
-void client_zero_buffers(IRC_Client *client)
-{
-    for (int i = 0; i < MAXBUFLEN; i++) {
-        // client->sendbuf[i] = 0;
-        client->recvbuf[i] = 0;
-    }
 }
