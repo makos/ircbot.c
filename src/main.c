@@ -26,6 +26,11 @@ int init_winsock()
     return 1;
 }
 
+void cleanup_winsock()
+{
+    WSACleanup();
+}
+
 int main()
 {
     if (init_winsock() == 0) {
@@ -34,13 +39,13 @@ int main()
 
     IRC_Server *server = server_create("irc.rizon.net", "6660");
     if (server == NULL) {
-        WSACleanup();
+        cleanup_winsock();
         return 1;
     }
 
     IRC_Client *client = client_create();
     if (client == NULL) {
-        WSACleanup();
+        cleanup_winsock();
         return 1;
     }
 
@@ -54,7 +59,7 @@ int main()
 
         if (bytes < 0) {
             client_disconnect(client);
-            WSACleanup();
+            cleanup_winsock();
             return 1;
         }
 
@@ -68,6 +73,6 @@ int main()
 
     client_disconnect(client);
 
-    WSACleanup();
+    cleanup_winsock();
     return 0;
 }
