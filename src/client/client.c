@@ -1,10 +1,10 @@
 #include "client.h"
+#include "server/irc_server.h"
 #include <WS2tcpip.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <winsock2.h>
-#include "server/irc_server.h"
 
 static void client_zero_buffers(IRC_Client *client)
 {

@@ -15,5 +15,4 @@ SpaceAfterCStyleCast: false
 MaxEmptyLinesToKeep: 2
 BreakBeforeBinaryOperators: NonAssignment
 BreakStringLiterals: false
-SortIncludes:    false
 ContinuationIndentWidth: 4

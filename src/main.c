@@ -1,7 +1,7 @@
+#include "client/client.h"
+#include "server/irc_server.h"
 #include <stdio.h>
 #include <winsock2.h>
-#include "server/irc_server.h"
-#include "client/client.h"
 
 int init_winsock()
 {
