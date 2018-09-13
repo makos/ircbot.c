@@ -3,6 +3,16 @@
 #include <stdio.h>
 #include <winsock2.h>
 
+/* TODO: list of things I'd like to have:
+ * command-line for the bot (send message, whisper, join/leave channels)
+ * UTF-8 printing
+ * cross-platform
+ * multi-channel capability
+ * automatic response to common IRC queries
+ * some ice cream
+ */
+
+
 int init_winsock()
 {
     WSADATA wsa_data;
