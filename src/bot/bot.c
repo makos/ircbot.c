@@ -1,6 +1,7 @@
 #include "bot.h"
 #include "client/client.h"
 #include "server/irc_server.h"
+#include <stdlib.h>
 #include <string.h>
 
 static void bot_init_channels(IRC_Bot *bot)
@@ -23,7 +24,7 @@ static void bot_init_commands(IRC_Bot *bot)
            "ircbot.c v0.1.0 by makos <github.com/makos/ircbot.c");
 }
 
-IRC_Bot *bot_create(const char server[], const char port[],
+IRC_Bot *bot_create(const char address[], const char port[],
                     const char bot_nick[])
 {
     IRC_Bot *temp = malloc(sizeof(IRC_Bot));

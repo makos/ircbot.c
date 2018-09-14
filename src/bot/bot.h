@@ -3,15 +3,15 @@
 typedef struct IRC_Client IRC_Client;
 
 typedef struct Bot_Channel {
-    Bot_Channels *prev;
+    struct Bot_Channel *prev;
     char *channel_name;
-    Bot_Channels *next;
+    struct Bot_Channel *next;
 } Bot_Channels;
 
 typedef struct Bot_Commands {
-    const char *pong;
-    const char *version;
-    const char *whois;
+    char *pong;
+    char *version;
+    char *whois;
 } Bot_Commands;
 
 typedef struct IRC_Bot {
@@ -21,7 +21,7 @@ typedef struct IRC_Bot {
     char *nick;
 } IRC_Bot;
 
-IRC_Bot *bot_create(const char server[], const char port[],
+IRC_Bot *bot_create(const char address[], const char port[],
                     const char bot_nick[]);
 void bot_parse_commands(IRC_Bot *bot);
 
