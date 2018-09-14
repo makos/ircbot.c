@@ -11,6 +11,9 @@
 #include <unistd.h>
 #endif
 
+#define ERROR 0
+#define OK 1
+
 #include "connection.h"
 
 static int connection_init_socket()
@@ -22,11 +25,11 @@ static int connection_init_socket()
     result = WSAStartup(MAKEWORD(2, 2), &wsa_data);
     if (result != 0) {
         printf("WSAStartup error: %d\n", result);
-        return 0;
+        return ERROR;
     }
-    return 1;
+    return OK;
 #else
-    return 1;
+    return OK;
 #endif
 }
 
@@ -108,9 +111,14 @@ IRC_Connection *connection_create(const char address[], const char port[])
 
 int connection_connect(IRC_Connection *connection)
 {
+    if (connection == NULL) {
+        printf("connection_connect(): connection is NULL\n");
+        return ERROR;
+    }
+
     if (connection->ai_result == NULL) {
         printf("connection_connect(): addrinfo is NULL\n");
-        return 0;
+        return ERROR;
     }
 
     connection->socket = socket(connection->ai_result->ai_family,
@@ -118,7 +126,7 @@ int connection_connect(IRC_Connection *connection)
                                 connection->ai_result->ai_protocol);
     if (connection->socket == INVALID_SOCKET) {
         printf("connection_connect(): invalid socket\n");
-        return 0;
+        return ERROR;
     }
 
     int result = connect(connection->socket, connection->ai_result->ai_addr,
@@ -126,34 +134,49 @@ int connection_connect(IRC_Connection *connection)
     if (result == SOCKET_ERROR) {
         connection_close_socket(connection);
         printf("connection_connect(): error %d\n", result);
-        return 0;
+        return ERROR;
     }
 
     freeaddrinfo(connection->ai_result);
-    return 1;
+    return OK;
 }
 
 int connection_disconnect(IRC_Connection *connection)
 {
+    if (connection == NULL) {
+        printf("connection_disconnect(): connection is NULL\n");
+        return ERROR;
+    }
+
     return connection_close_socket(connection);
 }
 
 int connection_send(IRC_Connection *connection, const char msg[])
 {
+    if (connection == NULL) {
+        printf("connection_send(): connection is NULL\n");
+        return ERROR;
+    }
+
     int result = send(connection->socket, msg, (int)strlen(msg), 0);
     if (result == SOCKET_ERROR) {
         printf("connection_send(): error %d\n", result);
         connection_close_socket(connection);
-        return 0;
+        return ERROR;
     }
 
     printf("SENT: %s", msg);
 
-    return 1;
+    return OK;
 }
 
 int connection_read(IRC_Connection *connection)
 {
+    if (connection == NULL) {
+        printf("connection_read(): connection is NULL\n");
+        return ERROR;
+    }
+
     int result = recv(connection->socket, connection->recvbuf,
                       connection->recvbuflen, 0);
     if (result > 0) {
