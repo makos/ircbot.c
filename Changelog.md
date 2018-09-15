@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.3.0
+### WIP
+* `bot` fully working, hides the `connection` socket API and exposes following functions:
+    * `create`
+    * `connect`
+    * `send`
+    * `disconnect`
+    * `join`
+    * `leave`
+    * `pong`
+    * `whois`
+    * `add_command`
+    * `execute_command`
+* Unit tests for every function mentioned above
+
 ## 0.2.0 
 ### 15.09.2018
 * Consolidate `server` and `client` functionality into one `connection` file.
