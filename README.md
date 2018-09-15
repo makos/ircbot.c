@@ -4,6 +4,8 @@ Cross-platform (Windows and Linux) IRC bot in pure C.
 
 Developed on Windows under mingw-w64 with gcc-8.1, tested on Windows, Arch Linux and CentOS 7.
 
+Documentation can be found in `doc/` directory. Look for `index.html`.
+
 ## Requirements
 
 All platforms:
