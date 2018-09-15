@@ -25,6 +25,7 @@ typedef char(*(*callback_t)());
 
 static char *connection_tests()
 {
+    printf("\n%sCONNECTION TESTS%s\n", GREEN, COLOR_END);
     mu_run_test("connection_create_success", test_connection_create_success);
 
     mu_run_test("connection_create_failure", test_connection_create_failure);
@@ -55,7 +56,12 @@ static char *connection_keepalive()
 
 static char *bot_tests()
 {
+    printf("\n%sBOT TESTS%s\n", GREEN, COLOR_END);
     mu_run_test("bot_create_success", test_bot_create_success);
+    mu_run_test("bot_create_failure", test_bot_create_failure);
+    mu_run_test("bot_add_command_success", test_bot_add_command_success);
+    mu_run_test("bot_add_command_failure", test_bot_add_command_failure);
+    mu_run_test("bot_connect_success", test_bot_connect_success);
     return 0;
 }
 
