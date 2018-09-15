@@ -12,6 +12,8 @@ if (CMAKE_COMPILER_IS_GNUCC OR ("${CMAKE_C_COMPILER_ID}" STREQUAL "Clang"))
     endif()
 endif()
 
+set_property(GLOBAL C_STANDARD_REQUIRED 99)
+
 include_directories(src)
 add_subdirectory(src)
 add_subdirectory(tests)
