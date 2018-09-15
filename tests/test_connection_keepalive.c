@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-int PINGS_RECEIVED = 0;
+static int PINGS_RECEIVED = 0;
 
 static void pong(IRC_Connection *connection)
 {
@@ -38,11 +38,6 @@ static char *test_connection_keepalive()
     int bytes = 0;
     do {
         bytes = connection_read(temp);
-
-        for (int i = 0; i < bytes; i++) {
-            printf("%c", temp->recvbuf[i]);
-        }
-
         parse(temp);
     } while (bytes > 0 && PINGS_RECEIVED < 4);
 
