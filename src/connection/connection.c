@@ -158,14 +158,18 @@ int connection_send(IRC_Connection *connection, const char msg[])
         return ERROR;
     }
 
-    int result = send(connection->socket, msg, (int)strlen(msg), 0);
+    char *temp_msg = malloc((strlen(msg) + (size_t)1) * sizeof(char));
+    strcpy(temp_msg, msg);
+    strcat(temp_msg, "\n");
+
+    int result = send(connection->socket, temp_msg, (int)strlen(temp_msg), 0);
     if (result == SOCKET_ERROR) {
         printf("connection_send(): error %d\n", result);
         connection_close_socket(connection);
         return ERROR;
     }
 
-    printf("SENT: %s", msg);
+    printf("SENT: %s", temp_msg);
 
     return OK;
 }
@@ -176,6 +180,8 @@ int connection_read(IRC_Connection *connection)
         printf("connection_read(): connection is NULL\n");
         return ERROR;
     }
+
+    connection_clear_buffer(connection);
 
     int result = recv(connection->socket, connection->recvbuf,
                       connection->recvbuflen, 0);
