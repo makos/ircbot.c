@@ -1,11 +1,4 @@
 /**
- * @file main.c
- * @author Mateusz Makowski
- * @date 13.09.2018
- * @brief Entry point of the program.
- */
-
-/**
  * @mainpage
  *
  * @section index_about About
