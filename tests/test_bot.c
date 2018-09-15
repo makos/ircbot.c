@@ -1,7 +1,6 @@
 #include "bot/bot.h"
 #include "minunit.h"
 #include <string.h>
-#define NULL ((void *)0)
 
 static int test_callback()
 {
@@ -11,7 +10,7 @@ static int test_callback()
 static char *test_bot_create_success()
 {
     IRC_Bot *test_bot = bot_create("ircbot");
-    mu_assert("test_bot_create_success(): test_bot is NULL", test_bot != NULL);
+    mu_assert("test_bot_create_success(): test_bot is NULL", test_bot);
     mu_assert("test_bot_create_success(): test_bot->nick != \"ircbot\"",
               strcmp(test_bot->nick, "ircbot") == 0);
     return 0;
@@ -20,16 +19,14 @@ static char *test_bot_create_success()
 static char *test_bot_create_failure()
 {
     IRC_Bot *test_bot = bot_create("");
-    mu_assert("test_bot_create_failure(): test_bot is not NULL",
-              test_bot == NULL);
+    mu_assert("test_bot_create_failure(): test_bot is not NULL", !test_bot);
     return 0;
 }
 
 static char *test_bot_add_command_success()
 {
     IRC_Bot *test_bot = bot_create("ircbot");
-    mu_assert("test_bot_add_command_success(): test_bot is NULL",
-              test_bot != NULL);
+    mu_assert("test_bot_add_command_success(): test_bot is NULL", test_bot);
 
     fp_cmd_t test_cmd = test_callback;
 
@@ -56,7 +53,7 @@ static char *test_bot_add_command_failure()
 static char *test_bot_connect_success()
 {
     IRC_Bot *test_bot = bot_create("ircbot");
-    mu_assert("test_bot_connect_success(): test_bot is NULL", test_bot != NULL);
+    mu_assert("test_bot_connect_success(): test_bot is NULL", test_bot);
     mu_assert("test_bot_connect_success(): bot_connect() failed",
               bot_connect(test_bot, "irc.rizon.net", "6660"));
     return 0;
