@@ -1,8 +1,32 @@
-#include "client/client.h"
-#include "server/irc_server.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <winsock2.h>
+/**
+ * @file main.c
+ * @author Mateusz Makowski
+ * @date 13.09.2018
+ * @brief Entry point of the program.
+ */
+
+/**
+ * @mainpage
+ *
+ * @section index_about About
+ * This is a cross-platform (Linux and Windows tested) IRC bot written purely in
+ * C without third-party libraries.
+ *
+ * @section index_req Requirements
+ * For building from source: (all platforms)
+ *  - CMake (version >= 3.0.0)
+ *  - gcc
+ *  - preferably GNU make
+ *
+ * @section index_building Building
+ * Navigate to the folder with source code (where README.md is located). Then:
+ * ````
+ * mkdir build && cd build
+ * cmake .. && make tests
+ * tests/tests all
+ * ````
+ * As of version 0.2.0 only tests will compile and run.
+ */
 
 /* TODO: list of things I'd like to have:
  * command-line for the bot (send message, whisper, join/leave channels)
@@ -13,66 +37,7 @@
  * some ice cream
  */
 
-int init_winsock()
+int main(int argc, char const *argv[])
 {
-    WSADATA wsa_data;
-    int result = 0;
-
-    result = WSAStartup(MAKEWORD(2, 2), &wsa_data);
-    if (result != 0) {
-        printf("WSAStartup error: %d\n", result);
-        return 0;
-    }
-    return 1;
-}
-
-void cleanup_winsock()
-{
-    WSACleanup();
-}
-
-int main()
-{
-    if (init_winsock() == 0) {
-        return 1;
-    }
-
-    IRC_Server *server = server_create("irc.rizon.net", "6660");
-    if (server == NULL) {
-        cleanup_winsock();
-        return 1;
-    }
-
-    IRC_Client *client = client_create();
-    if (client == NULL) {
-        cleanup_winsock();
-        return 1;
-    }
-
-    client_connect(client, server);
-    client_send(client, "USER ircbotc ircbotc ircbotc ircbotc\n");
-    client_send(client, "NICK ircbot_c\n");
-
-    int bytes = 0;
-    do {
-        bytes = client_receive(client);
-
-        if (bytes < 0) {
-            client_disconnect(client);
-            cleanup_winsock();
-            return 1;
-        }
-
-        for (int i = 0; i < bytes; i++) {
-            printf("%c", client->recvbuf[i]);
-        }
-
-        client_parse(client);
-        client_clear_buffer(client);
-    } while (bytes > 0);
-
-    client_disconnect(client);
-
-    cleanup_winsock();
     return 0;
 }

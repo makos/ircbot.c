@@ -14,6 +14,8 @@
     * `add_command`
     * `execute_command`
 * Unit tests for every function mentioned above
+* Removed `pointer == NULL` checks in favor of `!pointer` checks
+* Comments and documentation for the API
 
 ## 0.2.0 
 ### 15.09.2018
