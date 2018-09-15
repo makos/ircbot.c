@@ -1,5 +1,6 @@
 #ifndef IRCBOT_TESTS_MINUNIT_H_
 #define IRCBOT_TESTS_MINUNIT_H_
+// Inspired by http://www.jera.com/techinfo/jtns/jtn002.html
 
 #define mu_assert(message, test)                                               \
     do {                                                                       \
