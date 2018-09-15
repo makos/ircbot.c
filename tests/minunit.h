@@ -1,11 +1,6 @@
 #ifndef IRCBOT_TESTS_MINUNIT_H_
 #define IRCBOT_TESTS_MINUNIT_H_
 
-#define RED "\033[0;31m"
-#define GREEN "\033[0;32m"
-#define YELLOW "\033[0;33m"
-#define COLOR_END "\033[0m"
-
 #define mu_assert(message, test)                                               \
     do {                                                                       \
         if (!(test))                                                           \
@@ -13,7 +8,7 @@
     } while (0)
 #define mu_run_test(name, test)                                                \
     do {                                                                       \
-        printf(YELLOW "TEST: %s\n" COLOR_END, name);                           \
+        printf("%sTEST: %s%s\n", YELLOW, name, COLOR_END);                     \
         char *message = test();                                                \
         tests_run++;                                                           \
         if (message) {                                                         \
@@ -25,5 +20,9 @@
 extern int tests_run;
 extern int tests_failed;
 extern char **messages;
+extern char RED[];
+extern char GREEN[];
+extern char YELLOW[];
+extern char COLOR_END[];
 
 #endif // IRCBOT_TESTS_MINUNIT_H_
