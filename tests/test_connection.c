@@ -50,8 +50,7 @@ static char *test_connection_send_success()
 {
     IRC_Connection *test_con = connection_create("irc.rizon.net", "6660");
     connection_connect(test_con);
-    int result =
-        connection_send(test_con, "USER ircbot ircbot ircbot ircbot\n");
+    int result = connection_send(test_con, "USER ircbot ircbot ircbot ircbot");
     connection_disconnect(test_con);
     mu_assert("test_connection_send_success(): failure", result == 1);
     return 0;
