@@ -5,9 +5,6 @@
  * @author Mateusz Makowski
  * @date 15.09.2018
  * @brief File containing the IRC_Connection struct and related functions.
- *
- * The IRC_Connection struct holds data about the connection, including socket
- * handle, receiving buffer, address and port used.
  */
 
 #ifdef _WIN32
