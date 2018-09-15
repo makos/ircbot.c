@@ -2,6 +2,8 @@
 
 Cross-platform (Windows and Linux) IRC bot in pure C.
 
+Developed on Windows under mingw-w64 with gcc-8.1, tested on Windows, Arch Linux and CentOS 7.
+
 ## Requirements
 
 All platforms:
@@ -20,7 +22,7 @@ git clone https://github.com/makos/ircbot.c.git
 cd ircbot.c
 mkdir build && cd build
 cmake .. && make tests
-build/tests/tests all
+tests/tests all
 ````
 
 Use `build/tests/tests keepalive` to run a stability test. It will wait for and respond to server PING's 4 times before concluding.
