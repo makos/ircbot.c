@@ -19,6 +19,20 @@
         if (!(test))                                                           \
             return message;                                                    \
     } while (0)
+/**
+ * Same as mu_assert, but disconnects the bot before returning on failure.
+ * @param bot pointer to IRC_Bot
+ * @param message string to be returned on failure
+ * @param test an expression that evaluates to 0 (false) or any other number
+ * (true)
+ */
+#define mu_assert_or_disconnect(bot, message, test)                            \
+    do {                                                                       \
+        if (!(test)) {                                                         \
+            bot_disconnect(bot);                                               \
+            return message;                                                    \
+        }                                                                      \
+    } while (0)
 
 /**
  * Execute a test case.
