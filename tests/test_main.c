@@ -1,5 +1,6 @@
 #include "minunit.h"
 #include "test_bot.c"
+#include "test_bot_commands.c"
 #include "test_connection.c"
 #include "test_connection_keepalive.c"
 #include <stdio.h>
@@ -62,6 +63,8 @@ static char *bot_tests()
     mu_run_test("bot_add_command_success", test_bot_add_command_success);
     mu_run_test("bot_add_command_failure", test_bot_add_command_failure);
     mu_run_test("bot_connect_success", test_bot_connect_success);
+    mu_run_test("bot_connect_failure", test_bot_connect_failure);
+    mu_run_test("bot_test_ident_success", test_bot_ident_success);
     return 0;
 }
 

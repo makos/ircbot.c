@@ -1,13 +1,12 @@
 #include "connection/connection.h"
 #include "minunit.h"
 #include <stdio.h>
-#define NULL ((void *)0)
 
 static char *test_connection_create_success()
 {
     IRC_Connection *test_con = connection_create("irc.rizon.net", "6660");
     mu_assert("test_connection_create_success(): IRC_Connection is NULL",
-              test_con != NULL);
+              test_con);
     return 0;
 }
 
@@ -16,7 +15,7 @@ static char *test_connection_create_failure()
     IRC_Connection *test_con =
         connection_create("irc.rizon.net", "this is over 8 chars");
     mu_assert("test_connection_create_failure(): IRC_Connection is NOT NULL",
-              test_con == NULL);
+              !test_con);
     return 0;
 }
 
