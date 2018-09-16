@@ -12,7 +12,7 @@
     * `pong`
     * `whois`
     * `add_command`
-    * `execute_command`
+    * `call`
 * Unit tests for every function mentioned above
 * Removed `pointer == NULL` checks in favor of `!pointer` checks
 * Comments and documentation for the API
