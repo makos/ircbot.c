@@ -6,10 +6,12 @@
  */
 #ifndef IRCBOT_BOT_BOT_H_
 #define IRCBOT_BOT_BOT_H_
+struct IRC_Bot;
+
 /**
  * Function pointer used in Bot_Command to execute custom functions.
  */
-typedef int (*fp_cmd_t)();
+typedef int (*fp_cmd_t)(struct IRC_Bot *);
 struct IRC_Connection;
 /**
  * Maximum amount of Bot_Command structures in IRC_Bot.
@@ -76,5 +78,20 @@ int bot_add_command(IRC_Bot *bot, const char name[], fp_cmd_t callback);
  * @return 0 on failure, 1 on success
  */
 int bot_connect(IRC_Bot *bot, const char address[], const char port[]);
+
+/**
+ * Disconnect IRC_Bot from the server.
+ * @param bot pointer to IRC_Bot object
+ * @return 0 on failure, 1 on success
+ */
+int bot_disconnect(IRC_Bot *bot);
+
+/**
+ * Call (execute) a Bot_Command.
+ * @param bot pointer to IRC_Bot object
+ * @param cmd command name to be called
+ * @return 0 on failure, 1 on success
+ */
+int bot_call(IRC_Bot *bot, const char cmd[]);
 
 #endif // IRCBOT_BOT_BOT_H_
