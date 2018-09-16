@@ -9,9 +9,8 @@ Documentation can be found at [GitHub pages](https://makos.github.io/ircbot.c/in
 ## Requirements
 
 All platforms:
-* gcc
+* gcc / clang
 * CMake `>=3.0.0`
-* GNU make
 
 No third-party C libraries needed.
 
