@@ -38,3 +38,12 @@ int commands_ident(IRC_Bot *bot)
     strcat(msg, bot->nick);
     return bot_send(bot, msg);
 }
+
+int commands_pong(IRC_Bot *bot)
+{
+    if (!bot) {
+        return ERROR;
+    }
+
+    return ERROR;
+}
