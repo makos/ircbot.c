@@ -12,6 +12,7 @@
 
 #define OK 1
 #define ERROR 0
+#define RECV_ERROR -1
 
 static Bot_Command *bot_find_command(IRC_Bot *bot, const char cmd[])
 {
@@ -26,6 +27,29 @@ static Bot_Command *bot_find_command(IRC_Bot *bot, const char cmd[])
     }
 
     return NULL;
+}
+
+static int bot_recv(IRC_Bot *bot)
+{
+    if (!bot) {
+        return ERROR;
+    }
+    memset(bot->last_msg, 0, BOT_MAX_MSGLEN);
+
+    int bytes = connection_read(bot->connection);
+    if (bytes > 0) {
+        for (int i = 0; i < bytes; i++) {
+            bot->last_msg[i] = bot->connection->recvbuf;
+        }
+
+        if (bytes < BOT_MAX_MSGLEN) {
+            bot->last_msg[bytes] = "\0";
+        } else {
+            return RECV_ERROR;
+        }
+    }
+
+    return bytes;
 }
 
 IRC_Bot *bot_create(const char nick[])
@@ -98,7 +122,7 @@ int bot_connect(IRC_Bot *bot, const char address[], const char port[])
 
 int bot_disconnect(IRC_Bot *bot)
 {
-    return connection_disconnect(bot);
+    return connection_disconnect(bot->connection);
 }
 
 int bot_call(IRC_Bot *bot, const char cmd[])
@@ -130,4 +154,13 @@ int bot_send(IRC_Bot *bot, const char msg[])
     }
 
     return connection_send(bot->connection, msg);
+}
+
+int bot_read(IRC_Bot *bot)
+{
+    if (!bot) {
+        return ERROR;
+    }
+
+    return bot_recv(bot);
 }

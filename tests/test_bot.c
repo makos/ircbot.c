@@ -92,3 +92,26 @@ static char *test_bot_send_failure()
               result == 0);
     return 0;
 }
+
+static char *test_bot_read_success()
+{
+    IRC_Bot *test_bot = bot_create("ircbot");
+    mu_assert("test_bot_read_success(): test_bot is NULL\n", test_bot);
+    bot_connect(test_bot, "irc.rizon.net", "6660");
+    int result = bot_read(test_bot);
+    mu_assert("test_bot_read_success(): bot_read() returned 0 or ERROR",
+              result > 0);
+    bot_disconnect(test_bot);
+    return 0;
+}
+
+static char *test_bot_read_failure()
+{
+    IRC_Bot *test_bot = bot_create("ircbot");
+    mu_assert("test_bot_read_failure(): test_bot is NULL\n", test_bot);
+    int result = bot_read(test_bot);
+    mu_assert(
+        "test_bot_read_failure(): bot_read() returned positive numbers (not ERROR)",
+        result <= 0);
+    return 0;
+}

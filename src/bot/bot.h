@@ -13,6 +13,8 @@ struct IRC_Connection;
 typedef int (*fp_cmd_t)(struct IRC_Bot *);
 /** Maximum amount of Bot_Command structures in IRC_Bot. */
 #define BOT_MAX_COMMANDS 128
+/** Maximum length of stored message received from server. */
+#define BOT_MAX_MSGLEN 512
 
 /** Struct used to add custom commands to the bot. */
 typedef struct Bot_Command {
@@ -31,10 +33,15 @@ typedef struct IRC_Bot {
     /** Array of pointers to Bot_Command structures. */
     Bot_Command *commands[BOT_MAX_COMMANDS];
     /**
-     *  Specifies the ID of the last command added, not to be used outside of
+     * Specifies the ID of the last command added, not to be used outside of
      * `bot_` functions.
      */
     int newest_cmd;
+    /**
+     * Last received message.
+     * @see BOT_MAX_MSGLEN.
+     */
+    char last_msg[BOT_MAX_MSGLEN];
 } IRC_Bot;
 
 /**
@@ -84,5 +91,14 @@ int bot_call(IRC_Bot *bot, const char cmd[]);
  * @return 0 on failure, 1 on success
  */
 int bot_send(IRC_Bot *bot, const char msg[]);
+
+/**
+ * Read incoming messages from server, one message at a time.
+ * @param bot pointer to IRC_Bot object
+ * @return negative numbers on socket errors, 0 - connection closed, positive
+ * numbers denote bytes read
+ * @see last_msg
+ */
+int bot_read(IRC_Bot *bot);
 
 #endif // IRCBOT_BOT_BOT_H_
