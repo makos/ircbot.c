@@ -76,4 +76,13 @@ int bot_disconnect(IRC_Bot *bot);
  */
 int bot_call(IRC_Bot *bot, const char cmd[]);
 
+/**
+ * Send a text message to connected server.
+ * @param bot pointer to IRC_Bot object
+ * @param msg message string to be sent (doesn't have to include trailing
+ * newline)
+ * @return 0 on failure, 1 on success
+ */
+int bot_send(IRC_Bot *bot, const char msg[]);
+
 #endif // IRCBOT_BOT_BOT_H_

@@ -65,6 +65,8 @@ static char *bot_tests()
     mu_run_test("bot_connect_success", test_bot_connect_success);
     mu_run_test("bot_connect_failure", test_bot_connect_failure);
     mu_run_test("bot_test_ident_success", test_bot_ident_success);
+    mu_run_test("bot_test_send_success", test_bot_send_success);
+    mu_run_test("bot_test_send_failure", test_bot_send_failure);
     return 0;
 }
 

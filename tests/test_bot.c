@@ -70,3 +70,25 @@ static char *test_bot_connect_failure()
               result == 0);
     return 0;
 }
+
+static char *test_bot_send_success()
+{
+    IRC_Bot *test_bot = bot_create("ircbot");
+    mu_assert("test_bot_send_success(): test_bot is NULL\n", test_bot);
+    bot_connect(test_bot, "irc.rizon.net", "6660");
+    int result = bot_send(test_bot, "USER ircbot ircbot ircbot ircbot");
+    bot_disconnect(test_bot);
+    mu_assert("test_bot_send_success(): bot_send() returned ERROR\n",
+              result != 0);
+    return 0;
+}
+
+static char *test_bot_send_failure()
+{
+    IRC_Bot *test_bot = bot_create("ircbot");
+    mu_assert("test_bot_send_success(): test_bot is NULL\n", test_bot);
+    int result = bot_send(test_bot, "USER ircbot ircbot ircbot ircbot");
+    mu_assert("test_bot_send_success(): bot_send() returned ERROR\n",
+              result == 0);
+    return 0;
+}
