@@ -117,3 +117,17 @@ int bot_call(IRC_Bot *bot, const char cmd[])
 
     return found->callback(bot);
 }
+
+int bot_send(IRC_Bot *bot, const char msg[])
+{
+    if (!bot) {
+        fprintf(stderr, "bot_send(): bot is NULL\n");
+        return ERROR;
+    }
+    if (!bot->connection) {
+        fprintf(stderr, "bot_send(): connection is not initialized\n");
+        return ERROR;
+    }
+
+    return connection_send(bot->connection, msg);
+}
