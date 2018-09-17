@@ -6,6 +6,7 @@
  */
 #include "commands.h"
 #include "bot.h"
+#include <stddef.h>
 #include <stdlib.h>
 #include <string.h>
 

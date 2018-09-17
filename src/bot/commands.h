@@ -14,4 +14,5 @@ struct IRC_Bot;
  */
 int commands_ident(struct IRC_Bot *bot);
 
+int commands_pong(struct IRC_Bot *bot);
 #endif // IRCBOT_BOT_COMMANDS_H_
