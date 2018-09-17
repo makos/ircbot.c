@@ -7,49 +7,31 @@
 #ifndef IRCBOT_BOT_BOT_H_
 #define IRCBOT_BOT_BOT_H_
 struct IRC_Bot;
-
-/**
- * Function pointer used in Bot_Command to execute custom functions.
- */
-typedef int (*fp_cmd_t)(struct IRC_Bot *);
 struct IRC_Connection;
-/**
- * Maximum amount of Bot_Command structures in IRC_Bot.
- */
+
+/** Function pointer used in Bot_Command to execute custom functions. */
+typedef int (*fp_cmd_t)(struct IRC_Bot *);
+/** Maximum amount of Bot_Command structures in IRC_Bot. */
 #define BOT_MAX_COMMANDS 128
 
-/**
- * Struct used to add custom commands to the bot.
- */
+/** Struct used to add custom commands to the bot. */
 typedef struct Bot_Command {
-    /**
-     * Name of the command, by which it is invoked.
-     */
+    /** Name of the command, by which it is invoked. */
     char *name;
-    /**
-     * Function pointer to the function to be executed.
-     */
+    /** Function pointer to the function to be executed. */
     fp_cmd_t callback;
 } Bot_Command;
 
-/**
- * Struct holding relevant data to the actual bot.
- */
+/** Struct holding relevant data to the actual bot. */
 typedef struct IRC_Bot {
-    /**
-     * Nick visible on the IRC server.
-     */
+    /** Nick visible on the IRC server. */
     char *nick;
-    /**
-     * Pointer to the IRC_Connection structure.
-     */
+    /** Pointer to the IRC_Connection structure. */
     struct IRC_Connection *connection;
-    /**
-     * Array of pointers to Bot_Command structures.
-     */
+    /** Array of pointers to Bot_Command structures. */
     Bot_Command *commands[BOT_MAX_COMMANDS];
     /**
-     * Specifies the ID of the last command added, not to be used outside of
+     *  Specifies the ID of the last command added, not to be used outside of
      * `bot_` functions.
      */
     int newest_cmd;

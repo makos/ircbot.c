@@ -50,17 +50,11 @@
         }                                                                      \
     } while (0)
 
-/**
- * Total number of tests executed.
- */
+/** Total number of tests executed. */
 extern int tests_run;
-/**
- * Number of tests that failed.
- */
+/** Number of tests that failed. */
 extern int tests_failed;
-/**
- * List of messages from failed tests, for printing.
- */
+/** List of messages from failed tests, for printing. */
 extern char **messages;
 /**
  * @name ANSI color codes

@@ -21,9 +21,7 @@ typedef int SOCKET;
  * @see connection_create()
  */
 typedef struct IRC_Connection {
-    /**
-     * Socket handle
-     */
+    /** Socket handle */
     SOCKET socket;
     /**
      * Addrinfo result pointer.
@@ -32,9 +30,7 @@ typedef struct IRC_Connection {
      * for more information.
      */
     struct addrinfo *ai_result;
-    /**
-     * @see ai_result()
-     */
+    /** @see ai_result() */
     struct addrinfo *ai_hints;
     /**
      * Address of the server.
@@ -46,13 +42,9 @@ typedef struct IRC_Connection {
      * Note that this is a string, not an integer.
      */
     char port[8];
-    /**
-     * Buffer used by `recv()` to store incoming data.
-     */
+    /** Buffer used by `recv()` to store incoming data. */
     char *recvbuf;
-    /**
-     * Length of `recvbuf`, by default `= 512`.
-     */
+    /** Length of `recvbuf`, by default `= 512`. */
     int recvbuflen;
 } IRC_Connection;
 
