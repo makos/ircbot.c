@@ -2,4 +2,3 @@ src/obj
 .vscode
 build
 *.exe
-Doxyfile
