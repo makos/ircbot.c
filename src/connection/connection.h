@@ -1,11 +1,11 @@
-#ifndef IRCBOT_CONNECTION_CONNECTION_H_
-#define IRCBOT_CONNECTION_CONNECTION_H_
 /**
  * @file connection.h
  * @author Mateusz Makowski
  * @date 15.09.2018
  * @brief File containing the IRC_Connection struct and related functions.
  */
+#ifndef IRCBOT_CONNECTION_CONNECTION_H_
+#define IRCBOT_CONNECTION_CONNECTION_H_
 
 #ifdef _WIN32
 typedef unsigned int UINT_PTR;
