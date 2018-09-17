@@ -1,3 +1,9 @@
+/**
+ * @file connection.c
+ * @author Mateusz Makowski
+ * @date 17.09.2018
+ * @brief Implementation of connection.h
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
