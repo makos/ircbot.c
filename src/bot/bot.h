@@ -15,6 +15,10 @@ typedef int (*fp_cmd_t)(struct IRC_Bot *);
 #define BOT_MAX_COMMANDS 128
 /** Maximum length of stored message received from server. */
 #define BOT_MAX_MSGLEN 512
+/** Max characters in channel name. */
+#define BOT_MAX_CHANNEL_LEN 64
+/** Max channels the bot can join. */
+#define BOT_MAX_CHANNEL_AMT 128
 
 /** Struct used to add custom commands to the bot. */
 typedef struct Bot_Command {
@@ -28,6 +32,8 @@ typedef struct Bot_Command {
 typedef struct IRC_Bot {
     /** Nick visible on the IRC server. */
     char *nick;
+    /** List of channels currently connected to. */
+    char **channels;
     /** Pointer to the IRC_Connection structure. */
     struct IRC_Connection *connection;
     /** Array of pointers to Bot_Command structures. */
@@ -42,6 +48,8 @@ typedef struct IRC_Bot {
      * @see BOT_MAX_MSGLEN.
      */
     char last_msg[BOT_MAX_MSGLEN];
+    /** Index of the last channel joined. */
+    int last_channel_id;
 } IRC_Bot;
 
 /**
@@ -100,5 +108,13 @@ int bot_send(IRC_Bot *bot, const char msg[]);
  * @see last_msg
  */
 int bot_read(IRC_Bot *bot);
+
+/**
+ * Join an IRC channel.
+ * @param bot pointer to IRC_Bot object
+ * @param channel channel to join
+ * @return 0 on failure, 1 on success
+ */
+int bot_join(IRC_Bot *bot, const char channel[]);
 
 #endif // IRCBOT_BOT_BOT_H_
