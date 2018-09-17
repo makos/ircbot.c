@@ -69,6 +69,8 @@ static char *bot_tests()
     mu_run_test("bot_test_send_failure", test_bot_send_failure);
     mu_run_test("bot_test_read_success", test_bot_read_success);
     mu_run_test("bot_test_read_failure", test_bot_read_failure);
+    mu_run_test("bot_test_join_success", test_bot_join_success);
+    mu_run_test("bot_test_join_failure", test_bot_join_failure);
     return 0;
 }
 
@@ -100,9 +102,9 @@ int main(int argc, char *argv[])
         strcpy(COLOR_END, "");
     }
 
-    messages = malloc(64);
+    messages = malloc(64 * sizeof(char));
     for (int i = 0; i < 64; i++) {
-        messages[i] = malloc(128);
+        messages[i] = malloc(128 * sizeof(char));
     }
 
     for (int i = 0; i < argc; i++) {

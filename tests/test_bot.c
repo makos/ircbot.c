@@ -2,6 +2,25 @@
 #include "minunit.h"
 #include <string.h>
 
+static void bot_pong(IRC_Bot *bot)
+{
+    int ponged = 0;
+    int bytes = 0;
+    do {
+        bytes = bot_read(bot);
+
+        if (strncmp(bot->last_msg, "PING", 4) == 0) {
+            ponged = 1;
+            char *id = strtok(bot->last_msg, ":");
+            id = strtok(NULL, ":");
+            char *pong_msg = malloc(32 * sizeof(char));
+            strcpy(pong_msg, "PONG ");
+            strcat(pong_msg, id);
+            bot_send(bot, pong_msg);
+        }
+    } while (!ponged);
+}
+
 static int test_callback(IRC_Bot *bot)
 {
     return 1;
@@ -113,5 +132,35 @@ static char *test_bot_read_failure()
     mu_assert(
         "test_bot_read_failure(): bot_read() returned positive numbers (not ERROR)",
         result <= 0);
+    return 0;
+}
+
+static char *test_bot_join_success()
+{
+    IRC_Bot *test_bot = bot_create("ircbot");
+    mu_assert("test_bot_join_success(): test_bot is NULL\n", test_bot);
+
+    bot_connect(test_bot, "irc.rizon.net", "6660");
+
+    bot_send(test_bot, "USER ircbot ircbot ircbot ircbot");
+    bot_send(test_bot, "NICK ircbot_c");
+
+    bot_pong(test_bot);
+
+    int result = bot_join(test_bot, "#ircbot_ctest");
+    mu_assert("test_bot_join_success(): bot_join returned ERROR\n",
+              result != 0);
+
+    return 0;
+}
+
+static char *test_bot_join_failure()
+{
+    IRC_Bot *test_bot = bot_create("ircbot");
+    mu_assert("test_bot_join_failure(): test_bot is NULL\n", test_bot);
+
+    int result = bot_join(test_bot, "#ircbot_ctest");
+    mu_assert("test_bot_join_failure(): bot_join returned OK\n", result == 0);
+
     return 0;
 }
