@@ -61,14 +61,13 @@ int bot_add_command(IRC_Bot *bot, const char name[], fp_cmd_t callback)
         printf("bot_add_command(): callback is NULL\n");
         return ERROR;
     }
-    // FIXME: just increment newest_cmd here and use it below.
-    int cmd_i = bot->newest_cmd + 1;
-
-    bot->commands[cmd_i]->callback = callback;
-    bot->commands[cmd_i]->name = malloc((strlen(name) + 1) * sizeof(char));
-    strcpy(bot->commands[cmd_i]->name, name);
-
     bot->newest_cmd++;
+
+    bot->commands[bot->newest_cmd]->callback = callback;
+    bot->commands[bot->newest_cmd]->name =
+        malloc((strlen(name) + 1) * sizeof(char));
+    strcpy(bot->commands[bot->newest_cmd]->name, name);
+
     return OK;
 }
 
@@ -102,19 +101,19 @@ int bot_disconnect(IRC_Bot *bot)
     return connection_disconnect(bot);
 }
 
-int bot_call(IRC_Bot *bot, const char msg[])
+int bot_call(IRC_Bot *bot, const char cmd[])
 {
     if (!bot) {
         printf("bot_call(): bot is NULL\n");
         return ERROR;
     }
 
-    Bot_Command *cmd = bot_find_command(bot, msg);
+    Bot_Command *found = bot_find_command(bot, cmd);
 
-    if (!cmd) {
-        printf("bot_call(): %s not found\n", msg);
+    if (!found) {
+        printf("bot_call(): %s not found\n", cmd);
         return ERROR;
     }
 
-    return cmd->callback(bot);
+    return found->callback(bot);
 }
