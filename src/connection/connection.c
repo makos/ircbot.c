@@ -30,7 +30,7 @@ static int connection_init_socket()
 
     result = WSAStartup(MAKEWORD(2, 2), &wsa_data);
     if (result != 0) {
-        printf("WSAStartup error: %d\n", result);
+        fprintf(stderr, "WSAStartup error: %d\n", result);
         return ERROR;
     }
     return OK;
@@ -93,7 +93,7 @@ static int connection_setup_addrinfo(IRC_Connection *connection)
 IRC_Connection *connection_create(const char address[], const char port[])
 {
     if (strlen(address) > (size_t)32 || strlen(port) > (size_t)8) {
-        printf("connection_create(): address or port too long\n");
+        fprintf(stderr, "connection_create(): address or port too long\n");
         return NULL;
     }
 
@@ -107,7 +107,7 @@ IRC_Connection *connection_create(const char address[], const char port[])
 
     int result = connection_setup_addrinfo(temp);
     if (result != 0) {
-        printf("getaddrinfo() error: %d\n", result);
+        fprintf(stderr, "getaddrinfo() error: %d\n", result);
         connection_cleanup();
         return NULL;
     }
@@ -118,12 +118,12 @@ IRC_Connection *connection_create(const char address[], const char port[])
 int connection_connect(IRC_Connection *connection)
 {
     if (connection == NULL) {
-        printf("connection_connect(): connection is NULL\n");
+        fprintf(stderr, "connection_connect(): connection is NULL\n");
         return ERROR;
     }
 
     if (connection->ai_result == NULL) {
-        printf("connection_connect(): addrinfo is NULL\n");
+        fprintf(stderr, "connection_connect(): addrinfo is NULL\n");
         return ERROR;
     }
 
@@ -131,7 +131,7 @@ int connection_connect(IRC_Connection *connection)
                                 connection->ai_result->ai_socktype,
                                 connection->ai_result->ai_protocol);
     if (connection->socket == INVALID_SOCKET) {
-        printf("connection_connect(): invalid socket\n");
+        fprintf(stderr, "connection_connect(): invalid socket\n");
         return ERROR;
     }
 
@@ -139,7 +139,7 @@ int connection_connect(IRC_Connection *connection)
                          connection->ai_result->ai_addrlen);
     if (result == SOCKET_ERROR) {
         connection_close_socket(connection);
-        printf("connection_connect(): error %d\n", result);
+        fprintf(stderr, "connection_connect(): error %d\n", result);
         return ERROR;
     }
 
@@ -150,7 +150,7 @@ int connection_connect(IRC_Connection *connection)
 int connection_disconnect(IRC_Connection *connection)
 {
     if (connection == NULL) {
-        printf("connection_disconnect(): connection is NULL\n");
+        fprintf(stderr, "connection_disconnect(): connection is NULL\n");
         return ERROR;
     }
 
@@ -160,7 +160,7 @@ int connection_disconnect(IRC_Connection *connection)
 int connection_send(IRC_Connection *connection, const char msg[])
 {
     if (connection == NULL) {
-        printf("connection_send(): connection is NULL\n");
+        fprintf(stderr, "connection_send(): connection is NULL\n");
         return ERROR;
     }
 
@@ -170,7 +170,7 @@ int connection_send(IRC_Connection *connection, const char msg[])
 
     int result = send(connection->socket, temp_msg, (int)strlen(temp_msg), 0);
     if (result == SOCKET_ERROR) {
-        printf("connection_send(): error %d\n", result);
+        fprintf(stderr, "connection_send(): error %d\n", result);
         connection_close_socket(connection);
         return ERROR;
     }
@@ -183,7 +183,7 @@ int connection_send(IRC_Connection *connection, const char msg[])
 int connection_read(IRC_Connection *connection)
 {
     if (connection == NULL) {
-        printf("connection_read(): connection is NULL\n");
+        fprintf(stderr, "connection_read(): connection is NULL\n");
         return ERROR;
     }
 
@@ -195,10 +195,10 @@ int connection_read(IRC_Connection *connection)
         // Bytes received.
         return result;
     } else if (result == 0) {
-        printf("Connection closed\n");
+        fprintf(stderr, "Connection closed\n");
         connection_close_socket(connection);
     } else {
-        printf("connection_receive(): error %d\n", result);
+        fprintf(stderr, "connection_receive(): error %d\n", result);
     }
     return result;
 }

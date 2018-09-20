@@ -84,12 +84,12 @@ IRC_Bot *bot_create(const char nick[])
 int bot_add_command(IRC_Bot *bot, const char name[], fp_cmd_t callback)
 {
     if (!bot) {
-        printf("bot_add_command(): bot is NULL\n");
+        fprintf(stderr, "bot_add_command(): bot is NULL\n");
         return ERROR;
     }
 
     if (!callback) {
-        printf("bot_add_command(): callback is NULL\n");
+        fprintf(stderr, "bot_add_command(): callback is NULL\n");
         return ERROR;
     }
     bot->newest_cmd++;
@@ -105,12 +105,12 @@ int bot_add_command(IRC_Bot *bot, const char name[], fp_cmd_t callback)
 int bot_connect(IRC_Bot *bot, const char address[], const char port[])
 {
     if (!bot) {
-        printf("bot_connect(): bot is NULL\n");
+        fprintf(stderr, "bot_connect(): bot is NULL\n");
         return ERROR;
     }
 
     if (strlen(address) > 32 || strlen(port) > 8) {
-        printf("bot_connect(): address or port are too long\n");
+        fprintf(stderr, "bot_connect(): address or port are too long\n");
         return ERROR;
     }
 
@@ -135,14 +135,14 @@ int bot_disconnect(IRC_Bot *bot)
 int bot_call(IRC_Bot *bot, const char cmd[])
 {
     if (!bot) {
-        printf("bot_call(): bot is NULL\n");
+        fprintf(stderr, "bot_call(): bot is NULL\n");
         return ERROR;
     }
 
     Bot_Command *found = bot_find_command(bot, cmd);
 
     if (!found) {
-        printf("bot_call(): %s not found\n", cmd);
+        fprintf(stderr, "bot_call(): %s not found\n", cmd);
         return ERROR;
     }
 
