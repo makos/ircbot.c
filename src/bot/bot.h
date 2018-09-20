@@ -117,4 +117,12 @@ int bot_read(IRC_Bot *bot);
  */
 int bot_join(IRC_Bot *bot, const char channel[]);
 
+/**
+ * Leave an IRC channel.
+ * @param bot pointer to IRC_Bot object
+ * @param channel channel to leave
+ * @return 0 on failure, 1 on success
+ */
+int bot_leave(IRC_Bot *bot, const char channel[]);
+
 #endif // IRCBOT_BOT_BOT_H_

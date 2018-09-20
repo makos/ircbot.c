@@ -1,5 +1,6 @@
 #include "bot/bot.h"
 #include "minunit.h"
+#include <stdlib.h>
 #include <string.h>
 
 static void bot_pong(IRC_Bot *bot)
@@ -148,6 +149,7 @@ static char *test_bot_join_success()
     bot_pong(test_bot);
 
     int result = bot_join(test_bot, "#ircbot_ctest");
+    bot_disconnect(test_bot);
     mu_assert("test_bot_join_success(): bot_join returned ERROR\n",
               result != 0);
 
@@ -161,6 +163,26 @@ static char *test_bot_join_failure()
 
     int result = bot_join(test_bot, "#ircbot_ctest");
     mu_assert("test_bot_join_failure(): bot_join returned OK\n", result == 0);
+
+    return 0;
+}
+
+static char *test_bot_leave_success()
+{
+    IRC_Bot *test_bot = bot_create("ircbot");
+    mu_assert("test_bot_leave_success(): test_bot is NULL\n", test_bot);
+    bot_connect(test_bot, "irc.rizon.net", "6660");
+
+    bot_send(test_bot, "USER ircbot ircbot ircbot ircbot");
+    bot_send(test_bot, "NICK ircbot_c");
+
+    bot_pong(test_bot);
+
+    bot_join(test_bot, "#ircbot_ctest");
+
+    int result = bot_leave(test_bot, "#ircbot_ctest");
+    bot_disconnect(test_bot);
+    mu_assert("test_bot_leave_success(): bot_leave returned ERROR\n", result != 0);
 
     return 0;
 }
