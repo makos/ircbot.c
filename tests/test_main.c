@@ -62,15 +62,16 @@ static char *bot_tests()
     mu_run_test("bot_create_failure", test_bot_create_failure);
     mu_run_test("bot_add_command_success", test_bot_add_command_success);
     mu_run_test("bot_add_command_failure", test_bot_add_command_failure);
-    mu_run_test("bot_connect_success", test_bot_connect_success);
-    mu_run_test("bot_connect_failure", test_bot_connect_failure);
-    mu_run_test("bot_test_ident_success", test_bot_ident_success);
-    mu_run_test("bot_test_send_success", test_bot_send_success);
-    mu_run_test("bot_test_send_failure", test_bot_send_failure);
-    mu_run_test("bot_test_read_success", test_bot_read_success);
-    mu_run_test("bot_test_read_failure", test_bot_read_failure);
-    mu_run_test("bot_test_join_success", test_bot_join_success);
-    mu_run_test("bot_test_join_failure", test_bot_join_failure);
+    // Commented out tests because they were upsetting remote servers.
+    /* mu_run_test("bot_connect_success", test_bot_connect_success); */
+    /* mu_run_test("bot_connect_failure", test_bot_connect_failure); */
+    /* mu_run_test("bot_test_ident_success", test_bot_ident_success); */
+    /* mu_run_test("bot_test_send_success", test_bot_send_success); */
+    /* mu_run_test("bot_test_send_failure", test_bot_send_failure); */
+    /* mu_run_test("bot_test_read_success", test_bot_read_success); */
+    /* mu_run_test("bot_test_read_failure", test_bot_read_failure); */
+    /* mu_run_test("bot_test_join_success", test_bot_join_success); */
+    /* mu_run_test("bot_test_join_failure", test_bot_join_failure); */
     return 0;
 }
 
