@@ -74,7 +74,7 @@ static char *test_bot_connect_success()
 {
     IRC_Bot *test_bot = bot_create("ircbot");
     mu_assert("test_bot_connect_success(): test_bot is NULL", test_bot);
-    int result = bot_connect(test_bot, "irc.rizon.net", "6660");
+    int result = bot_connect(test_bot, "127.0.0.1", "8080");
     bot_disconnect(test_bot);
     mu_assert("test_bot_connect_success(): bot_connect() failed", result != 0);
     return 0;
@@ -95,7 +95,7 @@ static char *test_bot_send_success()
 {
     IRC_Bot *test_bot = bot_create("ircbot");
     mu_assert("test_bot_send_success(): test_bot is NULL\n", test_bot);
-    bot_connect(test_bot, "irc.rizon.net", "6660");
+    bot_connect(test_bot, "127.0.0.1", "8080");
     int result = bot_send(test_bot, "USER ircbot ircbot ircbot ircbot");
     bot_disconnect(test_bot);
     mu_assert("test_bot_send_success(): bot_send() returned ERROR\n",
@@ -117,7 +117,7 @@ static char *test_bot_read_success()
 {
     IRC_Bot *test_bot = bot_create("ircbot");
     mu_assert("test_bot_read_success(): test_bot is NULL\n", test_bot);
-    bot_connect(test_bot, "irc.rizon.net", "6660");
+    bot_connect(test_bot, "127.0.0.1", "8080");
     int result = bot_read(test_bot);
     mu_assert("test_bot_read_success(): bot_read() returned 0 or ERROR",
               result > 0);
@@ -141,7 +141,7 @@ static char *test_bot_join_success()
     IRC_Bot *test_bot = bot_create("ircbot");
     mu_assert("test_bot_join_success(): test_bot is NULL\n", test_bot);
 
-    bot_connect(test_bot, "irc.rizon.net", "6660");
+    bot_connect(test_bot, "127.0.0.1", "8080");
 
     bot_send(test_bot, "USER ircbot ircbot ircbot ircbot");
     bot_send(test_bot, "NICK ircbot_c");
@@ -171,7 +171,7 @@ static char *test_bot_leave_success()
 {
     IRC_Bot *test_bot = bot_create("ircbot");
     mu_assert("test_bot_leave_success(): test_bot is NULL\n", test_bot);
-    bot_connect(test_bot, "irc.rizon.net", "6660");
+    bot_connect(test_bot, "127.0.0.1", "8080");
 
     bot_send(test_bot, "USER ircbot ircbot ircbot ircbot");
     bot_send(test_bot, "NICK ircbot_c");

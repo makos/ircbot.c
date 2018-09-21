@@ -24,8 +24,8 @@ typedef struct Mock_Server {
     SOCKET socket_fd;
     SOCKET socket_client;
     char buffer[MAXBUFLEN];
-    struct sockaddr_in server;
-    struct sockaddr_in client;
+    struct sockaddr_in *server;
+    struct sockaddr_in *client;
 } Mock_Server;
 
 Mock_Server *server_create();
