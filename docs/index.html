@@ -96,17 +96,25 @@ $(document).ready(function(){initNavTree('index.html','');});
 <div class="contents">
 <div class="textblock"><h1><a class="anchor" id="index_about"></a>
 About</h1>
-<p>This is a cross-platform (Linux and Windows tested) IRC bot written purely in C without third-party libraries.</p>
-<h1><a class="anchor" id="index_req"></a>
-Requirements</h1>
-<p>For building from source: (all platforms)</p><ul>
-<li>CMake (version &gt;= 3.0.0)</li>
-<li>gcc</li>
-<li>preferably GNU make</li>
-</ul>
+<p>Welcome to ircbot.c official documentation. ircbot.c is a simple library (<a class="el" href="index.html#index_api">libbot</a>) that provides easy to use functions providing basic necessities for an IRC bot, such as <a class="el" href="bot_8c.html#a32c27a32b8a89a310d0c70c7768cfb98">sending </a>, <a class="el" href="bot_8c.html#aaff905725db958cc9b4e70e9559ce738">receiving </a>, <a class="el" href="bot_8c.html#a12d890ea0fe6f29405c7a45bcb243d44">joining </a> and <a class="el" href="bot_8c.html#ab13db977d59f447b1229c44dd68520d4">leaving </a> channels and custom <a class="el" href="bot_8c.html#af9efd343f9b743705b66552563561fe3">commands </a>.</p>
+<p>To learn more, see <a class="el" href="index.html#index_api">public API documentation</a>.</p>
+<p>To see what's planned, take a look at the <a class="el" href="todo_page.html">TODO page</a>.</p>
 <h1><a class="anchor" id="index_building"></a>
 Building</h1>
-<p>Navigate to the folder with source code (where README.md is located). Then: </p><div class="fragment"><div class="line">mkdir build &amp;&amp; cd build</div><div class="line">cmake .. &amp;&amp; make tests</div><div class="line">tests/tests all</div></div><!-- fragment --><p> As of version 0.2.0 only tests will compile and run. </p>
+<h2><a class="anchor" id="building_reqs"></a>
+Requirements</h2>
+<ul>
+<li>C compiler with C99 standard support (gcc, clang)</li>
+<li>CMake, version <code>&gt;= 3.0</code></li>
+</ul>
+<h2><a class="anchor" id="building_guide"></a>
+Steps</h2>
+<p>The bot should run fine both on Windows and Linux. Building instructions are very simple:</p>
+<div class="fragment"><div class="line">git clone https:<span class="comment">//github.com/makos/ircbot.c.git</span></div><div class="line">cd ircbot.c</div><div class="line">mkdir build &amp;&amp; cd build</div><div class="line">cmake .. &amp;&amp; make bot</div></div><!-- fragment --><p>The library will be located in the <code>build/lib</code> directory.</p>
+<h1><a class="anchor" id="index_api"></a>
+Public API</h1>
+<p>Public API functions are contained in the <a class="el" href="bot_8h.html" title="File containing the bot data structure and related functions. ">bot.h</a> file. See that file's documentation to learn the API.</p>
+<p>The file <a class="el" href="commands_8h.html" title="File containing bot command functions. ">commands.h</a> contains basic commands to showcase usage of the command system. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

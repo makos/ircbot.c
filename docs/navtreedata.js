@@ -2,9 +2,14 @@ var NAVTREE =
 [
   [ "ircbot.c", "index.html", [
     [ "About", "index.html#index_about", null ],
-    [ "Requirements", "index.html#index_req", null ],
-    [ "Building", "index.html#index_building", null ],
+    [ "Building", "index.html#index_building", [
+      [ "Requirements", "index.html#building_reqs", null ],
+      [ "Steps", "index.html#building_guide", null ]
+    ] ],
+    [ "Public API", "index.html#index_api", null ],
     [ "Changelog", "md__changelog.html", null ],
+    [ "TODO page", "todo_page.html", null ],
+    [ "Todo List", "todo.html", null ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
       [ "Data Structure Index", "classes.html", null ],
