@@ -1,4 +1,6 @@
 file(GLOB_RECURSE SOURCES *.c)
+# Disregard Emacs' temporary files.
+list(FILTER SOURCES EXCLUDE REGEX "[.]#.*")
 
 add_executable(bot ${SOURCES})
 
