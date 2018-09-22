@@ -45,7 +45,7 @@ Mock_Server *server_create()
     }
 
     listen(temp->socket_fd, 3);
-    fcntl(temp->socket_fd, O_NONBLOCK);
+    fcntl(temp->socket_fd, F_SETFD, O_NONBLOCK);
 
     return temp;
 }
@@ -54,7 +54,7 @@ int server_read(Mock_Server *server)
 {
     int sockaddr_size = sizeof(struct sockaddr_in);
     char hello_msg[] = "Hello from server";
-    int hello_msg_len = 17;
+    int hello_msg_len = strlen(hello_msg);
 
     /* server->socket_client = */
     /*     accept4(server->socket_fd, */
@@ -71,7 +71,13 @@ int server_read(Mock_Server *server)
     while ((server->socket_client = accept(server->socket_fd,
                                          (struct sockaddr *)server->client,
                                          (socklen_t *)&sockaddr_size)) >= 0) {
-        fcntl(server->socket_client, O_NONBLOCK);
+        fcntl(server->socket_client, F_SETFD, O_NONBLOCK);
+
+        int debug_result = send(server->socket_client, hello_msg, hello_msg_len, 0);
+        if (debug_result == -1) {
+            fprintf(stderr, "%d %s", errno, strerror(errno));
+        }
+
         do {
             memset(server->buffer, 0, MAXBUFLEN);
             bytes = recv(server->socket_client, server->buffer, MAXBUFLEN, 0);
@@ -85,6 +91,8 @@ int server_read(Mock_Server *server)
             }
         } while (bytes > 0);
     }
+
+    close(server->socket_client);
 
     /* printf("Accepted connection\n"); */
     /* send(server->socket_client, hello_msg, hello_msg_len, 0); */
