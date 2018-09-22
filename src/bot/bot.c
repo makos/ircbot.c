@@ -202,6 +202,7 @@ int bot_leave(IRC_Bot *bot, const char channel[])
       fprintf(stderr, "bot_leave(): bot is not initialized\n");
       return ERROR;
     }
+
     char *leave_msg = malloc((strlen(channel) + 7) * sizeof(char));
     strcpy(leave_msg, "LEAVE ");
     strcat(leave_msg, channel);

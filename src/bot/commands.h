@@ -14,5 +14,10 @@ struct IRC_Bot;
  */
 int commands_ident(struct IRC_Bot *bot);
 
-int commands_pong(struct IRC_Bot *bot);
+/**
+ * Send a PONG message to the server.
+ * @param bot pointer to IRC_Bot structure
+ * @return 0 on failure, 1 on success
+ */
+int commands_pong(struct IRC_Bot *bot, const char pong_id[]);
 #endif // IRCBOT_BOT_COMMANDS_H_
