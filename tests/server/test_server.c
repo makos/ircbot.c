@@ -4,6 +4,7 @@
 
 #ifdef __linux__
 #include <sys/socket.h>
+#include <fcntl.h>
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <errno.h>
@@ -44,6 +45,7 @@ Mock_Server *server_create()
     }
 
     listen(temp->socket_fd, 3);
+    fcntl(temp->socket_fd, O_NONBLOCK);
 
     return temp;
 }
@@ -54,40 +56,60 @@ int server_read(Mock_Server *server)
     char hello_msg[] = "Hello from server";
     int hello_msg_len = 17;
 
-    server->socket_client =
-        accept(server->socket_fd,
-               (struct sockaddr *)server->client,
-               (socklen_t *)&sockaddr_size); 
+    /* server->socket_client = */
+    /*     accept4(server->socket_fd, */
+    /*            (struct sockaddr *)server->client, */
+    /*             (socklen_t *)&sockaddr_size, SOCK_NONBLOCK);  */
 
-    if (server->socket_client == SOCKET_ERROR) {
-        fprintf(stderr,
-                "server_read(): socket error %s %d\n",
-                strerror(errno), errno);
-        return ERROR;
-    }
-
-    printf("Accepted connection\n");
-    send(server->socket_client, hello_msg, hello_msg_len, 0);
-        
+    /* if (server->socket_client == SOCKET_ERROR) { */
+    /*     fprintf(stderr, */
+    /*             "server_read(): socket error %s %d\n", */
+    /*             strerror(errno), errno); */
+    /*     return ERROR; */
+    /* } */
     int bytes = 0;
-    do {
-        memset(server->buffer, 0, MAXBUFLEN);
-        bytes = recv(server->socket_client, server->buffer, MAXBUFLEN, 0);
+    while ((server->socket_client = accept(server->socket_fd,
+                                         (struct sockaddr *)server->client,
+                                         (socklen_t *)&sockaddr_size)) >= 0) {
+        fcntl(server->socket_client, O_NONBLOCK);
+        do {
+            memset(server->buffer, 0, MAXBUFLEN);
+            bytes = recv(server->socket_client, server->buffer, MAXBUFLEN, 0);
 
-        for (int i = 0; i < bytes; i++) {
-            printf("%c", server->buffer[i]);
-        }
+            for (int i = 0; i < bytes; i++) {
+                printf("%c", server->buffer[i]);
+            }
 
-        send(server->socket_client, server->buffer, bytes, 0);
-    } while (bytes > 0);
-
-    if (bytes == 0) {
-        printf("Connection closed.\n");
-        close(server->socket_client);
-    } else if (bytes < 0) {
-        fprintf(stderr, "server_read(): recv error %s %d\n", strerror(errno), errno);
-        return ERROR;
+            if (bytes > 0) {
+                send(server->socket_client, server->buffer, bytes, 0);
+            }
+        } while (bytes > 0);
     }
+
+    /* printf("Accepted connection\n"); */
+    /* send(server->socket_client, hello_msg, hello_msg_len, 0); */
+        
+    /* int bytes = 0; */
+    /* do { */
+    /*     memset(server->buffer, 0, MAXBUFLEN); */
+    /*     bytes = recv(server->socket_client, server->buffer, MAXBUFLEN, 0); */
+
+    /*     for (int i = 0; i < bytes; i++) { */
+    /*         printf("%c", server->buffer[i]); */
+    /*     } */
+
+    /*     if (bytes > 0) { */
+    /*         send(server->socket_client, server->buffer, bytes, 0); */
+    /*     } */
+    /* } while (bytes > 0); */
+
+    /* if (bytes == 0) { */
+    /*     printf("Connection closed.\n"); */
+    /*     close(server->socket_client); */
+    /* } else if (bytes < 0) { */
+    /*     fprintf(stderr, "server_read(): recv error %s %d\n", strerror(errno), errno); */
+    /*     return ERROR; */
+    /* } */
 
     return OK;
 }
