@@ -4,7 +4,9 @@
 
 int main()
 {
+    // Ignore SIGPIPE because it is annoying.
     signal(SIGPIPE, SIG_IGN);
+
     Mock_Server *server = server_create();
     if (!server) {
         fprintf(stderr, "server is NULL\n");

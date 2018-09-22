@@ -30,6 +30,5 @@ typedef struct Mock_Server {
 
 Mock_Server *server_create();
 int server_read(Mock_Server* server);
-int server_send(Mock_Server* server, const char msg[]);
 
 #endif // IRCBOT_TESTS_TEST_SERVER_H_
