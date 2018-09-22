@@ -4,7 +4,7 @@
 
 @section index_about About
    Welcome to ircbot.c official documentation. ircbot.c is a simple library
-   (@ref index_api "libbot") that provides easy to use functions providing
+   (@link bot.h libbot @endlink) that provides easy to use functions providing
    basic necessities for an IRC bot, such as @link bot_send() sending @endlink,
    @link bot_read() receiving @endlink, @link bot_join() joining @endlink and
    @link bot_leave() leaving @endlink channels and custom @link
