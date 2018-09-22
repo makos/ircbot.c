@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ircbot.c: Bot_Command Struct Reference</title>
+<title>ircbot.c: src/bot/commands.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -72,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){initNavTree('struct_bot___command.html','');});
+$(document).ready(function(){initNavTree('commands_8h.html','');});
 </script>
 <div id="doc-content">
 <!-- window showing the filter options -->
@@ -91,70 +91,101 @@ $(document).ready(function(){initNavTree('struct_bot___command.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#pub-attribs">Data Fields</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">Bot_Command Struct Reference</div>  </div>
+<div class="title">commands.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Struct used to add custom commands to the bot.  
- <a href="struct_bot___command.html#details">More...</a></p>
+<p>File containing bot command functions.  
+<a href="#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="bot_8h_source.html">bot.h</a>&gt;</code></p>
+<p><a href="commands_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Data Fields</h2></td></tr>
-<tr class="memitem:a55019d0cd5b6c27dc36cab94acb0a861"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_bot___command.html#a55019d0cd5b6c27dc36cab94acb0a861">name</a></td></tr>
-<tr class="memdesc:a55019d0cd5b6c27dc36cab94acb0a861"><td class="mdescLeft">&#160;</td><td class="mdescRight">Name of the command, by which it is invoked.  <a href="#a55019d0cd5b6c27dc36cab94acb0a861">More...</a><br /></td></tr>
-<tr class="separator:a55019d0cd5b6c27dc36cab94acb0a861"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82d148a4f9c144a76d0bd2719989bbde"><td class="memItemLeft" align="right" valign="top"><a class="el" href="bot_8h.html#ae90da885b87fc35a4a6f5a490b9bc5e0">fp_cmd_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_bot___command.html#a82d148a4f9c144a76d0bd2719989bbde">callback</a></td></tr>
-<tr class="memdesc:a82d148a4f9c144a76d0bd2719989bbde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function pointer to the function to be executed.  <a href="#a82d148a4f9c144a76d0bd2719989bbde">More...</a><br /></td></tr>
-<tr class="separator:a82d148a4f9c144a76d0bd2719989bbde"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a30d39221e9416094142e4629124df302"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commands_8h.html#a30d39221e9416094142e4629124df302">commands_ident</a> (struct <a class="el" href="struct_i_r_c___bot.html">IRC_Bot</a> *bot)</td></tr>
+<tr class="memdesc:a30d39221e9416094142e4629124df302"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send an ident response to the server.  <a href="#a30d39221e9416094142e4629124df302">More...</a><br /></td></tr>
+<tr class="separator:a30d39221e9416094142e4629124df302"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9659fbe38c8a0115cf982b4ef7b92d7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="commands_8h.html#af9659fbe38c8a0115cf982b4ef7b92d7">commands_pong</a> (struct <a class="el" href="struct_i_r_c___bot.html">IRC_Bot</a> *bot, const char pong_id[])</td></tr>
+<tr class="memdesc:af9659fbe38c8a0115cf982b4ef7b92d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a PONG message to the server.  <a href="#af9659fbe38c8a0115cf982b4ef7b92d7">More...</a><br /></td></tr>
+<tr class="separator:af9659fbe38c8a0115cf982b4ef7b92d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Struct used to add custom commands to the bot. </p>
-</div><h2 class="groupheader">Field Documentation</h2>
-<a id="a82d148a4f9c144a76d0bd2719989bbde"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a82d148a4f9c144a76d0bd2719989bbde">&#9670;&nbsp;</a></span>callback</h2>
+<div class="textblock"><p>File containing bot command functions. </p>
+<dl class="section author"><dt>Author</dt><dd>Mateusz Makowski </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>16.09.2018 </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="a30d39221e9416094142e4629124df302"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30d39221e9416094142e4629124df302">&#9670;&nbsp;</a></span>commands_ident()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="bot_8h.html#ae90da885b87fc35a4a6f5a490b9bc5e0">fp_cmd_t</a> Bot_Command::callback</td>
+          <td class="memname">int commands_ident </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="struct_i_r_c___bot.html">IRC_Bot</a> *&#160;</td>
+          <td class="paramname"><em>bot</em></td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Function pointer to the function to be executed. </p>
+<p>Send an ident response to the server. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bot</td><td>pointer to <a class="el" href="struct_i_r_c___bot.html" title="Struct holding relevant data to the actual bot. ">IRC_Bot</a> structure </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 on failure, 1 on success </dd></dl>
 
 </div>
 </div>
-<a id="a55019d0cd5b6c27dc36cab94acb0a861"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a55019d0cd5b6c27dc36cab94acb0a861">&#9670;&nbsp;</a></span>name</h2>
+<a id="af9659fbe38c8a0115cf982b4ef7b92d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9659fbe38c8a0115cf982b4ef7b92d7">&#9670;&nbsp;</a></span>commands_pong()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">char* Bot_Command::name</td>
+          <td class="memname">int commands_pong </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="struct_i_r_c___bot.html">IRC_Bot</a> *&#160;</td>
+          <td class="paramname"><em>bot</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char&#160;</td>
+          <td class="paramname"><em>pong_id</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Name of the command, by which it is invoked. </p>
+<p>Send a PONG message to the server. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bot</td><td>pointer to <a class="el" href="struct_i_r_c___bot.html" title="Struct holding relevant data to the actual bot. ">IRC_Bot</a> structure </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 on failure, 1 on success </dd></dl>
 
 </div>
 </div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
-<li>src/bot/<a class="el" href="bot_8h_source.html">bot.h</a></li>
-</ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="struct_bot___command.html">Bot_Command</a></li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_29d667bb07f05bb7400afdc76794b290.html">bot</a></li><li class="navelem"><a class="el" href="commands_8h.html">commands.h</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>

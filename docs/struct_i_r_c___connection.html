@@ -119,18 +119,16 @@ SOCKET&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 <tr class="memitem:a8f1a3fa7c0bb1e2054730aaf281683fe"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_i_r_c___connection.html#a8f1a3fa7c0bb1e2054730aaf281683fe">port</a> [8]</td></tr>
 <tr class="memdesc:a8f1a3fa7c0bb1e2054730aaf281683fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Port to be used.  <a href="#a8f1a3fa7c0bb1e2054730aaf281683fe">More...</a><br /></td></tr>
 <tr class="separator:a8f1a3fa7c0bb1e2054730aaf281683fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a22329e8e07747124668fcc08dbc31440"><td class="memItemLeft" align="right" valign="top"><a id="a22329e8e07747124668fcc08dbc31440"></a>
-char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_i_r_c___connection.html#a22329e8e07747124668fcc08dbc31440">recvbuf</a></td></tr>
-<tr class="memdesc:a22329e8e07747124668fcc08dbc31440"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buffer used by <code>recv()</code> to store incoming data. <br /></td></tr>
+<tr class="memitem:a22329e8e07747124668fcc08dbc31440"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_i_r_c___connection.html#a22329e8e07747124668fcc08dbc31440">recvbuf</a></td></tr>
+<tr class="memdesc:a22329e8e07747124668fcc08dbc31440"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buffer used by <code>recv()</code> to store incoming data.  <a href="#a22329e8e07747124668fcc08dbc31440">More...</a><br /></td></tr>
 <tr class="separator:a22329e8e07747124668fcc08dbc31440"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad8276e3298d817a8ba9534fbf0c94b00"><td class="memItemLeft" align="right" valign="top"><a id="ad8276e3298d817a8ba9534fbf0c94b00"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_i_r_c___connection.html#ad8276e3298d817a8ba9534fbf0c94b00">recvbuflen</a></td></tr>
-<tr class="memdesc:ad8276e3298d817a8ba9534fbf0c94b00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Length of <code>recvbuf</code>, by default <code>= 512</code>. <br /></td></tr>
+<tr class="memitem:ad8276e3298d817a8ba9534fbf0c94b00"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_i_r_c___connection.html#ad8276e3298d817a8ba9534fbf0c94b00">recvbuflen</a></td></tr>
+<tr class="memdesc:ad8276e3298d817a8ba9534fbf0c94b00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Length of <code>recvbuf</code>, by default <code>= 512</code>.  <a href="#ad8276e3298d817a8ba9534fbf0c94b00">More...</a><br /></td></tr>
 <tr class="separator:ad8276e3298d817a8ba9534fbf0c94b00"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="struct_i_r_c___connection.html" title="IRC_Connection struct holds the socket handle, receiving buffer and basic info about the connection...">IRC_Connection</a> struct holds the socket handle, receiving buffer and basic info about the connection. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="connection_8h.html#a4a216a6ab3684a415f419cef7789f66f" title="&quot;Constructor&quot; for IRC_Connection. ">connection_create()</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="connection_8c.html#a4a216a6ab3684a415f419cef7789f66f" title="&quot;Constructor&quot; for IRC_Connection. ">connection_create()</a> </dd></dl>
 </div><h2 class="groupheader">Field Documentation</h2>
 <a id="a1163d05906f7886ec673aa7525d10953"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1163d05906f7886ec673aa7525d10953">&#9670;&nbsp;</a></span>address</h2>
@@ -195,6 +193,38 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struc
 
 <p>Port to be used. </p>
 <p>Note that this is a string, not an integer. </p>
+
+</div>
+</div>
+<a id="a22329e8e07747124668fcc08dbc31440"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22329e8e07747124668fcc08dbc31440">&#9670;&nbsp;</a></span>recvbuf</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* IRC_Connection::recvbuf</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Buffer used by <code>recv()</code> to store incoming data. </p>
+
+</div>
+</div>
+<a id="ad8276e3298d817a8ba9534fbf0c94b00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8276e3298d817a8ba9534fbf0c94b00">&#9670;&nbsp;</a></span>recvbuflen</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int IRC_Connection::recvbuflen</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Length of <code>recvbuf</code>, by default <code>= 512</code>. </p>
 
 </div>
 </div>

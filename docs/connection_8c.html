@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ircbot.c: src/connection/connection.h File Reference</title>
+<title>ircbot.c: src/connection/connection.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -72,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){initNavTree('connection_8h.html','');});
+$(document).ready(function(){initNavTree('connection_8c.html','');});
 </script>
 <div id="doc-content">
 <!-- window showing the filter options -->
@@ -91,85 +91,56 @@ $(document).ready(function(){initNavTree('connection_8h.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
-<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">connection.h File Reference</div>  </div>
+<div class="title">connection.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>File containing the <a class="el" href="struct_i_r_c___connection.html" title="IRC_Connection struct holds the socket handle, receiving buffer and basic info about the connection...">IRC_Connection</a> struct and related functions.  
+<p>Implementation of <a class="el" href="connection_8h.html" title="File containing the IRC_Connection struct and related functions. ">connection.h</a>.  
 <a href="#details">More...</a></p>
-
-<p><a href="connection_8h_source.html">Go to the source code of this file.</a></p>
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Data Structures</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_i_r_c___connection.html">IRC_Connection</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_i_r_c___connection.html" title="IRC_Connection struct holds the socket handle, receiving buffer and basic info about the connection...">IRC_Connection</a> struct holds the socket handle, receiving buffer and basic info about the connection.  <a href="struct_i_r_c___connection.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;arpa/inet.h&gt;</code><br />
+<code>#include &lt;netdb.h&gt;</code><br />
+<code>#include &lt;sys/socket.h&gt;</code><br />
+<code>#include &lt;unistd.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="connection_8h_source.html">connection.h</a>&quot;</code><br />
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a26769957ec1a2beaf223f33b66ee64ab"><td class="memItemLeft" align="right" valign="top"><a id="a26769957ec1a2beaf223f33b66ee64ab"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>INVALID_SOCKET</b>&#160;&#160;&#160;((SOCKET)(~0))</td></tr>
-<tr class="separator:a26769957ec1a2beaf223f33b66ee64ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a633b0396ff93d336a088412a190a5072"><td class="memItemLeft" align="right" valign="top"><a id="a633b0396ff93d336a088412a190a5072"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SOCKET_ERROR</b>&#160;&#160;&#160;(-1)</td></tr>
-<tr class="separator:a633b0396ff93d336a088412a190a5072"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:a8dc8083897335125630f1af5dafd5831"><td class="memItemLeft" align="right" valign="top"><a id="a8dc8083897335125630f1af5dafd5831"></a>
-typedef int&#160;</td><td class="memItemRight" valign="bottom"><b>SOCKET</b></td></tr>
-<tr class="separator:a8dc8083897335125630f1af5dafd5831"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a72736597d660c629b37e959974167681"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct_i_r_c___connection.html">IRC_Connection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="connection_8h.html#a72736597d660c629b37e959974167681">IRC_Connection</a></td></tr>
-<tr class="memdesc:a72736597d660c629b37e959974167681"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_i_r_c___connection.html" title="IRC_Connection struct holds the socket handle, receiving buffer and basic info about the connection...">IRC_Connection</a> struct holds the socket handle, receiving buffer and basic info about the connection.  <a href="#a72736597d660c629b37e959974167681">More...</a><br /></td></tr>
-<tr class="separator:a72736597d660c629b37e959974167681"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fe83ac76edc595f6b98cd4a4127aed5"><td class="memItemLeft" align="right" valign="top"><a id="a8fe83ac76edc595f6b98cd4a4127aed5"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>ERROR</b>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a8fe83ac76edc595f6b98cd4a4127aed5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba51915c87d64af47fb1cc59348961c9"><td class="memItemLeft" align="right" valign="top"><a id="aba51915c87d64af47fb1cc59348961c9"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>OK</b>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:aba51915c87d64af47fb1cc59348961c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a4a216a6ab3684a415f419cef7789f66f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_i_r_c___connection.html">IRC_Connection</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="connection_8h.html#a4a216a6ab3684a415f419cef7789f66f">connection_create</a> (const char address[], const char port[])</td></tr>
+<tr class="memitem:a4a216a6ab3684a415f419cef7789f66f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_i_r_c___connection.html">IRC_Connection</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="connection_8c.html#a4a216a6ab3684a415f419cef7789f66f">connection_create</a> (const char address[], const char port[])</td></tr>
 <tr class="memdesc:a4a216a6ab3684a415f419cef7789f66f"><td class="mdescLeft">&#160;</td><td class="mdescRight">"Constructor" for <a class="el" href="struct_i_r_c___connection.html" title="IRC_Connection struct holds the socket handle, receiving buffer and basic info about the connection...">IRC_Connection</a>.  <a href="#a4a216a6ab3684a415f419cef7789f66f">More...</a><br /></td></tr>
 <tr class="separator:a4a216a6ab3684a415f419cef7789f66f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0738cf230f4fa4ba3c6d3f6f2b2a1e5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="connection_8h.html#ac0738cf230f4fa4ba3c6d3f6f2b2a1e5">connection_connect</a> (<a class="el" href="struct_i_r_c___connection.html">IRC_Connection</a> *connection)</td></tr>
+<tr class="memitem:ac0738cf230f4fa4ba3c6d3f6f2b2a1e5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="connection_8c.html#ac0738cf230f4fa4ba3c6d3f6f2b2a1e5">connection_connect</a> (<a class="el" href="struct_i_r_c___connection.html">IRC_Connection</a> *connection)</td></tr>
 <tr class="memdesc:ac0738cf230f4fa4ba3c6d3f6f2b2a1e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Actually connect to the remote server specified in <code><a class="el" href="connection_8h.html#a4a216a6ab3684a415f419cef7789f66f" title="&quot;Constructor&quot; for IRC_Connection. ">connection_create()</a></code>.  <a href="#ac0738cf230f4fa4ba3c6d3f6f2b2a1e5">More...</a><br /></td></tr>
 <tr class="separator:ac0738cf230f4fa4ba3c6d3f6f2b2a1e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ddfd156719dd2afb3363ca54de21c7b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="connection_8h.html#a6ddfd156719dd2afb3363ca54de21c7b">connection_send</a> (<a class="el" href="struct_i_r_c___connection.html">IRC_Connection</a> *connection, const char msg[])</td></tr>
-<tr class="memdesc:a6ddfd156719dd2afb3363ca54de21c7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send data (char) to remote server.  <a href="#a6ddfd156719dd2afb3363ca54de21c7b">More...</a><br /></td></tr>
-<tr class="separator:a6ddfd156719dd2afb3363ca54de21c7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa4ac1cf71f2ca2ab4808feabe0b68bd5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="connection_8h.html#aa4ac1cf71f2ca2ab4808feabe0b68bd5">connection_read</a> (<a class="el" href="struct_i_r_c___connection.html">IRC_Connection</a> *connection)</td></tr>
-<tr class="memdesc:aa4ac1cf71f2ca2ab4808feabe0b68bd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receive data from remote server.  <a href="#aa4ac1cf71f2ca2ab4808feabe0b68bd5">More...</a><br /></td></tr>
-<tr class="separator:aa4ac1cf71f2ca2ab4808feabe0b68bd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a40c214ffa82246f4c1d177a6a2a79a12"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="connection_8h.html#a40c214ffa82246f4c1d177a6a2a79a12">connection_disconnect</a> (<a class="el" href="struct_i_r_c___connection.html">IRC_Connection</a> *connection)</td></tr>
+<tr class="memitem:a40c214ffa82246f4c1d177a6a2a79a12"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="connection_8c.html#a40c214ffa82246f4c1d177a6a2a79a12">connection_disconnect</a> (<a class="el" href="struct_i_r_c___connection.html">IRC_Connection</a> *connection)</td></tr>
 <tr class="memdesc:a40c214ffa82246f4c1d177a6a2a79a12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disconnect from remote server and close the socket.  <a href="#a40c214ffa82246f4c1d177a6a2a79a12">More...</a><br /></td></tr>
 <tr class="separator:a40c214ffa82246f4c1d177a6a2a79a12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ddfd156719dd2afb3363ca54de21c7b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="connection_8c.html#a6ddfd156719dd2afb3363ca54de21c7b">connection_send</a> (<a class="el" href="struct_i_r_c___connection.html">IRC_Connection</a> *connection, const char msg[])</td></tr>
+<tr class="memdesc:a6ddfd156719dd2afb3363ca54de21c7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send data (char) to remote server.  <a href="#a6ddfd156719dd2afb3363ca54de21c7b">More...</a><br /></td></tr>
+<tr class="separator:a6ddfd156719dd2afb3363ca54de21c7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4ac1cf71f2ca2ab4808feabe0b68bd5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="connection_8c.html#aa4ac1cf71f2ca2ab4808feabe0b68bd5">connection_read</a> (<a class="el" href="struct_i_r_c___connection.html">IRC_Connection</a> *connection)</td></tr>
+<tr class="memdesc:aa4ac1cf71f2ca2ab4808feabe0b68bd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receive data from remote server.  <a href="#aa4ac1cf71f2ca2ab4808feabe0b68bd5">More...</a><br /></td></tr>
+<tr class="separator:aa4ac1cf71f2ca2ab4808feabe0b68bd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>File containing the <a class="el" href="struct_i_r_c___connection.html" title="IRC_Connection struct holds the socket handle, receiving buffer and basic info about the connection...">IRC_Connection</a> struct and related functions. </p>
+<div class="textblock"><p>Implementation of <a class="el" href="connection_8h.html" title="File containing the IRC_Connection struct and related functions. ">connection.h</a>. </p>
 <dl class="section author"><dt>Author</dt><dd>Mateusz Makowski </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>15.09.2018 </dd></dl>
-</div><h2 class="groupheader">Typedef Documentation</h2>
-<a id="a72736597d660c629b37e959974167681"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a72736597d660c629b37e959974167681">&#9670;&nbsp;</a></span>IRC_Connection</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef struct <a class="el" href="struct_i_r_c___connection.html">IRC_Connection</a>  <a class="el" href="struct_i_r_c___connection.html">IRC_Connection</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p><a class="el" href="struct_i_r_c___connection.html" title="IRC_Connection struct holds the socket handle, receiving buffer and basic info about the connection...">IRC_Connection</a> struct holds the socket handle, receiving buffer and basic info about the connection. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="connection_8c.html#a4a216a6ab3684a415f419cef7789f66f" title="&quot;Constructor&quot; for IRC_Connection. ">connection_create()</a> </dd></dl>
-
-</div>
-</div>
-<h2 class="groupheader">Function Documentation</h2>
+<dl class="section date"><dt>Date</dt><dd>17.09.2018 </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="ac0738cf230f4fa4ba3c6d3f6f2b2a1e5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac0738cf230f4fa4ba3c6d3f6f2b2a1e5">&#9670;&nbsp;</a></span>connection_connect()</h2>
 
@@ -332,7 +303,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_7809a5fd4a748505dcdbefeb977685f2.html">connection</a></li><li class="navelem"><a class="el" href="connection_8h.html">connection.h</a></li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_7809a5fd4a748505dcdbefeb977685f2.html">connection</a></li><li class="navelem"><a class="el" href="connection_8c.html">connection.c</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>

@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['messages',['messages',['../minunit_8h.html#aee7efff85262333715beda1db9e4dac3',1,'test_main.c']]],
-  ['minunit_2eh',['minunit.h',['../minunit_8h.html',1,'']]],
-  ['mu_5fassert',['mu_assert',['../minunit_8h.html#aad83ba6b11df552879dd0f0a4ce43407',1,'minunit.h']]],
-  ['mu_5frun_5ftest',['mu_run_test',['../minunit_8h.html#ae393aa7da4855a5e31adf490762777f8',1,'minunit.h']]]
+  ['last_5fchannel_5fid',['last_channel_id',['../struct_i_r_c___bot.html#a69b2e1561db016300e1c7b9171550dc5',1,'IRC_Bot']]],
+  ['last_5fmsg',['last_msg',['../struct_i_r_c___bot.html#a141de91b1a3da2cc537b11802dd019b7',1,'IRC_Bot']]]
 ];

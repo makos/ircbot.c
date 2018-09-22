@@ -96,17 +96,16 @@ $(document).ready(function(){initNavTree('index.html','');});
 <div class="contents">
 <div class="textblock"><h1><a class="anchor" id="index_about"></a>
 About</h1>
-<p>This is a cross-platform (Linux and Windows tested) IRC bot written purely in C without third-party libraries.</p>
-<h1><a class="anchor" id="index_req"></a>
-Requirements</h1>
-<p>For building from source: (all platforms)</p><ul>
-<li>CMake (version &gt;= 3.0.0)</li>
-<li>gcc</li>
-<li>preferably GNU make</li>
-</ul>
-<h1><a class="anchor" id="index_building"></a>
-Building</h1>
-<p>Navigate to the folder with source code (where README.md is located). Then: </p><div class="fragment"><div class="line">mkdir build &amp;&amp; cd build</div><div class="line">cmake .. &amp;&amp; make tests</div><div class="line">tests/tests all</div></div><!-- fragment --><p> As of version 0.2.0 only tests will compile and run. </p>
+<p>This is a cross-platform (Linux and Windows tested) IRC bot written purely in C without third-party libraries. Very work-in-progress.</p>
+<h1><a class="anchor" id="index_ideas"></a>
+To-do list</h1>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd><p class="startdd">Command line for the bot (probably implemented via ncurses, for sake of simplicity) </p>
+<p>Public API with common functions like: send, read, join, leave etc. </p>
+<p class="enddd">Logging</p>
+</dd></dl>
+<h1><a class="anchor" id="Public"></a>
+API</h1>
+<p>For starters, take a look at the <a class="el" href="struct_i_r_c___bot.html" title="Struct holding relevant data to the actual bot. ">IRC_Bot</a> structure. This describes the public API. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
