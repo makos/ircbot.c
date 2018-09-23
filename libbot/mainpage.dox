@@ -1,4 +1,5 @@
 // -*- mode: c -*-
+
 /**
 @mainpage
 
@@ -10,7 +11,7 @@
    @link bot_leave() leaving @endlink channels and custom @link
    bot_add_command() commands @endlink.
 
-   To learn more, see @ref index_api "public API documentation".
+   To learn more, see @ref index_api "public API reference".
 
    To see what's planned, take a look at the @ref todo_page "TODO page".
 
@@ -32,13 +33,18 @@
 
    The library will be located in the `build/lib` directory.
 
-@section index_api Public API
-   Public API functions are contained in the bot.h file. See that file's
-   documentation to learn the API.
-
-   The file commands.h contains basic commands to showcase usage of the
-   command system.
-
+@section index_api Public API reference
+   - File bot.h
+     - struct IRC_Bot - basic structure holding all related data.
+     - bot_create()
+     - bot_add_command()
+     - bot_send()
+     - bot_read()
+     - bot_connect()
+     - bot_disconnect()
+     - bot_join()
+     - bot_leave()
+   - File commands.h - example commands for use with bot_add_command()
 
 
 @page todo_page TODO page
