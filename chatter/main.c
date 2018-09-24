@@ -9,7 +9,9 @@ static void start_ui()
 {
     setlocale(LC_ALL, "");
     initscr();
-    /* halfdelay(5); */
+    /* halfdelay(25); */
+    cbreak();
+    noecho();
     clear();
     refresh();
 }
@@ -44,28 +46,33 @@ int main()
     Window *in_win = window_create(LINES - 1, 0, 1, COLS);
     wrefresh(out_win->pointer);
     wrefresh(in_win->pointer);
-    nodelay(in_win->pointer, 0);
+    wtimeout(in_win->pointer, 100);
+    /* /\* nodelay(in_win->pointer, 0); *\/ */
+    clear();
+    refresh();
+    bot_join(chatter, "#ircbot_ctest");
 
-    char ch;
+    char ch = 0;
     int bytes;
-    // TODO Add '\0' to the end of received message in bot_read so it can be
-    // printed easily.
-    while ((ch = wgetch(in_win->pointer)) != 'q') {
+    while (ch != 'q') {
+        ch = 0;
         werase(out_win->pointer);
-        if (ch == 'j') {
-            bot_join(chatter, "#ircbot_ctest");
-        }
+        ch = wgetch(in_win->pointer);
+        /* wscanw(in_win->pointer, "%s"); */
+
+        /* erase(); */
+
+        /* if (strncmp(ch, "join", 4)) { */
+        /*     bot_join(chatter, "#ircbot_ctest"); */
+        /* } */
 
         bytes = bot_read(chatter);
-
-        for (int i = 0; i < bytes; i++) {
-            waddch(out_win->pointer, chatter->last_msg[i]);
-        }
 
         if (strncmp(chatter->last_msg, "PING", 4) == 0) {
             pong(chatter);
         }
 
+        /* refresh(); */
         wrefresh(out_win->pointer);
         wrefresh(in_win->pointer);
         /* wclear(out_win->pointer); */
