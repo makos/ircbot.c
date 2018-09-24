@@ -107,7 +107,6 @@ int bot_send(IRC_Bot *bot, const char msg[]);
  * numbers denote bytes read
  * @see last_msg
  */
-// FIXME TODO last_msg should be a null-terminated string for convenience.
 int bot_read(IRC_Bot *bot);
 
 /**
