@@ -95,24 +95,13 @@ $(document).ready(function(){initNavTree('md__changelog.html','');});
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><h2>0.3.0</h2>
-<h3>WIP</h3>
+<h3>22.09.2018</h3>
 <ul>
-<li><code>bot</code> fully working, hides the <code>connection</code> socket API and exposes following functions:<ul>
-<li><code>create</code></li>
-<li><code>connect</code></li>
-<li><code>send</code></li>
-<li><code>disconnect</code></li>
-<li><code>join</code></li>
-<li><code>leave</code></li>
-<li><code>pong</code></li>
-<li><code>whois</code></li>
-<li><code>add_command</code></li>
-<li><code>execute_command</code></li>
-</ul>
-</li>
-<li>Unit tests for every function mentioned above</li>
-<li>Removed <code>pointer == NULL</code> checks in favor of <code>!pointer</code> checks</li>
-<li>Comments and documentation for the API</li>
+<li>Doxygen-generated documentation for libbot API available at <a href="https://makos.github.io/ircbot.c/index.html">GitHub pages</a>.</li>
+<li><a class="el" href="struct_i_r_c___bot.html" title="Struct holding relevant data to the actual bot. ">IRC_Bot</a>, along with internal IRC_Connection is now compiled into a shared library <code>libbot</code>.</li>
+<li>Unit tests for all functions.</li>
+<li>Mock server for testing purposes (<code>tests/server</code>).</li>
+<li><a class="el" href="struct_i_r_c___bot.html" title="Struct holding relevant data to the actual bot. ">IRC_Bot</a> has all the required features to be able to connect to a server, send and receive messages and execute arbitrary commands that can be added at runtime(<code><a class="el" href="struct_bot___command.html" title="Struct used to add custom commands to the bot. ">Bot_Command</a></code>).</li>
 </ul>
 <h2>0.2.0</h2>
 <h3>15.09.2018</h3>

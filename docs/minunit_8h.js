@@ -1,6 +1,7 @@
 var minunit_8h =
 [
     [ "mu_assert", "minunit_8h.html#aad83ba6b11df552879dd0f0a4ce43407", null ],
+    [ "mu_assert_or_disconnect", "minunit_8h.html#aea12c2f24755adf0fe0505dfb467bc75", null ],
     [ "mu_run_test", "minunit_8h.html#ae393aa7da4855a5e31adf490762777f8", null ],
     [ "COLOR_END", "minunit_8h.html#aa63490892ffa1448f945b7bb5681208e", null ],
     [ "GREEN", "minunit_8h.html#abe469464b585405b62cf0b216e69ae02", null ],

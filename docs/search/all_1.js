@@ -1,9 +1,12 @@
 var searchData=
 [
-  ['bot_2eh',['bot.h',['../bot_8h.html',1,'']]],
-  ['bot_5fadd_5fcommand',['bot_add_command',['../bot_8h.html#af9efd343f9b743705b66552563561fe3',1,'bot.c']]],
-  ['bot_5fcommand',['Bot_Command',['../struct_bot___command.html',1,'Bot_Command'],['../bot_8h.html#a96dcf7b113c1fc0aa7e8ba5f70060772',1,'Bot_Command():&#160;bot.h']]],
-  ['bot_5fconnect',['bot_connect',['../bot_8h.html#a3050b764cf93dccd54b85eb3feb361c6',1,'bot.c']]],
-  ['bot_5fcreate',['bot_create',['../bot_8h.html#ae2e9483d3e2fc54f36d803cd7fbab3e7',1,'bot.c']]],
-  ['bot_5fmax_5fcommands',['BOT_MAX_COMMANDS',['../bot_8h.html#a9c18ba085df99d993eae90de34d0adc6',1,'bot.h']]]
+  ['callback',['callback',['../struct_bot___command.html#a82d148a4f9c144a76d0bd2719989bbde',1,'Bot_Command']]],
+  ['channels',['channels',['../struct_i_r_c___bot.html#af07d7301568c04c6ec354658c7ad29e9',1,'IRC_Bot']]],
+  ['commands',['commands',['../struct_i_r_c___bot.html#a476d785c12243e09f3d9f66174e0de0e',1,'IRC_Bot']]],
+  ['commands_2ec',['commands.c',['../commands_8c.html',1,'']]],
+  ['commands_2eh',['commands.h',['../commands_8h.html',1,'']]],
+  ['commands_5fident',['commands_ident',['../commands_8c.html#ad9784daa78d7d7c1519f6caa05aaf26b',1,'commands_ident(IRC_Bot *bot):&#160;commands.c'],['../commands_8h.html#a30d39221e9416094142e4629124df302',1,'commands_ident(struct IRC_Bot *bot):&#160;commands.c']]],
+  ['commands_5fpong',['commands_pong',['../commands_8c.html#a128c9a1ebb4e7229e5c4f4d5587fc225',1,'commands_pong(IRC_Bot *bot, const char pong_id[]):&#160;commands.c'],['../commands_8h.html#af9659fbe38c8a0115cf982b4ef7b92d7',1,'commands_pong(struct IRC_Bot *bot, const char pong_id[]):&#160;commands.c']]],
+  ['connection',['connection',['../struct_i_r_c___bot.html#a96bec0ddd9aeb762bbb0d59432ae9438',1,'IRC_Bot']]],
+  ['changelog',['Changelog',['../md__changelog.html',1,'']]]
 ];

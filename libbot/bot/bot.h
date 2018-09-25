@@ -44,8 +44,8 @@ typedef struct IRC_Bot {
      */
     int newest_cmd;
     /**
-     * Last received message.
-     * @see BOT_MAX_MSGLEN.
+     * Last received message. Note that this is NOT a null-terminated string
+     * (yet), so be cautious when using `printf()`.
      */
     char last_msg[BOT_MAX_MSGLEN];
     /** Index of the last channel joined. */
