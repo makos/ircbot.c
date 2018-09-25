@@ -10,6 +10,7 @@
 #ifdef _WIN32
 #include <WS2tcpip.h>
 #include <WinSock2.h>
+#include <errno.h>
 #else
 #include <arpa/inet.h>
 #include <netdb.h>
@@ -21,6 +22,16 @@
 #define OK 1
 
 #include "connection.h"
+
+static void connection_print_error()
+{
+#ifdef __linux__
+    fprintf(stderr, "connection_receive(): error %s %d\n", strerror(errno),
+            errno);
+#else
+    fprintf(stderr, "connection_read(): error %d\n", WSAGetLastError());
+#endif
+}
 
 static int connection_init_socket()
 {
@@ -198,7 +209,6 @@ int connection_read(IRC_Connection *connection)
         fprintf(stderr, "Connection closed\n");
         connection_close_socket(connection);
     } else {
-        fprintf(stderr, "connection_receive(): error %d\n", result);
     }
     return result;
 }
