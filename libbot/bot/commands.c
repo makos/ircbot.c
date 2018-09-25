@@ -40,11 +40,15 @@ int commands_ident(IRC_Bot *bot)
     return bot_send(bot, msg);
 }
 
-int commands_pong(IRC_Bot *bot, const char pong_id[])
+int commands_pong(IRC_Bot *bot)
 {
     if (!bot) {
         return ERROR;
     }
+
+    char *pong_id = malloc(32 * sizeof(char));
+    pong_id = strtok(bot->last_msg, ":");
+    pong_id = strtok(NULL, ":");
 
     // Prepare the message.
     char *pong_msg = malloc(48 * sizeof(char));
