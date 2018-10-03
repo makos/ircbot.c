@@ -149,3 +149,7 @@ int bot_leave(IRC_Bot *bot, const char channel[])
 
     return bot_send(bot, leave_msg);
 }
+
+void bot_process_forever(IRC_Bot *bot)
+{
+}
