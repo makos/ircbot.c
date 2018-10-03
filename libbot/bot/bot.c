@@ -14,21 +14,6 @@
 #define ERROR 0
 #define RECV_ERROR -1
 
-// static Bot_Command *bot_find_command(IRC_Bot *bot, const char cmd[])
-// {
-//     if (!bot) {
-//         return NULL;
-//     }
-
-//     for (int i = 0; i <= bot->newest_cmd; i++) {
-//         if (strcmp(bot->commands[i]->name, cmd) == 0) {
-//             return bot->commands[i];
-//         }
-//     }
-
-//     return NULL;
-// }
-
 static int bot_recv(IRC_Bot *bot)
 {
     if (!bot) {
@@ -69,38 +54,10 @@ IRC_Bot *bot_create(const char nick[])
         strcpy(temp->channels[i], "");
     }
 
-    // for (int i = 0; i < BOT_MAX_COMMANDS; i++) {
-    //     temp->commands[i] = malloc(sizeof(Bot_Command));
-    //     temp->commands[i]->name = NULL;
-    //     temp->commands[i]->callback = NULL;
-    // }
-
-    // temp->newest_cmd = -1;
     temp->last_channel_id = -1;
 
     return temp;
 }
-
-// int bot_add_command(IRC_Bot *bot, const char name[], fp_cmd_t callback)
-// {
-//     if (!bot) {
-//         fprintf(stderr, "bot_add_command(): bot is NULL\n");
-//         return ERROR;
-//     }
-
-//     if (!callback) {
-//         fprintf(stderr, "bot_add_command(): callback is NULL\n");
-//         return ERROR;
-//     }
-//     bot->newest_cmd++;
-
-//     bot->commands[bot->newest_cmd]->callback = callback;
-//     bot->commands[bot->newest_cmd]->name =
-//         malloc((strlen(name) + 1) * sizeof(char));
-//     strcpy(bot->commands[bot->newest_cmd]->name, name);
-
-//     return OK;
-// }
 
 int bot_connect(IRC_Bot *bot, const char address[], const char port[])
 {
@@ -131,23 +88,6 @@ int bot_disconnect(IRC_Bot *bot)
 {
     return connection_disconnect(bot->connection);
 }
-
-// int bot_call(IRC_Bot *bot, const char cmd[])
-// {
-//     if (!bot) {
-//         fprintf(stderr, "bot_call(): bot is NULL\n");
-//         return ERROR;
-//     }
-
-//     Bot_Command *found = bot_find_command(bot, cmd);
-
-//     if (!found) {
-//         fprintf(stderr, "bot_call(): %s not found\n", cmd);
-//         return ERROR;
-//     }
-
-//     return found->callback(bot);
-// }
 
 int bot_send(IRC_Bot *bot, const char msg[])
 {
