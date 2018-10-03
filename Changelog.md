@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.0
+### WIP
+* Remove Commands system from IRC_Bot, in favor of user-defined functions in their software to carry out functions
+* Reworked joining and leaving channels
+* Built-in loop into IRC_Bot
+
 ## 0.3.0
 ### 22.09.2018
 * Doxygen-generated documentation for libbot API available at [GitHub pages](https://makos.github.io/ircbot.c/index.html).
