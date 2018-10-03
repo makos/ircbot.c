@@ -12,7 +12,7 @@ static void parse_input(IRC_Bot *bot)
         bot_send(bot, "MSG #ircbot_ctest Hello");
     }
 }
-// This segfaults???
+// This segfaults??? - not on Windows lol
 int main()
 {
     char *channels[] = {"#dailyprog", "#ircbot_ctest"};
