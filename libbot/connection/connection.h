@@ -7,6 +7,10 @@
 #ifndef IRCBOT_CONNECTION_CONNECTION_H_
 #define IRCBOT_CONNECTION_CONNECTION_H_
 
+#define MAX_ADDR_LEN 32
+#define MAX_PORT_LEN 8
+#define MAX_MSG_LEN 512
+
 #ifdef _WIN32
 typedef unsigned int UINT_PTR;
 typedef UINT_PTR SOCKET;
@@ -36,12 +40,12 @@ typedef struct IRC_Connection {
      * Address of the server.
      * E.g. "irc.freenode.net".
      */
-    char address[32];
+    char address[MAX_ADDR_LEN];
     /**
      * Port to be used.
      * Note that this is a string, not an integer.
      */
-    char port[8];
+    char port[MAX_PORT_LEN];
     /** Buffer used by `recv()` to store incoming data. */
     char *recvbuf;
     /** Length of `recvbuf`, by default `= 512`. */

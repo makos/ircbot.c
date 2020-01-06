@@ -10,6 +10,8 @@
 #ifdef _WIN32
 #include <WS2tcpip.h>
 #include <WinSock2.h>
+#include <errno.h>
+#pragma comment(lib, "Ws2_32.lib")
 #else
 #include <errno.h>
 #include <arpa/inet.h>
@@ -175,7 +177,7 @@ int connection_send(IRC_Connection *connection, const char msg[])
         return ERROR;
     }
 
-    char *temp_msg = malloc((strlen(msg) + (size_t)1) * sizeof(char));
+    char *temp_msg = malloc(MAX_MSG_LEN * sizeof(char));
     strcpy(temp_msg, msg);
     strcat(temp_msg, "\r\n");
 
