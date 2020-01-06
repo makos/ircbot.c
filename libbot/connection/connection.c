@@ -10,8 +10,8 @@
 #ifdef _WIN32
 #include <WS2tcpip.h>
 #include <WinSock2.h>
-#include <errno.h>
 #else
+#include <errno.h>
 #include <arpa/inet.h>
 #include <netdb.h>
 #include <sys/socket.h>
@@ -177,7 +177,7 @@ int connection_send(IRC_Connection *connection, const char msg[])
 
     char *temp_msg = malloc((strlen(msg) + (size_t)1) * sizeof(char));
     strcpy(temp_msg, msg);
-    strcat(temp_msg, "\n");
+    strcat(temp_msg, "\r\n");
 
     int result = send(connection->socket, temp_msg, (int)strlen(temp_msg), 0);
     if (result == SOCKET_ERROR) {
