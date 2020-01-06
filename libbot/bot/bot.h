@@ -91,9 +91,4 @@ int bot_join(IRC_Bot *bot, const char channel[]);
  */
 int bot_leave(IRC_Bot *bot, const char channel[]);
 
-/**
- * Main loop processing.
- */
-void bot_process_forever(IRC_Bot *bot);
-
 #endif // IRCBOT_BOT_BOT_H_
