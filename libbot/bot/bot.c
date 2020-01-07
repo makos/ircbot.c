@@ -112,29 +112,29 @@ int bot_read(IRC_Bot *bot)
     return bot_recv(bot);
 }
 
-// int bot_join(IRC_Bot *bot, const char channel[])
-// {
-//     if (!bot || !bot->connection) {
-//         fprintf(stderr, "bot_join(): bot or connection are not initialized\n");
-//         return ERROR;
-//     }
+int bot_join(IRC_Bot *bot, const char channel[])
+{
+    if (!bot || !bot->connection) {
+        fprintf(stderr, "bot_join(): bot or connection are not initialized\n");
+        return ERROR;
+    }
 
-//     bot->last_channel_id++;
+    bot->last_channel_id++;
 
-//     strcpy(bot->channels[bot->last_channel_id], channel);
+    strcpy(bot->channels[bot->last_channel_id], channel);
 
-//     // +5 chars because of "JOIN "
-//     char *join_msg = malloc((BOT_MAX_CHANNEL_LEN + 5) * sizeof(char));
-//     strcpy(join_msg, "JOIN ");
-//     strcat(join_msg, channel);
+    // +5 chars because of "JOIN "
+    char *join_msg = malloc((BOT_MAX_CHANNEL_LEN + 5) * sizeof(char));
+    strcpy(join_msg, "JOIN ");
+    strcat(join_msg, channel);
 
-//     if (bot_send(bot, join_msg) == ERROR) {
-//         fprintf(stderr, "bot_join(): bot_send() returned ERROR\n");
-//         return ERROR;
-//     }
+    if (bot_send(bot, join_msg) == ERROR) {
+        fprintf(stderr, "bot_join(): bot_send() returned ERROR\n");
+        return ERROR;
+    }
 
-//     return OK;
-// }
+    return OK;
+}
 
 int bot_leave(IRC_Bot *bot, const char channel[])
 {
@@ -148,8 +148,4 @@ int bot_leave(IRC_Bot *bot, const char channel[])
     strcat(leave_msg, channel);
 
     return bot_send(bot, leave_msg);
-}
-
-void bot_process_forever(IRC_Bot *bot)
-{
 }

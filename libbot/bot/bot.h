@@ -21,7 +21,7 @@ typedef struct IRC_Bot {
     /** Nick visible on the IRC server. */
     char *nick;
     /** List of channels currently connected to. */
-    // char **channels;
+    char **channels;
     /** Pointer to the IRC_Connection structure. */
     struct IRC_Connection *connection;
     /**
