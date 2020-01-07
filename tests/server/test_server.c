@@ -51,7 +51,7 @@ Mock_Server *server_create()
 int server_read(Mock_Server *server)
 {
     int sockaddr_size = sizeof(struct sockaddr_in);
-    char hello_msg[] = "Hello from server";
+    char hello_msg[] = ":nick!user@host MSG hello\n";
     int hello_msg_len = strlen(hello_msg);
 
     int bytes = 0;
