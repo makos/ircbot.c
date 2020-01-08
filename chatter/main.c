@@ -13,6 +13,25 @@
 #define TRUE 1
 #define FALSE 0
 
+static char *get_prefix_chunk(const char *prefix, const char *delimiter_one,
+                              const char *delimiter_two)
+{
+    int chunk_start_index = strcspn(prefix, delimiter_one);
+    int chunk_end_index = strcspn(prefix + chunk_start_index + 1, delimiter_two)
+                          + chunk_start_index;
+    printf(
+        "DEBUG delimiter_one: |%s| delimiter_two: |%s| chunk_end_index: %i\n",
+        delimiter_one, delimiter_two, chunk_end_index);
+    int chunk_len = chunk_end_index - chunk_start_index;
+
+    char chunk[MAX_ARRAY_LEN];
+
+    strncpy(chunk, prefix + chunk_start_index + 1, chunk_len);
+    chunk[chunk_len] = '\0';
+
+    return chunk;
+}
+
 static void parse_incoming_data(IRC_Bot *bot)
 {
     // http://www.networksorcery.com/enp/protocol/irc.htm
@@ -32,48 +51,29 @@ static void parse_incoming_data(IRC_Bot *bot)
         // address (e.g. "irc.rizon.no"). If strcspn() doesn't find a match,
         // it returns the full string length (equivalent to strlen()).
         if (nick_end_index > prefix_len) {
-            int servername_len = prefix_len - PREFIX_DELIMITER_OFFSET;
-            strncpy(incoming_msg->servername,
-                    bot->last_msg + PREFIX_DELIMITER_OFFSET, servername_len);
-            incoming_msg->servername[servername_len] = '\0';
+            strcpy(incoming_msg->servername,
+                   get_prefix_chunk(bot->last_msg, ":", " "));
             // DEBUG:
             // printf("DEBUG incoming_msg->servername: |%s|\n",
             //    incoming_msg->servername);
         } else {
-            // TODO: Those three copy actions can be generalized and put into a
-            // neat function, I just don't know how yet.
-
-            // Copy nickname first.
-            int nick_len = nick_end_index - PREFIX_DELIMITER_OFFSET;
-            strncpy(incoming_msg->nickname,
-                    bot->last_msg + PREFIX_DELIMITER_OFFSET, nick_len);
-            incoming_msg->nickname[nick_len] = '\0';
-
-            // Now copy username.
-            int user_end_index = strcspn(bot->last_msg, "@");
-            int user_len = user_end_index - (nick_end_index + 1);
-            strncpy(incoming_msg->user, bot->last_msg + nick_end_index + 1,
-                    user_len);
-            incoming_msg->user[user_len] = '\0';
-
-            // And the host.
-            int host_len = prefix_len - (user_end_index + 1);
-            strncpy(incoming_msg->host, bot->last_msg + user_end_index + 1,
-                    host_len);
-            incoming_msg->host[host_len] = '\0';
+            // Copy relevant info from prefix. I don't have use for this data
+            // yet.
+            strcpy(incoming_msg->nickname,
+                   get_prefix_chunk(bot->last_msg, ":", "!"));
+            strcpy(incoming_msg->user,
+                   get_prefix_chunk(bot->last_msg, "!", "@"));
+            strcpy(incoming_msg->host,
+                   get_prefix_chunk(bot->last_msg, "@", " "));
 
             // DEBUG:
             // printf("DEBUG incoming_msg: |%s| |%s| |%s|\n",
-            // incoming_msg->nickname, incoming_msg->user, incoming_msg->host);
+            //        incoming_msg->nickname, incoming_msg->user,
+            //        incoming_msg->host);
 
             // Now let's get the command and its parameters.
-            int command_string_index = prefix_len + 1;
-            int command_string_len =
-                strcspn(bot->last_msg + command_string_index, " ");
-
-            strncpy(incoming_msg->command, bot->last_msg + command_string_index,
-                    command_string_len);
-            incoming_msg->command[command_string_len] = '\0';
+            strcpy(incoming_msg->command,
+                   get_prefix_chunk(bot->last_msg, " ", " "));
             // DEBUG:
             // printf("DEBUG command: |%s|\n", incoming_msg->command);
 

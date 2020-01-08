@@ -24,5 +24,6 @@ typedef struct ChatterStatus {
 } ChatterStatus;
 
 static void parse_incoming_data(IRC_Bot *bot);
+static char *get_prefix_chunk(const char *prefix, const char *delimiter_one, const char *delimiter_two);
 
 #endif // CHATTER_H_
