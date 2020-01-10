@@ -17,11 +17,11 @@ static char *get_prefix_chunk(const char *prefix, const char *delimiter_one,
                               const char *delimiter_two)
 {
     int chunk_start_index = strcspn(prefix, delimiter_one);
-    int chunk_end_index = strcspn(prefix + chunk_start_index + 1, delimiter_two)
-                          + chunk_start_index;
-    printf(
-        "DEBUG delimiter_one: |%s| delimiter_two: |%s| chunk_end_index: %i\n",
-        delimiter_one, delimiter_two, chunk_end_index);
+    int chunk_end_index =
+        strcspn(prefix + chunk_start_index + 1, delimiter_two)
+        + chunk_start_index;
+    // printf(
+    //     "DEBUG delimiter_one: |%s| delimiter_two: |%s| chunk_end_index: %i\n", delimiter_one, delimiter_two, chunk_end_index);
     int chunk_len = chunk_end_index - chunk_start_index;
 
     char chunk[MAX_ARRAY_LEN];
@@ -67,19 +67,27 @@ static void parse_incoming_data(IRC_Bot *bot)
                    get_prefix_chunk(bot->last_msg, "@", " "));
 
             // DEBUG:
-            // printf("DEBUG incoming_msg: |%s| |%s| |%s|\n",
-            //        incoming_msg->nickname, incoming_msg->user,
-            //        incoming_msg->host);
-
-            // Now let's get the command and its parameters.
-            strcpy(incoming_msg->command,
-                   get_prefix_chunk(bot->last_msg, " ", " "));
-            // DEBUG:
-            // printf("DEBUG command: |%s|\n", incoming_msg->command);
-
-            // TODO: Parameter grabbing (IRC allows up to 15 parameters per
-            // command)
+            printf("DEBUG incoming_msg: |%s| |%s| |%s|\n",
+                   incoming_msg->nickname, incoming_msg->user,
+                   incoming_msg->host);
         }
+        // Now let's get the command and its parameters.
+        strcpy(incoming_msg->command,
+               get_prefix_chunk(bot->last_msg, " ", " "));
+        // DEBUG:
+        printf("DEBUG command: |%s|\n", incoming_msg->command);
+
+        // TODO: Parameter grabbing (IRC allows up to 15 parameters per
+        // command)
+        // int parameters_index = strcspn(bot->last_msg + prefix_len + 1, " ") + prefix_len;
+        // DEBUG:
+        // printf("DEBUG parameters_index: %i\n", parameters_index);
+
+        // strcpy(incoming_msg->parameters,
+        //        get_prefix_chunk(bot->last_msg, " ", ":", parameters_index));
+
+        // DEBUG:
+        // printf("DEBUG parameters: |%s|\n", incoming_msg->parameters);
     } else {
         // No prefix; probably PING message.
         if (strncmp(bot->last_msg, "PING", 4) == 0) {
