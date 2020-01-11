@@ -13,18 +13,18 @@
 #define TRUE 1
 #define FALSE 0
 
-static char *get_prefix_chunk(const char *prefix, const char *delimiter_one,
+static const char *get_prefix_chunk(const char *prefix, const char *delimiter_one,
                               const char *delimiter_two)
 {
     int chunk_start_index = strcspn(prefix, delimiter_one);
-    int chunk_end_index =
-        strcspn(prefix + chunk_start_index + 1, delimiter_two)
-        + chunk_start_index;
+    int chunk_end_index = strcspn(prefix + chunk_start_index + 1, delimiter_two)
+                          + chunk_start_index;
     // printf(
-    //     "DEBUG delimiter_one: |%s| delimiter_two: |%s| chunk_end_index: %i\n", delimiter_one, delimiter_two, chunk_end_index);
+    //     "DEBUG delimiter_one: |%s| delimiter_two: |%s| chunk_end_index:
+    //     %i\n", delimiter_one, delimiter_two, chunk_end_index);
     int chunk_len = chunk_end_index - chunk_start_index;
 
-    char chunk[MAX_ARRAY_LEN];
+    char *chunk = malloc(MAX_ARRAY_LEN * sizeof(char));
 
     strncpy(chunk, prefix + chunk_start_index + 1, chunk_len);
     chunk[chunk_len] = '\0';
@@ -79,9 +79,9 @@ static void parse_incoming_data(IRC_Bot *bot)
 
         // TODO: Parameter grabbing (IRC allows up to 15 parameters per
         // command)
-        // int parameters_index = strcspn(bot->last_msg + prefix_len + 1, " ") + prefix_len;
-        // DEBUG:
-        // printf("DEBUG parameters_index: %i\n", parameters_index);
+        // int parameters_index = strcspn(bot->last_msg + prefix_len + 1, " ") +
+        // prefix_len; DEBUG: printf("DEBUG parameters_index: %i\n",
+        // parameters_index);
 
         // strcpy(incoming_msg->parameters,
         //        get_prefix_chunk(bot->last_msg, " ", ":", parameters_index));
