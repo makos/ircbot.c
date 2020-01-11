@@ -68,14 +68,34 @@ static void parse_incoming_data(IRC_Bot *bot)
 
             // DEBUG:
             printf("DEBUG incoming_msg: |%s| |%s| |%s|\n",
-                   incoming_msg->nickname, incoming_msg->user,
-                   incoming_msg->host);
+                  incoming_msg->nickname, incoming_msg->user,
+                 incoming_msg->host);
         }
         // Now let's get the command and its parameters.
         strcpy(incoming_msg->command,
                get_prefix_chunk(bot->last_msg, " ", " "));
         // DEBUG:
         printf("DEBUG command: |%s|\n", incoming_msg->command);
+        
+        // Grab a copy of the message for strtok().
+        char message_copy[MAX_ARRAY_LEN];
+        strcpy(message_copy, bot->last_msg);
+
+        char *tok = strtok(
+                message_copy + prefix_len + strlen(incoming_msg->command) + 1,
+                " ");
+        
+        while (tok) {
+            // DEBUG
+            //printf("DEBUG tok: %s\n", tok);
+            if (strncmp(tok, ":", 1) != 0) {
+                strcat(incoming_msg->parameters, tok);
+                strcat(incoming_msg->parameters, " ");
+                tok = strtok(NULL, " ");
+            } else {
+                tok = NULL;
+            }
+        }
 
         // TODO: Parameter grabbing (IRC allows up to 15 parameters per
         // command)
@@ -87,7 +107,7 @@ static void parse_incoming_data(IRC_Bot *bot)
         //        get_prefix_chunk(bot->last_msg, " ", ":", parameters_index));
 
         // DEBUG:
-        // printf("DEBUG parameters: |%s|\n", incoming_msg->parameters);
+        printf("DEBUG parameters: |%s|\n", incoming_msg->parameters);
     } else {
         // No prefix; probably PING message.
         if (strncmp(bot->last_msg, "PING", 4) == 0) {
