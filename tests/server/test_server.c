@@ -51,10 +51,10 @@ Mock_Server *server_create()
 int server_read(Mock_Server *server)
 {
     int sockaddr_size = sizeof(struct sockaddr_in);
-    char hello_msg[] = ":nick!user@host MSG :hello\n";
-    char server_msg[] = ":server.lol NOTICE param1 param2 :hello\n";
+    char hello_msg[] = ":nick!user@host MSG param1 param2 :hello\n";
+    //char server_msg[] = ":server.lol NOTICE param1 param2 :hello\n";
     int hello_msg_len = strlen(hello_msg);
-    int server_msg_len = strlen(server_msg);
+    //int server_msg_len = strlen(server_msg);
 
     int bytes = 0;
     while ((server->socket_client =
@@ -67,9 +67,9 @@ int server_read(Mock_Server *server)
             fprintf(stderr, "%d %s", errno, strerror(errno));
         }
 
-        if (send(server->socket_client, server_msg, server_msg_len, 0) == -1) {
-            fprintf(stderr, "%d %s", errno, strerror(errno));
-        }
+        //if (send(server->socket_client, server_msg, server_msg_len, 0) == -1) {
+        //   fprintf(stderr, "%d %s", errno, strerror(errno));
+        //}
 
         do {
             memset(server->buffer, 0, MAXBUFLEN);
