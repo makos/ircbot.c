@@ -69,7 +69,7 @@ int bot_send(IRC_Bot *bot, const char msg[]);
 /**
  * Read incoming messages from server, one message at a time.
  * @param bot pointer to IRC_Bot object
- * @return negative numbers on socket errors, 0 - connection closed, positive
+ * @return negative numbers on socket errors, 1 - connection closed, positive
  * numbers denote bytes read
  * @see last_msg
  */

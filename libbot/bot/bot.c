@@ -48,11 +48,11 @@ IRC_Bot *bot_create(const char nick[])
     temp->nick = malloc((strlen(nick) + 1) * sizeof(char));
     strcpy(temp->nick, nick);
 
-    // temp->channels = malloc(BOT_MAX_CHANNEL_AMT);
-    // for (int i = 0; i < BOT_MAX_CHANNEL_AMT; i++) {
-    //     temp->channels[i] = malloc(BOT_MAX_CHANNEL_LEN * sizeof(char));
-    //     strcpy(temp->channels[i], "");
-    // }
+    temp->channels = malloc(BOT_MAX_CHANNEL_AMT);
+    for (int i = 0; i < BOT_MAX_CHANNEL_AMT; i++) {
+        temp->channels[i] = malloc(BOT_MAX_CHANNEL_LEN * sizeof(char));
+        strcpy(temp->channels[i], "");
+    }
 
     temp->last_channel_id = -1;
 
@@ -112,6 +112,7 @@ int bot_read(IRC_Bot *bot)
     return bot_recv(bot);
 }
 
+// TODO: Move this out to commands.c. This doesn't belong in this API.
 int bot_join(IRC_Bot *bot, const char channel[])
 {
     if (!bot || !bot->connection) {
