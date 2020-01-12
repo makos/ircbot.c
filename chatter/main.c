@@ -67,15 +67,15 @@ static void parse_incoming_data(IRC_Bot *bot)
                    get_prefix_chunk(bot->last_msg, "@", " "));
 
             // DEBUG:
-            printf("DEBUG incoming_msg: |%s| |%s| |%s|\n",
-                  incoming_msg->nickname, incoming_msg->user,
-                 incoming_msg->host);
+            //printf("DEBUG incoming_msg: |%s| |%s| |%s|\n",
+            //      incoming_msg->nickname, incoming_msg->user,
+            //     incoming_msg->host);
         }
         // Now let's get the command and its parameters.
         strcpy(incoming_msg->command,
                get_prefix_chunk(bot->last_msg, " ", " "));
         // DEBUG:
-        printf("DEBUG command: |%s|\n", incoming_msg->command);
+        //printf("DEBUG command: |%s|\n", incoming_msg->command);
         
         // Grab a copy of the message for strtok().
         char message_copy[MAX_ARRAY_LEN];
@@ -93,21 +93,22 @@ static void parse_incoming_data(IRC_Bot *bot)
                 strcat(incoming_msg->parameters, " ");
                 tok = strtok(NULL, " ");
             } else {
+                // Above code adds a space after every parameter, we don't
+                // want it after the last one.
+                int param_len = strlen(incoming_msg->parameters);
+                incoming_msg->parameters[param_len - 1] = '\0';
                 tok = NULL;
             }
         }
-
-        // TODO: Parameter grabbing (IRC allows up to 15 parameters per
-        // command)
-        // int parameters_index = strcspn(bot->last_msg + prefix_len + 1, " ") +
-        // prefix_len; DEBUG: printf("DEBUG parameters_index: %i\n",
-        // parameters_index);
-
-        // strcpy(incoming_msg->parameters,
-        //        get_prefix_chunk(bot->last_msg, " ", ":", parameters_index));
-
+        
+        strcpy(incoming_msg->trailing,
+               get_prefix_chunk(bot->last_msg + prefix_len, ":", "\r\n"));
+        printf("[%s]: %s\r\n", incoming_msg->nickname, incoming_msg->trailing);
         // DEBUG:
-        printf("DEBUG parameters: |%s|\n", incoming_msg->parameters);
+        // printf("DEBUG parameters: |%s|\n", incoming_msg->parameters);
+
+        activate_command(incoming_msg->command);
+
     } else {
         // No prefix; probably PING message.
         if (strncmp(bot->last_msg, "PING", 4) == 0) {
