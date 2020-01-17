@@ -189,6 +189,7 @@ int connection_send(IRC_Connection *connection, const char msg[])
     }
 
     printf("SENT: %s", temp_msg);
+    free(temp_msg);
 
     return OK;
 }

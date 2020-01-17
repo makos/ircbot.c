@@ -20,8 +20,6 @@ struct IRC_Connection;
 typedef struct IRC_Bot {
     /** Nick visible on the IRC server. */
     char *nick;
-    /** List of channels currently connected to. */
-    char **channels;
     /** Pointer to the IRC_Connection structure. */
     struct IRC_Connection *connection;
     /**
@@ -29,8 +27,6 @@ typedef struct IRC_Bot {
      * (yet), so be cautious when using `printf()`.
      */
     char last_msg[BOT_MAX_MSGLEN];
-    /** Index of the last channel joined. */
-    int last_channel_id;
 } IRC_Bot;
 
 /**
@@ -74,21 +70,5 @@ int bot_send(IRC_Bot *bot, const char msg[]);
  * @see last_msg
  */
 int bot_read(IRC_Bot *bot);
-
-/**
- * Join an IRC channel.
- * @param bot pointer to IRC_Bot object
- * @param channel channel to join
- * @return 0 on failure, 1 on success
- */
-int bot_join(IRC_Bot *bot, const char channel[]);
-
-/**
- * Leave an IRC channel.
- * @param bot pointer to IRC_Bot object
- * @param channel channel to leave
- * @return 0 on failure, 1 on success
- */
-int bot_leave(IRC_Bot *bot, const char channel[]);
 
 #endif // IRCBOT_BOT_BOT_H_
