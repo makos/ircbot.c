@@ -1,9 +1,11 @@
 # Changelog
 
-## 0.4.0
+## 1.0.0
 ### WIP
+* Major version change because of API change.
 * Remove Commands system from IRC_Bot, in favor of user-defined functions in 
   their software to carry out functions
+* Fixed (removed) tests that were broken because of API change.
 #### Chatter, simple bot as an example
 * Basic functionality: connecting, maintaining connection, reading and sending
   data, parsing of incoming traffic and responding to basic queries (`PING`,
