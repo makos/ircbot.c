@@ -72,7 +72,7 @@ static void parse_incoming_data(IRC_Bot *bot)
                //get_prefix_chunk(bot->last_msg, " ", " "));
         // DEBUG:
         //printf("DEBUG command: |%s|\n", incoming_msg->command);
-        
+       
         // Grab a copy of the message for strtok().
         //char msg_copy[MAX_ARRAY_LEN];
         //strcpy(msg_copy, bot->last_msg);
@@ -81,6 +81,10 @@ static void parse_incoming_data(IRC_Bot *bot)
                 //msg_copy + prefix_len + strlen(incoming_msg->command) + 1,
                 //" ");
         
+        for (int i = 0; i < MAX_ARRAY_LEN; i++) {
+            incoming_msg->parameters[i] = '\0'; 
+        }
+
         while (strncmp(tok, ":", 1) != 0) {
             strcat(incoming_msg->parameters, tok);
             strcat(incoming_msg->parameters, " ");
@@ -116,6 +120,8 @@ static void parse_incoming_data(IRC_Bot *bot)
             commands_pong(bot);
         }
     }
+
+    free(incoming_msg);
 }
 
 int main()
