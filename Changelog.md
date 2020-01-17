@@ -2,7 +2,8 @@
 
 ## 0.4.0
 ### WIP
-* Remove Commands system from IRC_Bot, in favor of user-defined functions in their software to carry out functions
+* Remove Commands system from IRC_Bot, in favor of user-defined functions in 
+  their software to carry out functions
 #### Chatter, simple bot as an example
 * Basic functionality: connecting, maintaining connection, reading and sending
   data, parsing of incoming traffic and responding to basic queries (`PING`,
@@ -10,12 +11,15 @@
 
 ## 0.3.0
 ### 22.09.2018
-* Doxygen-generated documentation for libbot API available at [GitHub pages](https://makos.github.io/ircbot.c/index.html).
-* IRC_Bot, along with internal IRC_Connection is now compiled into a shared library `libbot`.
+* Doxygen-generated documentation for libbot API available at 
+  [GitHub pages](https://makos.github.io/ircbot.c/index.html).
+* IRC_Bot, along with internal IRC_Connection is now compiled into a shared 
+  library `libbot`.
 * Unit tests for all functions.
 * Mock server for testing purposes (`tests/server`).
-* IRC_Bot has all the required features to be able to connect to a server, send and receive
-  messages and execute arbitrary commands that can be added at runtime(`Bot_Command`).
+* IRC_Bot has all the required features to be able to connect to a server, send 
+  and receive messages and execute arbitrary commands that can be added at 
+  runtime (`Bot_Command`).
 
 ## 0.2.0 
 ### 15.09.2018
