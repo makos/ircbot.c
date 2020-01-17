@@ -27,12 +27,21 @@ static int test_callback(IRC_Bot *bot)
     return 1;
 }
 
+static void free_bot(IRC_Bot *bot) {
+    if (bot->nick != NULL) 
+        free(bot->nick);
+    if (bot != NULL)
+        free(bot);
+}
+
 static char *test_bot_create_success()
 {
     IRC_Bot *test_bot = bot_create("ircbot");
     mu_assert("test_bot_create_success(): test_bot is NULL", test_bot);
     mu_assert("test_bot_create_success(): test_bot->nick != \"ircbot\"",
               strcmp(test_bot->nick, "ircbot") == 0);
+
+    free_bot(test_bot);
     return 0;
 }
 
@@ -50,6 +59,8 @@ static char *test_bot_connect_success()
     int result = bot_connect(test_bot, "127.0.0.1", "8080");
     bot_disconnect(test_bot);
     mu_assert("test_bot_connect_success(): bot_connect() failed", result != 0);
+
+    free_bot(test_bot);
     return 0;
 }
 
@@ -58,9 +69,11 @@ static char *test_bot_connect_failure()
     IRC_Bot *test_bot = bot_create("ircbot");
     mu_assert("test_bot_connect_failure(): test_bot is NULL", test_bot);
     int result = bot_connect(test_bot, "garbage", "this is over 8 chars");
-    bot_disconnect(test_bot);
+    //bot_disconnect(test_bot);
     mu_assert("test_bot_connect_failure(): bot_connect() succeeded",
               result == 0);
+
+    free_bot(test_bot);
     return 0;
 }
 
@@ -73,6 +86,8 @@ static char *test_bot_send_success()
     bot_disconnect(test_bot);
     mu_assert("test_bot_send_success(): bot_send() returned ERROR\n",
               result != 0);
+
+    free_bot(test_bot);
     return 0;
 }
 
@@ -83,6 +98,8 @@ static char *test_bot_send_failure()
     int result = bot_send(test_bot, "USER ircbot ircbot ircbot ircbot");
     mu_assert("test_bot_send_success(): bot_send() returned ERROR\n",
               result == 0);
+
+    free_bot(test_bot);
     return 0;
 }
 
@@ -95,6 +112,8 @@ static char *test_bot_read_success()
     mu_assert("test_bot_read_success(): bot_read() returned 0 or ERROR",
               result > 0);
     bot_disconnect(test_bot);
+
+    free_bot(test_bot);
     return 0;
 }
 
@@ -106,10 +125,12 @@ static char *test_bot_read_failure()
     mu_assert(
         "test_bot_read_failure(): bot_read() returned positive numbers (not ERROR)",
         result <= 0);
+
+    free_bot(test_bot);
     return 0;
 }
 
-static char *test_bot_join_success()
+/*static char *test_bot_join_success()
 {
     IRC_Bot *test_bot = bot_create("ircbot");
     mu_assert("test_bot_join_success(): test_bot is NULL\n", test_bot);
@@ -127,9 +148,9 @@ static char *test_bot_join_success()
               result != 0);
 
     return 0;
-}
+}*/
 
-static char *test_bot_join_failure()
+/*static char *test_bot_join_failure()
 {
     IRC_Bot *test_bot = bot_create("ircbot");
     mu_assert("test_bot_join_failure(): test_bot is NULL\n", test_bot);
@@ -138,9 +159,9 @@ static char *test_bot_join_failure()
     mu_assert("test_bot_join_failure(): bot_join returned OK\n", result == 0);
 
     return 0;
-}
+}*/
 
-static char *test_bot_leave_success()
+/*static char *test_bot_leave_success()
 {
     IRC_Bot *test_bot = bot_create("ircbot");
     mu_assert("test_bot_leave_success(): test_bot is NULL\n", test_bot);
@@ -158,4 +179,4 @@ static char *test_bot_leave_success()
     mu_assert("test_bot_leave_success(): bot_leave returned ERROR\n", result != 0);
 
     return 0;
-}
+}*/

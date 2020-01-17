@@ -1,12 +1,15 @@
 #include "connection/connection.h"
 #include "minunit.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 static char *test_connection_create_success()
 {
     IRC_Connection *test_con = connection_create("127.0.0.1", "8080");
     mu_assert("test_connection_create_success(): IRC_Connection is NULL",
               test_con);
+
+    connection_disconnect(test_con);
     return 0;
 }
 

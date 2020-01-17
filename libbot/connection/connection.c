@@ -69,11 +69,31 @@ static int connection_close_socket(IRC_Connection *connection)
     }
     connection_cleanup();
 #else
-    status = shutdown(connection->socket, SHUT_RDWR);
+    if (connection->socket > 0) {
+        status = shutdown(connection->socket, SHUT_RDWR);
+    } else {
+        status = -1; 
+    }
     if (status == 0) {
         status = close(connection->socket);
     }
 #endif
+
+    /*if (connection->ai_hints->ai_addr != NULL)
+        free(connection->ai_hints->ai_addr);
+    if (connection->ai_hints->ai_canonname != NULL)
+        free(connection->ai_hints->ai_canonname);
+    if (connection->ai_hints->ai_next != NULL)
+        free(connection->ai_hints->ai_next);
+    if (connection->ai_hints != NULL)
+        free(connection->ai_hints);            
+    if (connection->ai_result != NULL)
+        free(connection->ai_result);            
+    if (connection->recvbuf != NULL)
+        free(connection->recvbuf);
+    if (connection != NULL)
+        free(connection);*/
+
     return status;
 }
 
@@ -86,6 +106,14 @@ static void connection_setup_strings(IRC_Connection *connection,
                                      const char *address, const char *port)
 {
     connection->recvbuflen = 512;
+    
+    for (int i = 0; i < MAX_ADDR_LEN; i++) {
+        connection->address[i] = '\0';
+    }
+    for (int i = 0; i < MAX_PORT_LEN; i++) {
+        connection->port[i] = '\0';
+    }
+
     strcpy(connection->address, address);
     strcpy(connection->port, port);
     connection->recvbuf = calloc((size_t)connection->recvbuflen, sizeof(char));
@@ -122,6 +150,7 @@ IRC_Connection *connection_create(const char address[], const char port[])
     if (result != 0) {
         fprintf(stderr, "getaddrinfo() error: %d\n", result);
         connection_cleanup();
+        //TODO: free memory here
         return NULL;
     }
 
@@ -185,6 +214,8 @@ int connection_send(IRC_Connection *connection, const char msg[])
     if (result == SOCKET_ERROR) {
         fprintf(stderr, "connection_send(): error %d\n", result);
         connection_close_socket(connection);
+
+        free(temp_msg);
         return ERROR;
     }
 

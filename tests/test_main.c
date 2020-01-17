@@ -100,7 +100,7 @@ int main(int argc, char *argv[])
         strcpy(COLOR_END, "");
     }
 
-    messages = malloc(64 * sizeof(char));
+    messages = malloc(64 * 128 * sizeof(char));
     for (int i = 0; i < 64; i++) {
         messages[i] = malloc(128 * sizeof(char));
     }
@@ -132,5 +132,11 @@ int main(int argc, char *argv[])
 
     printf("\nFailed: %d, passed: %d, total: %d\n", tests_failed,
            tests_run - tests_failed, tests_run);
+
+    for (int i = 0; i < 64; i ++) {
+        free(messages[i]);
+    }
+    free(messages);
+
     return 0;
 }
