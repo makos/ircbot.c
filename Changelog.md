@@ -3,8 +3,10 @@
 ## 0.4.0
 ### WIP
 * Remove Commands system from IRC_Bot, in favor of user-defined functions in their software to carry out functions
-* Reworked joining and leaving channels
-* Built-in loop into IRC_Bot
+#### Chatter, simple bot as an example
+* Basic functionality: connecting, maintaining connection, reading and sending
+  data, parsing of incoming traffic and responding to basic queries (`PING`,
+  `VERSION`).
 
 ## 0.3.0
 ### 22.09.2018
