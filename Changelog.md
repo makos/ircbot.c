@@ -2,9 +2,10 @@
 
 ## 1.0.0
 ### WIP
-* Major version change because of API change.
+* Major version change because of incompatible API changes.
+#### API change
 * Remove Commands system from IRC_Bot, in favor of user-defined functions in 
-  their software to carry out functions
+  their software to carry out functions. Example in Chatterbot.
 * Fixed (removed) tests that were broken because of API change.
 #### Chatter, simple bot as an example
 * Basic functionality: connecting, maintaining connection, reading and sending
