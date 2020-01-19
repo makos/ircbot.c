@@ -27,7 +27,7 @@ static int bot_recv(IRC_Bot *bot)
             bot->last_msg[i] = bot->connection->recvbuf[i];
         }
 
-        if (bytes < BOT_MAX_MSGLEN) {
+        if (bytes < BOT_MAX_MSGLEN - 1) {
             bot->last_msg[bytes] = '\0';
         } else {
             return RECV_ERROR;
@@ -45,6 +45,7 @@ IRC_Bot *bot_create(const char nick[])
 
     IRC_Bot *temp = malloc(sizeof(IRC_Bot));
     temp->connection = NULL;
+    //temp->connection = malloc(sizeof(IRC_Connection));
     temp->nick = malloc((strlen(nick) + 1) * sizeof(char));
     strcpy(temp->nick, nick);
 
