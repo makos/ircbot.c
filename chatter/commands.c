@@ -9,9 +9,16 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <string.h>
+// Only for debug printf's
+#include <stdio.h>
 
 #define OK 1
 #define ERROR 0
+
+static const Command_Switches commands = {
+    .version = "VERSION",
+    .say_hello = "hello"
+};
 
 int commands_ident(IRC_Bot *bot)
 {
@@ -56,4 +63,22 @@ int commands_pong(IRC_Bot *bot)
     strcat(pong_msg, pong_id);
 
     return bot_send(bot, pong_msg);
+}
+
+int commands_privmsg(IRC_Bot *bot, const char *origin_username,
+                     const char *message)
+{
+    char response[MAX_ARRAY_LEN];
+
+    strcpy(response, "PRIVMSG ");
+    strcat(response, origin_username);
+    strcat(response, " ");
+    //DEBUG:
+    printf("DEBUG commands_privmsg: response: %s\n", response);
+
+    if (strcmp(commands.version, message) == 0) {
+        strcat(response, "Chatterbot 1.0.0 - simple and useless chat bot written in not so useless ircbot.c library - https://github.com/makos/ircbot.c\r\n");
+    }   
+
+    return bot_send(bot, response);
 }
