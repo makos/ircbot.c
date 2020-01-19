@@ -3,8 +3,8 @@
 #define _CRT_SECURE_NO_WARNINGS
 #endif
 
-#include "bot.h"
 #include "chatter.h"
+#include "bot.h"
 #include "commands.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -26,7 +26,7 @@ static void parse_incoming_data(IRC_Bot *bot)
 
     strcpy(incoming_msg->msg_copy, bot->last_msg);
     char *tok = NULL;
-    
+
     if (has_prefix) {
         int prefix_len = strcspn(bot->last_msg, " ");
         int nick_end_index = strcspn(bot->last_msg, "!");
@@ -38,8 +38,8 @@ static void parse_incoming_data(IRC_Bot *bot)
             tok = strtok(incoming_msg->msg_copy + PREFIX_DELIMITER_OFFSET, " ");
             strcpy(incoming_msg->servername, tok);
             // DEBUG:
-            printf("DEBUG incoming_msg->servername: |%s|\n",
-                    incoming_msg->servername);
+            /*printf("DEBUG incoming_msg->servername: |%s|\n",
+                    incoming_msg->servername);*/
         } else {
             // Copy relevant info from prefix. I don't have use for this data
             // yet.
@@ -53,30 +53,37 @@ static void parse_incoming_data(IRC_Bot *bot)
             strcpy(incoming_msg->host, tok);
             // DEBUG:
             printf("DEBUG incoming_msg: |%s| |%s| |%s|\n",
-                  incoming_msg->nickname, incoming_msg->user,
-                  incoming_msg->host);
+                   incoming_msg->nickname, incoming_msg->user,
+                   incoming_msg->host);
         }
         // Now let's get the command and its parameters.
         tok = strtok(NULL, " ");
         strcpy(incoming_msg->command, tok);
         // DEBUG:
-        //printf("DEBUG command: |%s|\n", incoming_msg->command);
-        
+        printf("DEBUG command: |%s|\n", incoming_msg->command);
+
         for (int i = 0; i < MAX_ARRAY_LEN; i++) {
-            incoming_msg->parameters[i] = '\0'; 
+            incoming_msg->parameters[i] = '\0';
         }
 
-        while (strncmp(tok, ":", 1) != 0) {
+        //tok = strtok(NULL, " ");
+
+        while ((tok = strtok(NULL, " "))) {
+            if (strncmp(tok, ":", 1) == 0)
+                break;
             strcat(incoming_msg->parameters, tok);
             strcat(incoming_msg->parameters, " ");
-            tok = strtok(NULL, " ");
         }
 
-        strcpy(incoming_msg->trailing, tok);
-        
-        printf("[%s]: %s\r\n", incoming_msg->nickname, incoming_msg->trailing);
+        // Remove trailing space.
+        int param_len = strlen(incoming_msg->parameters) - 1;
+        incoming_msg->parameters[param_len] = '\0';
         // DEBUG:
-        // printf("DEBUG parameters: |%s|\n", incoming_msg->parameters);
+        printf("DEBUG parameters: |%s|\n", incoming_msg->parameters);
+
+        tok = strtok(NULL, "");
+
+        printf("[%s]: %s\r\n", incoming_msg->nickname, incoming_msg->trailing);
     } else {
         // No prefix; probably PING message.
         if (strncmp(bot->last_msg, "PING", 4) == 0) {
@@ -89,7 +96,7 @@ static void parse_incoming_data(IRC_Bot *bot)
 
 int main()
 {
-    //char *channels[] = {"#dailyprog", "#ircbot_ctest"};
+    // char *channels[] = {"#dailyprog", "#ircbot_ctest"};
     ChatterStatus *status = malloc(sizeof(ChatterStatus));
     status->connected = FALSE;
     status->motd_finished = FALSE;
@@ -100,8 +107,8 @@ int main()
     if (bot_connect(chatter, "127.0.0.1", "8080") == TRUE)
         status->connected = TRUE;
 
-    // if (bot_connect(chatter, "irc.rizon.net", "6660") == TRUE)
-    //     status->connected = TRUE;
+    /*if (bot_connect(chatter, "chat.freenode.org", "6665") == TRUE)
+        status->connected = TRUE;*/
 
     bot_send(chatter, "USER chatterbot chatterbot chatterbot chatterbot");
     bot_send(chatter, "NICK chatterbot");
