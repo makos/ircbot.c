@@ -1,9 +1,10 @@
+#include <stdio.h>
 #include "debug.h"
 
 int main(int argc, char *argv[])
 {
     debug_enable();
-    debug_set_out("stderr");
+    debug_set_out("stdout");
     // This will be logged.
     debug_log("Hello there!");
 
@@ -11,7 +12,9 @@ int main(int argc, char *argv[])
     debug_disable();
     // This won't be logged.
     debug_log("Value of i is: %i", i);
+    printf("Disabled\n");
     debug_enable();
+    printf("Enabled\n");
 
     return 0;
 }
