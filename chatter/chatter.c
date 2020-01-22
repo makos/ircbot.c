@@ -66,7 +66,7 @@ static void parse_incoming_data(IRC_Bot *bot)
             incoming_msg->parameters[i] = '\0';
         }
 
-        //tok = strtok(NULL, " ");
+        // tok = strtok(NULL, " ");
 
         while ((tok = strtok(NULL, " "))) {
             if (strncmp(tok, ":", 1) == 0)

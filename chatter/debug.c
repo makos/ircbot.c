@@ -1,9 +1,9 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdarg.h>
-#include <stdlib.h>
-#include <ctype.h>
 #include "debug.h"
+#include <ctype.h>
+#include <stdarg.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 #define TRUE 1
 #define FALSE 0
@@ -21,8 +21,8 @@ static char *str_to_lower(const char *out)
 {
     int out_len = strlen(out);
     char c = 'a';
-    char *str = calloc((size_t) out_len + 1, sizeof(char));
-    const char *sp = out; 
+    char *str = calloc((size_t)out_len + 1, sizeof(char));
+    const char *sp = out;
 
     for (int i = 0; i < out_len; i++) {
         c = tolower(*sp);
@@ -36,8 +36,10 @@ static char *str_to_lower(const char *out)
 void debug_set_out(const char *out)
 {
     if (strlen(out) > MAX_ARRAY_LEN) {
-        fprintf(stderr, "debug_set_out: error, fd_out is too long! It needs to \
-                be less than %i characters!", MAX_ARRAY_LEN);
+        fprintf(stderr,
+                "debug_set_out: error, fd_out is too long! It needs to \
+                be less than %i characters!",
+                MAX_ARRAY_LEN);
         return;
     }
 
@@ -60,7 +62,7 @@ void debug_log(const char *string, ...)
     if (ENABLED) {
         // Let's add some convenience and automatically do a line-break.
         int l = strlen(string);
-        char *scp = calloc((size_t) l + 2, sizeof(char));
+        char *scp = calloc((size_t)l + 2, sizeof(char));
         strcpy(scp, string);
         scp[l] = '\n';
 
