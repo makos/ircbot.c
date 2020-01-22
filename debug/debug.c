@@ -9,8 +9,8 @@
 #define FALSE 0
 
 static FILE *FD_OUT;
-
 static int ENABLED = FALSE;
+static char FD_STR[MAX_ARRAY_LEN] = { '\0' };
 
 static void close_fd_out()
 {
@@ -54,6 +54,8 @@ void debug_set_out(const char *out)
     else
         FD_OUT = fopen(out, "a");
 
+    strcpy(FD_STR, out);
+
     free(out_lower);
 }
 
@@ -85,4 +87,14 @@ void debug_disable()
 {
     if (ENABLED)
         ENABLED = FALSE;
+}
+
+int debug_is_enabled()
+{
+    return ENABLED;
+}
+
+char *debug_get_fd_str()
+{
+    return FD_STR;
 }

@@ -11,4 +11,7 @@ void debug_log(const char *string, ...);
 void debug_set_out(const char *fd_out);
 void debug_enable();
 void debug_disable();
-#endif
+int debug_is_enabled();
+char *debug_get_fd_str();
+
+#endif // DEBUG_H__

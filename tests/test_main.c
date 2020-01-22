@@ -2,6 +2,7 @@
 #include "test_bot.c"
 #include "test_connection.c"
 #include "test_connection_keepalive.c"
+#include "test_debug.c"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -72,6 +73,17 @@ static char *bot_tests()
     return 0;
 }
 
+static char *debug_tests()
+{
+    printf ("\n%sLIBDEBUG TESTS%s\n", GREEN, COLOR_END);
+    mu_run_test("test_debug_set_out_success", test_debug_set_out_success);
+    mu_run_test("test_debug_set_out_failure", test_debug_set_out_failure);
+    mu_run_test("test_debug_enable", test_debug_enable);
+    mu_run_test("test_debug_disable", test_debug_disable);
+
+    return 0;
+}
+
 static char *run_all()
 {
     char *result = NULL;
@@ -82,6 +94,11 @@ static char *run_all()
     }
 
     result = connection_tests();
+    if (result != 0) {
+        return result;
+    }
+
+    result = debug_tests();
     if (result != 0) {
         return result;
     }
@@ -114,6 +131,8 @@ int main(int argc, char *argv[])
             to_call = connection_keepalive;
         } else if (strcmp(argv[i], "bot") == 0) {
             to_call = bot_tests;
+        } else if (strcmp(argv[i], "debug") == 0) {
+            to_call = debug_tests;
         } else {
             to_call = run_all;
         }
