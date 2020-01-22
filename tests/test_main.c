@@ -75,7 +75,7 @@ static char *bot_tests()
 
 static char *debug_tests()
 {
-    printf ("\n%sLIBDEBUG TESTS%s\n", GREEN, COLOR_END);
+    printf("\n%sLIBDEBUG TESTS%s\n", GREEN, COLOR_END);
     mu_run_test("test_debug_set_out_success", test_debug_set_out_success);
     mu_run_test("test_debug_set_out_failure", test_debug_set_out_failure);
     mu_run_test("test_debug_enable", test_debug_enable);
@@ -152,7 +152,7 @@ int main(int argc, char *argv[])
     printf("\nFailed: %d, passed: %d, total: %d\n", tests_failed,
            tests_run - tests_failed, tests_run);
 
-    for (int i = 0; i < 64; i ++) {
+    for (int i = 0; i < 64; i++) {
         free(messages[i]);
     }
     free(messages);
