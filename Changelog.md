@@ -5,6 +5,8 @@
 * Major version change because of incompatible API changes.
 * New helper library `libdebug`, for toggleable logging or printing various
   messages.
+* Unit tests for `libdebug`.
+* Documentation fo `libdebug`.
 #### API change
 * Remove Commands system from IRC_Bot, in favor of user-defined functions in 
   their software to carry out functions. Example in Chatterbot.
