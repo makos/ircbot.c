@@ -25,6 +25,4 @@ typedef struct ChatterStatus {
     int connected;
 } ChatterStatus;
 
-static void parse_incoming_data(struct IRC_Bot *bot);
-
 #endif // CHATTER_H_
