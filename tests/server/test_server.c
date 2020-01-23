@@ -43,7 +43,7 @@ Mock_Server *server_create()
     }
 
     listen(temp->socket_fd, 3);
-    //fcntl(temp->socket_fd, F_SETFL, O_NONBLOCK);
+    // fcntl(temp->socket_fd, F_SETFL, O_NONBLOCK);
 
     return temp;
 }
@@ -62,7 +62,7 @@ int server_read(Mock_Server *server)
                 accept(server->socket_fd, (struct sockaddr *)server->client,
                        (socklen_t *)&sockaddr_size))
            >= 0) {
-        fcntl(server->socket_client, F_SETFL, O_NONBLOCK);
+        // fcntl(server->socket_client, F_SETFL, O_NONBLOCK);
 
         if (send(server->socket_client, hello_msg, hello_msg_len, 0) == -1) {
             fprintf(stderr, "%d %s", errno, strerror(errno));
@@ -70,7 +70,8 @@ int server_read(Mock_Server *server)
 
         do {
             memset(server->buffer, 0, MAXBUFLEN);
-            bytes = recv(server->socket_client, server->buffer, MAXBUFLEN, 0);
+            bytes = recv(server->socket_client, server->buffer, MAXBUFLEN,
+                         MSG_DONTWAIT);
 
             for (int i = 0; i < bytes; i++) {
                 printf("%c", server->buffer[i]);

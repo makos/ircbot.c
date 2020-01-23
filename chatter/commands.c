@@ -6,11 +6,10 @@
  */
 #include "commands.h"
 #include "bot.h"
+#include "debug.h"
 #include <stddef.h>
 #include <stdlib.h>
 #include <string.h>
-// Only for debug printf's
-#include <stdio.h>
 
 #define OK 1
 #define ERROR 0
@@ -71,13 +70,14 @@ int commands_privmsg(IRC_Bot *bot, const char *origin_username,
     strcpy(response, "PRIVMSG ");
     strcat(response, origin_username);
     strcat(response, " ");
-    // DEBUG:
-    printf("DEBUG commands_privmsg: response: %s\n", response);
+
+    debug_log("DEBUG commands_privmsg: response: %s\n", response);
 
     if (strcmp(commands.version, message) == 0) {
         strcat(
             response,
-            "Chatterbot 1.0.0 - simple and useless chat bot written in not so useless ircbot.c library - https://github.com/makos/ircbot.c\r\n");
+            "Chatterbot 1.0.0 - simple and useless chat bot written in not so \
+            useless ircbot.c library - https://github.com/makos/ircbot.c\r\n");
     }
 
     return bot_send(bot, response);
