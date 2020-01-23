@@ -80,7 +80,11 @@ static void parse_incoming_data(IRC_Bot *bot)
         // DEBUG:
         debug_log("DEBUG parameters: |%s|\n", incoming_msg->parameters);
 
+        // TODO: This is ugly, prettify it somehow.
+        strcat(incoming_msg->trailing, tok + 1);
+        strcat(incoming_msg->trailing, " ");
         tok = strtok(NULL, "");
+        strcat(incoming_msg->trailing, tok);
 
         printf("[%s]: %s\r\n", incoming_msg->nickname, incoming_msg->trailing);
     } else {
