@@ -43,7 +43,7 @@ Mock_Server *server_create()
     }
 
     listen(temp->socket_fd, 3);
-    fcntl(temp->socket_fd, F_SETFD, O_NONBLOCK);
+    //fcntl(temp->socket_fd, F_SETFL, O_NONBLOCK);
 
     return temp;
 }
@@ -53,7 +53,7 @@ int server_read(Mock_Server *server)
     int sockaddr_size = sizeof(struct sockaddr_in);
     char hello_msg[] =
         ":nick!user@host PRIVMSG param1 param2 :hello there handsome\r\n";
-    char server_msg[] = ":server.lol NOTICE param1 param2 :hello\r\n";
+    char server_msg[] = ":server.lol 666 param1 param2 :hello\r\n";
     int hello_msg_len = strlen(hello_msg);
     int server_msg_len = strlen(server_msg);
 
@@ -62,7 +62,7 @@ int server_read(Mock_Server *server)
                 accept(server->socket_fd, (struct sockaddr *)server->client,
                        (socklen_t *)&sockaddr_size))
            >= 0) {
-        fcntl(server->socket_client, F_SETFD, O_NONBLOCK);
+        fcntl(server->socket_client, F_SETFL, O_NONBLOCK);
 
         if (send(server->socket_client, hello_msg, hello_msg_len, 0) == -1) {
             fprintf(stderr, "%d %s", errno, strerror(errno));
