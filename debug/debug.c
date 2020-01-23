@@ -10,7 +10,7 @@
 
 static FILE *FD_OUT;
 static int ENABLED = FALSE;
-static char FD_STR[MAX_ARRAY_LEN] = { '\0' };
+static char FD_STR[MAX_ARRAY_LEN] = {'\0'};
 
 static void close_fd_out()
 {

@@ -45,7 +45,6 @@ IRC_Bot *bot_create(const char nick[])
 
     IRC_Bot *temp = malloc(sizeof(IRC_Bot));
     temp->connection = NULL;
-    //temp->connection = malloc(sizeof(IRC_Connection));
     temp->nick = malloc((strlen(nick) + 1) * sizeof(char));
     strcpy(temp->nick, nick);
 

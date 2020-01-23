@@ -117,12 +117,13 @@ static void parse_incoming_data(IRC_Bot *bot)
         if (tok != NULL)
             strcat(incoming_msg->trailing, tok);
 
-        //TODO: Check if it was a server message or other client message and
+        // TODO: Check if it was a server message or other client message and
         // format it accordingly. This is done to avoid empty nickname fields
         // when it's a server message.
-        printf("[%s]: %s\r\n", incoming_msg->nickname, incoming_msg->trailing);
+        // debug_log("[%s]: %s\r\n", incoming_msg->nickname,
+        // incoming_msg->trailing);
 
-        //TODO: Send the parsed command and parameters to some handler.
+        // TODO: Send the parsed command and parameters to some handler.
         // e.g.
         // handle_command(incoming_msg->command, incoming_msg->parameters);
     } else {

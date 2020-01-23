@@ -13,8 +13,8 @@
 #include <errno.h>
 #pragma comment(lib, "Ws2_32.lib")
 #else
-#include <errno.h>
 #include <arpa/inet.h>
+#include <errno.h>
 #include <netdb.h>
 #include <sys/socket.h>
 #include <unistd.h>
@@ -72,7 +72,7 @@ static int connection_close_socket(IRC_Connection *connection)
     if (connection->socket > 0) {
         status = shutdown(connection->socket, SHUT_RDWR);
     } else {
-        status = -1; 
+        status = -1;
     }
     if (status == 0) {
         status = close(connection->socket);
@@ -86,9 +86,9 @@ static int connection_close_socket(IRC_Connection *connection)
     if (connection->ai_hints->ai_next != NULL)
         free(connection->ai_hints->ai_next);
     if (connection->ai_hints != NULL)
-        free(connection->ai_hints);            
+        free(connection->ai_hints);
     if (connection->ai_result != NULL)
-        free(connection->ai_result);            
+        free(connection->ai_result);
     if (connection->recvbuf != NULL)
         free(connection->recvbuf);
     if (connection != NULL)
@@ -106,7 +106,7 @@ static void connection_setup_strings(IRC_Connection *connection,
                                      const char *address, const char *port)
 {
     connection->recvbuflen = 512;
-    
+
     for (int i = 0; i < MAX_ADDR_LEN; i++) {
         connection->address[i] = '\0';
     }
@@ -150,7 +150,7 @@ IRC_Connection *connection_create(const char address[], const char port[])
     if (result != 0) {
         fprintf(stderr, "getaddrinfo() error: %d\n", result);
         connection_cleanup();
-        //TODO: free memory here
+        // TODO: free memory here
         return NULL;
     }
 
