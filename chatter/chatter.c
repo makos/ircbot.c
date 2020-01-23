@@ -23,7 +23,7 @@ static void parse_incoming_data(IRC_Bot *bot)
     if (strncmp(bot->last_msg, ":", 1) == 0)
         has_prefix = TRUE;
 
-    Message *incoming_msg = malloc(sizeof(Message));
+    Message *incoming_msg = calloc((size_t)1, sizeof(Message));
 
     strcpy(incoming_msg->msg_copy, bot->last_msg);
     char *tok = NULL;
@@ -31,6 +31,9 @@ static void parse_incoming_data(IRC_Bot *bot)
     if (has_prefix) {
         int prefix_len = strcspn(bot->last_msg, " ");
         int nick_end_index = strcspn(bot->last_msg, "!");
+        debug_log("DEBUG prefix_len: %i nick_end_index: %i\n", prefix_len,
+                  nick_end_index);
+        debug_log("DEBUG strlen(bot->last_msg): %i\n", strlen(bot->last_msg));
         // If position of "!" character is before the total length of prefix,
         // we have full "nick!user@host" prefix. Otherwise, it's only a server
         // address (e.g. "irc.rizon.no"). If strcspn() doesn't find a match,
@@ -39,8 +42,8 @@ static void parse_incoming_data(IRC_Bot *bot)
             tok = strtok(incoming_msg->msg_copy + PREFIX_DELIMITER_OFFSET, " ");
             strcpy(incoming_msg->servername, tok);
             // DEBUG:
-            /*debug_log("DEBUG incoming_msg->servername: |%s|\n",
-                    incoming_msg->servername);*/
+            debug_log("DEBUG incoming_msg->servername: |%s|\n",
+                      incoming_msg->servername);
         } else {
             // Copy relevant info from prefix. I don't have use for this data
             // yet.
@@ -54,8 +57,8 @@ static void parse_incoming_data(IRC_Bot *bot)
             strcpy(incoming_msg->host, tok);
             // DEBUG:
             debug_log("DEBUG incoming_msg: |%s| |%s| |%s|\n",
-                   incoming_msg->nickname, incoming_msg->user,
-                   incoming_msg->host);
+                      incoming_msg->nickname, incoming_msg->user,
+                      incoming_msg->host);
         }
         // Now let's get the command and its parameters.
         tok = strtok(NULL, " ");
@@ -84,7 +87,10 @@ static void parse_incoming_data(IRC_Bot *bot)
         strcat(incoming_msg->trailing, tok + 1);
         strcat(incoming_msg->trailing, " ");
         tok = strtok(NULL, "");
-        strcat(incoming_msg->trailing, tok);
+        // Check for NULL, because if there's only one word after the trailing
+        // ':' it will segfault.
+        if (tok != NULL)
+            strcat(incoming_msg->trailing, tok);
 
         printf("[%s]: %s\r\n", incoming_msg->nickname, incoming_msg->trailing);
     } else {
@@ -101,7 +107,7 @@ int main()
 {
     // char *channels[] = {"#dailyprog", "#ircbot_ctest"};
     debug_set_out("stderr");
-    debug_enable();
+    //debug_enable();
 
     ChatterStatus *status = malloc(sizeof(ChatterStatus));
     status->connected = FALSE;
