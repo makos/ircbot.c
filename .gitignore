@@ -7,3 +7,4 @@ build
 *.json
 tags
 .clangd/
+cmake_configure.sh
