@@ -99,13 +99,13 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="contents">
 <div class="textblock"><h1><a class="anchor" id="index_about"></a>
 About</h1>
-<p>Welcome to <a href="ircbot.c">ircbot.c</a> official documentation. <a href="ircbot.c">ircbot.c</a> is a simple library (<a class="el" href="bot_8h.html">libbot</a>) that provides easy to use functions providing basic necessities for an IRC bot, such as <a class="el" href="bot_8c.html#a32c27a32b8a89a310d0c70c7768cfb98">sending </a>, <a class="el" href="bot_8c.html#aaff905725db958cc9b4e70e9559ce738">receiving </a> and custom commands.</p>
+<p>Welcome to <a href="ircbot.c">ircbot.c</a> official documentation. <a href="ircbot.c">ircbot.c</a> is a simple library (<a class="el" href="bot_8h.html">ircbot</a>) that provides easy to use functions providing basic necessities for an IRC bot, such as <a class="el" href="bot_8c.html#a32c27a32b8a89a310d0c70c7768cfb98">sending</a>, <a class="el" href="bot_8c.html#aaff905725db958cc9b4e70e9559ce738">receiving</a> and custom commands.</p>
 <p>To learn more, see <a class="el" href="index.html#index_api">public API reference</a>.</p>
-<p>There is an included utility library, <code>libdebug</code>. Documentation for it is available <a class="el" href="libdebug.html">here </a>.</p>
+<p>There is an included utility library, <code><a href="ircdebug">ircdebug</a></code>. Documentation for it is available <a class="el" href="ircdebug.html">here</a>.</p>
 <p>To see what's planned, take a look at the <a class="el" href="todo_page.html">TODO page</a>.</p>
 <h1><a class="anchor" id="index_example"></a>
 Example usage</h1>
-<p>See the <a class="el" href="chatter.html"><code>Chatter</code> </a> IRC bot documentation and source code for practical usage.</p>
+<p>See the <a class="el" href="chatter.html">Chatter</a> IRC bot documentation and source code for practical usage.</p>
 <h1><a class="anchor" id="index_building"></a>
 Building</h1>
 <h2><a class="anchor" id="building_reqs"></a>
@@ -120,8 +120,8 @@ Steps</h2>
 <div class="fragment"><div class="line">git clone https:<span class="comment">//github.com/makos/ircbot.c.git</span></div>
 <div class="line">cd ircbot.c</div>
 <div class="line">mkdir build &amp;&amp; cd build</div>
-<div class="line">cmake .. &amp;&amp; make libbot</div>
-</div><!-- fragment --><p>The library will be located in the <code>build/lib</code> directory.</p>
+<div class="line">cmake .. &amp;&amp; make ircbot</div>
+</div><!-- fragment --><p>This will create a library file <code>libircbot.a</code> in <code>build/lib/</code>.</p>
 <h1><a class="anchor" id="index_api"></a>
 Public API reference</h1>
 <ul>

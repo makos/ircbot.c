@@ -32,10 +32,10 @@ var NAVTREE =
     [ "Public API reference", "index.html#index_api", null ],
     [ "Changelog", "md__changelog.html", null ],
     [ "TODO page", "todo_page.html", null ],
-    [ "libdebug - a simple logging library", "libdebug.html", [
-      [ "About", "libdebug.html#libdebug_about", null ],
-      [ "API Reference", "libdebug.html#libdebug_reference", null ],
-      [ "Building", "libdebug.html#libdebug_building", null ]
+    [ "ircdebug - a simple logging library", "ircdebug.html", [
+      [ "About", "ircdebug.html#ircdebug_about", null ],
+      [ "API Reference", "ircdebug.html#ircdebug_reference", null ],
+      [ "Building", "ircdebug.html#ircdebug_building", null ]
     ] ],
     [ "Chatter - example bot using libbot", "chatter.html", [
       [ "About", "chatter.html#chatter_about", null ],

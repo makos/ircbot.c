@@ -8,7 +8,7 @@ target_include_directories(chatter
   PUBLIC "${CMAKE_HOME_DIRECTORY}/libbot/bot"
   PUBLIC "${CMAKE_HOME_DIRECTORY}/debug")
 
-target_link_libraries(chatter libbot libdebug)
+target_link_libraries(chatter ircbot ircdebug)
 set_target_properties(chatter
   PROPERTIES C_STANDARD 99
   C_STANDARD_REQUIRED ON)

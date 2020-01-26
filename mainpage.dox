@@ -5,19 +5,19 @@
 
 @section index_about About
     Welcome to ircbot.c official documentation. ircbot.c is a simple library
-    (@link bot.h libbot@endlink) that provides easy to use functions providing
-    basic necessities for an IRC bot, such as @link bot_send() sending @endlink,
-    @link bot_read() receiving @endlink and custom commands.
+    (@ref bot.h "ircbot") that provides easy to use functions providing
+    basic necessities for an IRC bot, such as @ref bot_send() "sending",
+    @ref bot_read() "receiving" and custom commands.
 
     To learn more, see @ref index_api "public API reference".
 
-    There is an included utility library, `libdebug`. Documentation for
-    it is available @link libdebug here @endlink.
+    There is an included utility library, `ircdebug`. Documentation for
+    it is available @ref ircdebug "here".
 
     To see what's planned, take a look at the @ref todo_page "TODO page".
 
 @section index_example Example usage
-    See the @link chatter `Chatter` @endlink IRC bot documentation and source
+    See the @ref chatter "Chatter" IRC bot documentation and source
     code for practical usage.
 
 @section index_building Building
@@ -33,10 +33,10 @@
     git clone https://github.com/makos/ircbot.c.git
     cd ircbot.c
     mkdir build && cd build
-    cmake .. && make libbot
+    cmake .. && make ircbot
     @endcode
 
-    The library will be located in the `build/lib` directory.
+    This will create a library file `libircbot.a` in `build/lib/`.
 
 @section index_api Public API reference
     - File bot.h
