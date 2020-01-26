@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['bot_5fcommand',['Bot_Command',['../struct_bot___command.html',1,'']]]
+  ['irc_5fbot_17',['IRC_Bot',['../struct_i_r_c___bot.html',1,'']]]
 ];

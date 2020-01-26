@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['bot_5fcommand',['Bot_Command',['../bot_8h.html#a96dcf7b113c1fc0aa7e8ba5f70060772',1,'bot.h']]]
+  ['irc_5fbot_28',['IRC_Bot',['../bot_8h.html#a6a457a5355666dc660d9acb486ecd124',1,'bot.h']]]
 ];
