@@ -4,55 +4,50 @@
 @mainpage
 
 @section index_about About
-   Welcome to ircbot.c official documentation. ircbot.c is a simple library
-   (@link bot.h libbot@endlink) that provides easy to use functions providing
-   basic necessities for an IRC bot, such as @link bot_send() sending @endlink,
-   @link bot_read() receiving @endlink and custom commands.
+    Welcome to ircbot.c official documentation. ircbot.c is a simple library
+    (@link bot.h libbot@endlink) that provides easy to use functions providing
+    basic necessities for an IRC bot, such as @link bot_send() sending @endlink,
+    @link bot_read() receiving @endlink and custom commands.
 
-   To learn more, see @ref index_api "public API reference".
+    To learn more, see @ref index_api "public API reference".
 
-   There is an included utility library, `libdebug`. Documentation for
-   it is available @ref libdebug "here".
+    There is an included utility library, `libdebug`. Documentation for
+    it is available @link libdebug here @endlink.
 
-   To see what's planned, take a look at the @ref todo_page "TODO page".
+    To see what's planned, take a look at the @ref todo_page "TODO page".
+
+@section index_example Example usage
+    See the @link chatter `Chatter` @endlink IRC bot documentation and source
+    code for practical usage.
 
 @section index_building Building
 @subsection building_reqs Requirements
-   - C compiler with C99 standard support (gcc, clang)
-   - CMake, version `>= 3.0`
+    - C compiler with C99 standard support (gcc, clang)
+    - CMake, version `>= 3.0`
 
 @subsection building_guide Steps
-   The bot should run fine both on Windows and Linux. Building instructions
-   are very simple:
+    The bot should run fine both on Windows and Linux. Building instructions
+    are very simple:
 
-   ````
-   git clone https://github.com/makos/ircbot.c.git
-   cd ircbot.c
-   mkdir build && cd build
-   cmake .. && make libbot
-   ````
+    @code
+    git clone https://github.com/makos/ircbot.c.git
+    cd ircbot.c
+    mkdir build && cd build
+    cmake .. && make libbot
+    @endcode
 
-   The library will be located in the `build/lib` directory.
+    The library will be located in the `build/lib` directory.
 
 @section index_api Public API reference
-   - File bot.h
-     - struct IRC_Bot - basic structure holding all related data.
-     - bot_create()
-     - bot_send()
-     - bot_read()
-     - bot_connect()
-     - bot_disconnect()
-
-@section libdebug libdebug documentation
-   - File debug.h
-     - debug_log()
-     - debug_set_out()
-     - debug_enable()
-     - debug_disable()
-     - debug_is_enabled()
-     - debug_get_fd_str()
+    - File bot.h
+        - struct IRC_Bot - basic structure holding all related data.
+        - bot_create()
+        - bot_send()
+        - bot_read()
+        - bot_connect()
+        - bot_disconnect()
 
 @page todo_page TODO page
-   @todo Examples of usage in the docs.
-   @todo Simple binary example.
+    - Examples of usage in the docs.
+    - Simple binary example.
  */

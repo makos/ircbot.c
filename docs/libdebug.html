@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ircbot.c: Data Structures</title>
+<title>ircbot.c: libdebug - a simple logging library</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -74,7 +74,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('annotated.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('libdebug.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -92,20 +92,37 @@ $(document).ready(function(){initNavTree('annotated.html',''); initResizable(); 
 </iframe>
 </div>
 
-<div class="header">
+<div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">Data Structures</div>  </div>
+<div class="title">libdebug - a simple logging library </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock">Here are the data structures with brief descriptions:</div><div class="directory">
-<table class="directory">
-<tr id="row_0_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="struct_chatter_status.html" target="_self">ChatterStatus</a></td><td class="desc"></td></tr>
-<tr id="row_1_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="struct_command___switches.html" target="_self">Command_Switches</a></td><td class="desc"></td></tr>
-<tr id="row_2_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="struct_i_r_c___bot.html" target="_self">IRC_Bot</a></td><td class="desc">Struct holding relevant data to the actual bot </td></tr>
-<tr id="row_3_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="struct_message.html" target="_self">Message</a></td><td class="desc"></td></tr>
-</table>
-</div><!-- directory -->
-</div><!-- contents -->
+<div class="textblock"><h1><a class="anchor" id="libdebug_about"></a>
+About</h1>
+<p>libdebug is a very simple logging library, that can be used in place of debugging and logging <code>printf()</code> statements. It provides functions to enable and disable logging programatically, so you can disable all logging with one statement without having to comment out or delete blocks of code.</p>
+<h1><a class="anchor" id="libdebug_reference"></a>
+API Reference</h1>
+<ul>
+<li>File <a class="el" href="debug_8h.html" title="File containing the debug library functions.">debug.h</a><ul>
+<li><a class="el" href="debug_8c.html#a6bd335e5661015dcda9b8f055a9754e5" title="Log desired information into pre-set file descriptor.">debug_log()</a></li>
+<li><a class="el" href="debug_8c.html#a34e449190276a287cd667a8f9003d135" title="Set where debug_log will redirect the information to.">debug_set_out()</a></li>
+<li><a class="el" href="debug_8c.html#afd275c491f3cecf78de5e2ba52cb439c" title="Enable logging in a program.">debug_enable()</a></li>
+<li><a class="el" href="debug_8c.html#a59ce803f39a3c787c7dd132321dc8f59" title="Disable logging in a program.">debug_disable()</a></li>
+<li><a class="el" href="debug_8c.html#ab72205759e920e744901adef2fcbf3b8" title="Check if logging is enabled or not.">debug_is_enabled()</a></li>
+<li><a class="el" href="debug_8c.html#a2ae141d5884af0debb6ce57dea81386e" title="Get null-terminated string describing the file descriptor in use.">debug_get_fd_str()</a></li>
+</ul>
+</li>
+</ul>
+<h1><a class="anchor" id="libdebug_building"></a>
+Building</h1>
+<p>Building instructions are similar to <a class="el" href="index.html">libbot's</a>.</p>
+<div class="fragment"><div class="line">git clone https:<span class="comment">//github.com/makos/ircbot.c.git</span></div>
+<div class="line">cd ircbot.c</div>
+<div class="line">mkdir build &amp;&amp; cd build</div>
+<div class="line">cmake .. &amp;&amp; make libdebug</div>
+</div><!-- fragment --><p>This will create a library file <code>libdebug.a</code> in <code>build/lib/</code>. </p>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

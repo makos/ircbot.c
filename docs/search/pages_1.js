@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['todo_20list_51',['Todo List',['../todo.html',1,'']]],
-  ['todo_20page_52',['TODO page',['../todo_page.html',1,'']]]
+  ['libdebug_20_2d_20a_20simple_20logging_20library_67',['libdebug - a simple logging library',['../libdebug.html',1,'']]]
 ];

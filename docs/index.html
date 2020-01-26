@@ -101,8 +101,11 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 About</h1>
 <p>Welcome to <a href="ircbot.c">ircbot.c</a> official documentation. <a href="ircbot.c">ircbot.c</a> is a simple library (<a class="el" href="bot_8h.html">libbot</a>) that provides easy to use functions providing basic necessities for an IRC bot, such as <a class="el" href="bot_8c.html#a32c27a32b8a89a310d0c70c7768cfb98">sending </a>, <a class="el" href="bot_8c.html#aaff905725db958cc9b4e70e9559ce738">receiving </a> and custom commands.</p>
 <p>To learn more, see <a class="el" href="index.html#index_api">public API reference</a>.</p>
-<p>There is an included utility library, <code>libdebug</code>. Documentation for it is available <a class="el" href="index.html#libdebug">here</a>.</p>
+<p>There is an included utility library, <code>libdebug</code>. Documentation for it is available <a class="el" href="libdebug.html">here </a>.</p>
 <p>To see what's planned, take a look at the <a class="el" href="todo_page.html">TODO page</a>.</p>
+<h1><a class="anchor" id="index_example"></a>
+Example usage</h1>
+<p>See the <a class="el" href="chatter.html"><code>Chatter</code> </a> IRC bot documentation and source code for practical usage.</p>
 <h1><a class="anchor" id="index_building"></a>
 Building</h1>
 <h2><a class="anchor" id="building_reqs"></a>
@@ -128,20 +131,7 @@ Public API reference</h1>
 <li><a class="el" href="bot_8c.html#a32c27a32b8a89a310d0c70c7768cfb98" title="Send a text message to connected server.">bot_send()</a></li>
 <li><a class="el" href="bot_8c.html#aaff905725db958cc9b4e70e9559ce738" title="Read incoming messages from server, one message at a time.">bot_read()</a></li>
 <li><a class="el" href="bot_8c.html#a3050b764cf93dccd54b85eb3feb361c6" title="Connect IRC_Bot to the server.">bot_connect()</a></li>
-<li><a class="el" href="bot_8c.html#ad0ae8c084239d9e159ba019e17de8b8a" title="Disconnect IRC_Bot from the server.">bot_disconnect()</a></li>
-</ul>
-</li>
-</ul>
-<h1><a class="anchor" id="libdebug"></a>
-libdebug documentation</h1>
-<ul>
-<li>File <a class="el" href="debug_8h.html" title="File containing the debug library functions.">debug.h</a><ul>
-<li><a class="el" href="debug_8c.html#a6bd335e5661015dcda9b8f055a9754e5" title="Log desired information into pre-set file descriptor.">debug_log()</a></li>
-<li><a class="el" href="debug_8c.html#a34e449190276a287cd667a8f9003d135" title="Set where debug_log will redirect the information to.">debug_set_out()</a></li>
-<li><a class="el" href="debug_8c.html#afd275c491f3cecf78de5e2ba52cb439c" title="Enable logging in a program.">debug_enable()</a></li>
-<li><a class="el" href="debug_8c.html#a59ce803f39a3c787c7dd132321dc8f59" title="Disable logging in a program.">debug_disable()</a></li>
-<li><a class="el" href="debug_8c.html#ab72205759e920e744901adef2fcbf3b8" title="Check if logging is enabled or not.">debug_is_enabled()</a></li>
-<li><a class="el" href="debug_8c.html#a2ae141d5884af0debb6ce57dea81386e" title="Get null-terminated string describing the file descriptor in use.">debug_get_fd_str()</a> </li>
+<li><a class="el" href="bot_8c.html#ad0ae8c084239d9e159ba019e17de8b8a" title="Disconnect IRC_Bot from the server.">bot_disconnect()</a> </li>
 </ul>
 </li>
 </ul>

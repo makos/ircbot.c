@@ -1,0 +1,31 @@
+/**
+@page libdebug libdebug - a simple logging library
+
+@section libdebug_about About
+    libdebug is a very simple logging library, that can be used in place of
+    debugging and logging `printf()` statements. It provides functions to
+    enable and disable logging programatically, so you can disable all logging
+    with one statement without having to comment out or delete blocks of code.
+
+@section libdebug_reference API Reference
+    - File debug.h
+        - debug_log()
+        - debug_set_out()
+        - debug_enable()
+        - debug_disable()
+        - debug_is_enabled()
+        - debug_get_fd_str()
+
+@section libdebug_building Building
+    Building instructions are similar to @ref index "libbot's".
+
+    @code
+    git clone https://github.com/makos/ircbot.c.git
+    cd ircbot.c
+    mkdir build && cd build
+    cmake .. && make libdebug
+    @endcode
+    
+    This will create a library file `libdebug.a` in `build/lib/`.
+
+*/

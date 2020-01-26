@@ -24,15 +24,24 @@ var NAVTREE =
 [
   [ "ircbot.c", "index.html", [
     [ "About", "index.html#index_about", null ],
+    [ "Example usage", "index.html#index_example", null ],
     [ "Building", "index.html#index_building", [
       [ "Requirements", "index.html#building_reqs", null ],
       [ "Steps", "index.html#building_guide", null ]
     ] ],
     [ "Public API reference", "index.html#index_api", null ],
-    [ "libdebug documentation", "index.html#libdebug", null ],
     [ "Changelog", "md__changelog.html", null ],
     [ "TODO page", "todo_page.html", null ],
-    [ "Todo List", "todo.html", null ],
+    [ "libdebug - a simple logging library", "libdebug.html", [
+      [ "About", "libdebug.html#libdebug_about", null ],
+      [ "API Reference", "libdebug.html#libdebug_reference", null ],
+      [ "Building", "libdebug.html#libdebug_building", null ]
+    ] ],
+    [ "Chatter - example bot using libbot", "chatter.html", [
+      [ "About", "chatter.html#chatter_about", null ],
+      [ "chatter_building", "chatter.html#chatter_building", null ],
+      [ "Files", "chatter.html#chatter_files", null ]
+    ] ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
       [ "Data Structure Index", "classes.html", null ],
