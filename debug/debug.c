@@ -1,3 +1,9 @@
+/**
+ * @file debug.c
+ * @author Mateusz Makowski
+ * @date 21.01.2020
+ * @brief Implementation of debug.h.
+ */
 #include "debug.h"
 #include <ctype.h>
 #include <stdarg.h>

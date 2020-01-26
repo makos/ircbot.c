@@ -31,7 +31,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ircbot.c
-   &#160;<span id="projectnumber">0.3.0</span>
+   &#160;<span id="projectnumber">1.0.0</span>
    </div>
    <div id="projectbrief">Multi-platform IRC bot in pure C</div>
   </td>
@@ -99,8 +99,9 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="contents">
 <div class="textblock"><h1><a class="anchor" id="index_about"></a>
 About</h1>
-<p>Welcome to <a href="ircbot.c">ircbot.c</a> official documentation. <a href="ircbot.c">ircbot.c</a> is a simple library (<a class="el" href="bot_8h.html">libbot </a>) that provides easy to use functions providing basic necessities for an IRC bot, such as <a class="el" href="bot_8c.html#a32c27a32b8a89a310d0c70c7768cfb98">sending </a>, <a class="el" href="bot_8c.html#aaff905725db958cc9b4e70e9559ce738">receiving </a>, <a class="el" href="">joining </a> and <a class="el" href="">leaving </a> channels and custom <a class="el" href="">commands </a>.</p>
+<p>Welcome to <a href="ircbot.c">ircbot.c</a> official documentation. <a href="ircbot.c">ircbot.c</a> is a simple library (<a class="el" href="bot_8h.html">libbot</a>) that provides easy to use functions providing basic necessities for an IRC bot, such as <a class="el" href="bot_8c.html#a32c27a32b8a89a310d0c70c7768cfb98">sending </a>, <a class="el" href="bot_8c.html#aaff905725db958cc9b4e70e9559ce738">receiving </a> and custom commands.</p>
 <p>To learn more, see <a class="el" href="index.html#index_api">public API reference</a>.</p>
+<p>There is an included utility library, <code>libdebug</code>. Documentation for it is available <a class="el" href="index.html#libdebug">here</a>.</p>
 <p>To see what's planned, take a look at the <a class="el" href="todo_page.html">TODO page</a>.</p>
 <h1><a class="anchor" id="index_building"></a>
 Building</h1>
@@ -116,7 +117,7 @@ Steps</h2>
 <div class="fragment"><div class="line">git clone https:<span class="comment">//github.com/makos/ircbot.c.git</span></div>
 <div class="line">cd ircbot.c</div>
 <div class="line">mkdir build &amp;&amp; cd build</div>
-<div class="line">cmake .. &amp;&amp; make bot</div>
+<div class="line">cmake .. &amp;&amp; make libbot</div>
 </div><!-- fragment --><p>The library will be located in the <code>build/lib</code> directory.</p>
 <h1><a class="anchor" id="index_api"></a>
 Public API reference</h1>
@@ -124,16 +125,25 @@ Public API reference</h1>
 <li>File <a class="el" href="bot_8h.html" title="File containing the bot data structure and related functions.">bot.h</a><ul>
 <li>struct <a class="el" href="struct_i_r_c___bot.html" title="Struct holding relevant data to the actual bot.">IRC_Bot</a> - basic structure holding all related data.</li>
 <li><a class="el" href="bot_8c.html#ae2e9483d3e2fc54f36d803cd7fbab3e7" title="Create and populate a new IRC_Bot structure.">bot_create()</a></li>
-<li>bot_add_command()</li>
 <li><a class="el" href="bot_8c.html#a32c27a32b8a89a310d0c70c7768cfb98" title="Send a text message to connected server.">bot_send()</a></li>
 <li><a class="el" href="bot_8c.html#aaff905725db958cc9b4e70e9559ce738" title="Read incoming messages from server, one message at a time.">bot_read()</a></li>
 <li><a class="el" href="bot_8c.html#a3050b764cf93dccd54b85eb3feb361c6" title="Connect IRC_Bot to the server.">bot_connect()</a></li>
 <li><a class="el" href="bot_8c.html#ad0ae8c084239d9e159ba019e17de8b8a" title="Disconnect IRC_Bot from the server.">bot_disconnect()</a></li>
-<li>bot_join()</li>
-<li>bot_leave()</li>
 </ul>
 </li>
-<li>File commands.h - example commands for use with bot_add_command() </li>
+</ul>
+<h1><a class="anchor" id="libdebug"></a>
+libdebug documentation</h1>
+<ul>
+<li>File <a class="el" href="debug_8h.html" title="File containing the debug library functions.">debug.h</a><ul>
+<li><a class="el" href="debug_8c.html#a6bd335e5661015dcda9b8f055a9754e5" title="Log desired information into pre-set file descriptor.">debug_log()</a></li>
+<li><a class="el" href="debug_8c.html#a34e449190276a287cd667a8f9003d135" title="Set where debug_log will redirect the information to.">debug_set_out()</a></li>
+<li><a class="el" href="debug_8c.html#afd275c491f3cecf78de5e2ba52cb439c" title="Enable logging in a program.">debug_enable()</a></li>
+<li><a class="el" href="debug_8c.html#a59ce803f39a3c787c7dd132321dc8f59" title="Disable logging in a program.">debug_disable()</a></li>
+<li><a class="el" href="debug_8c.html#ab72205759e920e744901adef2fcbf3b8" title="Check if logging is enabled or not.">debug_is_enabled()</a></li>
+<li><a class="el" href="debug_8c.html#a2ae141d5884af0debb6ce57dea81386e" title="Get null-terminated string describing the file descriptor in use.">debug_get_fd_str()</a> </li>
+</ul>
+</li>
 </ul>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->

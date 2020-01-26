@@ -21,10 +21,10 @@
  * */
 void debug_log(const char *string, ...);
 /** 
- * Set where debug_log will redirect the information to. 
- * @param fd_out file descriptor name as a null-terminated string. For default
- * file descriptors, use `stdout` or `stderr`. For anything else, a file will be
- * created.
+ * Set where debug_log will redirect the information to. Use "stdout" and
+ * "stderr" for standard output and error. Anything else will be treated as a
+ * file and appended to, or created if necessary.
+ * @param fd_out file descriptor name as a null-terminated string.
  * */
 void debug_set_out(const char *fd_out);
 /**
@@ -36,12 +36,13 @@ void debug_enable();
  */
 void debug_disable();
 /**
+ * Check if logging is enabled or not.
  * @return 0 if logging is disabled, 1 if enabled.
  */
 int debug_is_enabled();
 /**
- * @return null-terminated string that was passed to debug_set_out(const char
- * *fd_out)
+ * Get null-terminated string describing the file descriptor in use.
+ * @return null-terminated string that was passed to debug_set_out()
  */
 char *debug_get_fd_str();
 

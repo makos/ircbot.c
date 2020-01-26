@@ -29,6 +29,7 @@ var NAVTREE =
       [ "Steps", "index.html#building_guide", null ]
     ] ],
     [ "Public API reference", "index.html#index_api", null ],
+    [ "libdebug documentation", "index.html#libdebug", null ],
     [ "Changelog", "md__changelog.html", null ],
     [ "TODO page", "todo_page.html", null ],
     [ "Todo List", "todo.html", null ],

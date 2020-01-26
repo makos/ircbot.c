@@ -5,13 +5,14 @@
 
 @section index_about About
    Welcome to ircbot.c official documentation. ircbot.c is a simple library
-   (@link bot.h libbot @endlink) that provides easy to use functions providing
+   (@link bot.h libbot@endlink) that provides easy to use functions providing
    basic necessities for an IRC bot, such as @link bot_send() sending @endlink,
-   @link bot_read() receiving @endlink, @link bot_join() joining @endlink and
-   @link bot_leave() leaving @endlink channels and custom @link
-   bot_add_command() commands @endlink.
+   @link bot_read() receiving @endlink and custom commands.
 
    To learn more, see @ref index_api "public API reference".
+
+   There is an included utility library, `libdebug`. Documentation for
+   it is available @ref libdebug "here".
 
    To see what's planned, take a look at the @ref todo_page "TODO page".
 
@@ -28,7 +29,7 @@
    git clone https://github.com/makos/ircbot.c.git
    cd ircbot.c
    mkdir build && cd build
-   cmake .. && make bot
+   cmake .. && make libbot
    ````
 
    The library will be located in the `build/lib` directory.
@@ -37,15 +38,19 @@
    - File bot.h
      - struct IRC_Bot - basic structure holding all related data.
      - bot_create()
-     - bot_add_command()
      - bot_send()
      - bot_read()
      - bot_connect()
      - bot_disconnect()
-     - bot_join()
-     - bot_leave()
-   - File commands.h - example commands for use with bot_add_command()
 
+@section libdebug libdebug documentation
+   - File debug.h
+     - debug_log()
+     - debug_set_out()
+     - debug_enable()
+     - debug_disable()
+     - debug_is_enabled()
+     - debug_get_fd_str()
 
 @page todo_page TODO page
    @todo Examples of usage in the docs.

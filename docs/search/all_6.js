@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['todo_20list',['Todo List',['../todo.html',1,'']]],
-  ['todo_20page',['TODO page',['../todo_page.html',1,'']]]
+  ['nick_23',['nick',['../struct_i_r_c___bot.html#a4f5081d6c9d678fdcb51a633e561918e',1,'IRC_Bot']]]
 ];
