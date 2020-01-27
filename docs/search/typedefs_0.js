@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['irc_5fbot_60',['IRC_Bot',['../bot_8h.html#a6a457a5355666dc660d9acb486ecd124',1,'bot.h']]]
+  ['chatterstatus_85',['ChatterStatus',['../chatter_8h.html#a2eb774705cfdd20507afadc2c9ac71db',1,'chatter.h']]]
 ];

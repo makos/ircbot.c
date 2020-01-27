@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['last_5fmsg_58',['last_msg',['../structIRC__Bot.html#a141de91b1a3da2cc537b11802dd019b7',1,'IRC_Bot']]]
+  ['host_75',['host',['../structMessage.html#a5f3337a1bdbb701efb7807f7fda37593',1,'Message']]]
 ];

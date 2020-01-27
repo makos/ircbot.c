@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['socket',['socket',['../struct_i_r_c___connection.html#a26ee0f5e28b9ee5b8a23c5e205b8be62',1,'IRC_Connection']]]
+  ['trailing_83',['trailing',['../structMessage.html#a1d0f1cbb4310a8a11a4f60e147f36d36',1,'Message']]]
 ];

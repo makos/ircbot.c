@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['nick_59',['nick',['../structIRC__Bot.html#a4f5081d6c9d678fdcb51a633e561918e',1,'IRC_Bot']]]
+  ['last_5fmsg_76',['last_msg',['../structIRC__Bot.html#a141de91b1a3da2cc537b11802dd019b7',1,'IRC_Bot']]]
 ];

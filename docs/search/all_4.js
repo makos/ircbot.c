@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['last_5fmsg_29',['last_msg',['../structIRC__Bot.html#a141de91b1a3da2cc537b11802dd019b7',1,'IRC_Bot']]]
+  ['irc_5fbot_32',['IRC_Bot',['../structIRC__Bot.html',1,'IRC_Bot'],['../bot_8h.html#a6a457a5355666dc660d9acb486ecd124',1,'IRC_Bot():&#160;bot.h']]],
+  ['ircdebug_20_2d_20simple_20logging_20library_33',['Ircdebug - simple logging library',['../ircdebug.html',1,'']]]
 ];

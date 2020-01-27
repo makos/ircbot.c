@@ -99,34 +99,182 @@ $(document).ready(function(){initNavTree('structMessage.html',''); initResizable
 <div class="title">Message Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Struct holding parts of the incoming IRC message.  
+ <a href="structMessage.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="chatter_8h_source.html">chatter.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:ac24007a76c32e6e75992b410f2cd00b1"><td class="memItemLeft" align="right" valign="top"><a id="ac24007a76c32e6e75992b410f2cd00b1"></a>
-char&#160;</td><td class="memItemRight" valign="bottom"><b>msg_copy</b> [<a class="el" href="debug_8h.html#a8d5a5e278b38e6919f31ffee0444f08c">MAX_ARRAY_LEN</a>]</td></tr>
+<tr class="memitem:ac24007a76c32e6e75992b410f2cd00b1"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMessage.html#ac24007a76c32e6e75992b410f2cd00b1">msg_copy</a> [<a class="el" href="chatter_8h.html#a8d5a5e278b38e6919f31ffee0444f08c">MAX_ARRAY_LEN</a>]</td></tr>
+<tr class="memdesc:ac24007a76c32e6e75992b410f2cd00b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy of the message taken from struct <a class="el" href="structIRC__Bot.html" title="Struct holding relevant data to the actual bot.">IRC_Bot</a> last_msg[].  <a href="structMessage.html#ac24007a76c32e6e75992b410f2cd00b1">More...</a><br /></td></tr>
 <tr class="separator:ac24007a76c32e6e75992b410f2cd00b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acefe014af7523794d219acbe5863eec6"><td class="memItemLeft" align="right" valign="top"><a id="acefe014af7523794d219acbe5863eec6"></a>
-char&#160;</td><td class="memItemRight" valign="bottom"><b>servername</b> [<a class="el" href="debug_8h.html#a8d5a5e278b38e6919f31ffee0444f08c">MAX_ARRAY_LEN</a>]</td></tr>
+<tr class="memitem:acefe014af7523794d219acbe5863eec6"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMessage.html#acefe014af7523794d219acbe5863eec6">servername</a> [<a class="el" href="chatter_8h.html#a8d5a5e278b38e6919f31ffee0444f08c">MAX_ARRAY_LEN</a>]</td></tr>
+<tr class="memdesc:acefe014af7523794d219acbe5863eec6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extracted server name / address.  <a href="structMessage.html#acefe014af7523794d219acbe5863eec6">More...</a><br /></td></tr>
 <tr class="separator:acefe014af7523794d219acbe5863eec6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af65d7c5c5b558a8a901febe8ab9c88e8"><td class="memItemLeft" align="right" valign="top"><a id="af65d7c5c5b558a8a901febe8ab9c88e8"></a>
-char&#160;</td><td class="memItemRight" valign="bottom"><b>nickname</b> [<a class="el" href="debug_8h.html#a8d5a5e278b38e6919f31ffee0444f08c">MAX_ARRAY_LEN</a>]</td></tr>
+<tr class="memitem:af65d7c5c5b558a8a901febe8ab9c88e8"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMessage.html#af65d7c5c5b558a8a901febe8ab9c88e8">nickname</a> [<a class="el" href="chatter_8h.html#a8d5a5e278b38e6919f31ffee0444f08c">MAX_ARRAY_LEN</a>]</td></tr>
+<tr class="memdesc:af65d7c5c5b558a8a901febe8ab9c88e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extracted nickname from the incoming message.  <a href="structMessage.html#af65d7c5c5b558a8a901febe8ab9c88e8">More...</a><br /></td></tr>
 <tr class="separator:af65d7c5c5b558a8a901febe8ab9c88e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa363eda229a5299bce1a80c9d7ca1795"><td class="memItemLeft" align="right" valign="top"><a id="aa363eda229a5299bce1a80c9d7ca1795"></a>
-char&#160;</td><td class="memItemRight" valign="bottom"><b>user</b> [<a class="el" href="debug_8h.html#a8d5a5e278b38e6919f31ffee0444f08c">MAX_ARRAY_LEN</a>]</td></tr>
+<tr class="memitem:aa363eda229a5299bce1a80c9d7ca1795"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMessage.html#aa363eda229a5299bce1a80c9d7ca1795">user</a> [<a class="el" href="chatter_8h.html#a8d5a5e278b38e6919f31ffee0444f08c">MAX_ARRAY_LEN</a>]</td></tr>
+<tr class="memdesc:aa363eda229a5299bce1a80c9d7ca1795"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extracted username from the incoming message.  <a href="structMessage.html#aa363eda229a5299bce1a80c9d7ca1795">More...</a><br /></td></tr>
 <tr class="separator:aa363eda229a5299bce1a80c9d7ca1795"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f3337a1bdbb701efb7807f7fda37593"><td class="memItemLeft" align="right" valign="top"><a id="a5f3337a1bdbb701efb7807f7fda37593"></a>
-char&#160;</td><td class="memItemRight" valign="bottom"><b>host</b> [<a class="el" href="debug_8h.html#a8d5a5e278b38e6919f31ffee0444f08c">MAX_ARRAY_LEN</a>]</td></tr>
+<tr class="memitem:a5f3337a1bdbb701efb7807f7fda37593"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMessage.html#a5f3337a1bdbb701efb7807f7fda37593">host</a> [<a class="el" href="chatter_8h.html#a8d5a5e278b38e6919f31ffee0444f08c">MAX_ARRAY_LEN</a>]</td></tr>
+<tr class="memdesc:a5f3337a1bdbb701efb7807f7fda37593"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extracted hostname from the incoming message.  <a href="structMessage.html#a5f3337a1bdbb701efb7807f7fda37593">More...</a><br /></td></tr>
 <tr class="separator:a5f3337a1bdbb701efb7807f7fda37593"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae453c8254117e34c3cff61b94b1c63a9"><td class="memItemLeft" align="right" valign="top"><a id="ae453c8254117e34c3cff61b94b1c63a9"></a>
-char&#160;</td><td class="memItemRight" valign="bottom"><b>command</b> [<a class="el" href="debug_8h.html#a8d5a5e278b38e6919f31ffee0444f08c">MAX_ARRAY_LEN</a>]</td></tr>
+<tr class="memitem:ae453c8254117e34c3cff61b94b1c63a9"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMessage.html#ae453c8254117e34c3cff61b94b1c63a9">command</a> [<a class="el" href="chatter_8h.html#a8d5a5e278b38e6919f31ffee0444f08c">MAX_ARRAY_LEN</a>]</td></tr>
+<tr class="memdesc:ae453c8254117e34c3cff61b94b1c63a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extracted command from the incoming message.  <a href="structMessage.html#ae453c8254117e34c3cff61b94b1c63a9">More...</a><br /></td></tr>
 <tr class="separator:ae453c8254117e34c3cff61b94b1c63a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a07215f5d4a634f4075746f5e0175909a"><td class="memItemLeft" align="right" valign="top"><a id="a07215f5d4a634f4075746f5e0175909a"></a>
-char&#160;</td><td class="memItemRight" valign="bottom"><b>parameters</b> [<a class="el" href="debug_8h.html#a8d5a5e278b38e6919f31ffee0444f08c">MAX_ARRAY_LEN</a>]</td></tr>
+<tr class="memitem:a07215f5d4a634f4075746f5e0175909a"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMessage.html#a07215f5d4a634f4075746f5e0175909a">parameters</a> [<a class="el" href="chatter_8h.html#a8d5a5e278b38e6919f31ffee0444f08c">MAX_ARRAY_LEN</a>]</td></tr>
+<tr class="memdesc:a07215f5d4a634f4075746f5e0175909a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extracted parameters of the issued command.  <a href="structMessage.html#a07215f5d4a634f4075746f5e0175909a">More...</a><br /></td></tr>
 <tr class="separator:a07215f5d4a634f4075746f5e0175909a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d0f1cbb4310a8a11a4f60e147f36d36"><td class="memItemLeft" align="right" valign="top"><a id="a1d0f1cbb4310a8a11a4f60e147f36d36"></a>
-char&#160;</td><td class="memItemRight" valign="bottom"><b>trailing</b> [<a class="el" href="debug_8h.html#a8d5a5e278b38e6919f31ffee0444f08c">MAX_ARRAY_LEN</a>]</td></tr>
+<tr class="memitem:a1d0f1cbb4310a8a11a4f60e147f36d36"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMessage.html#a1d0f1cbb4310a8a11a4f60e147f36d36">trailing</a> [<a class="el" href="chatter_8h.html#a8d5a5e278b38e6919f31ffee0444f08c">MAX_ARRAY_LEN</a>]</td></tr>
+<tr class="memdesc:a1d0f1cbb4310a8a11a4f60e147f36d36"><td class="mdescLeft">&#160;</td><td class="mdescRight">What's left of the message after all technical stuff is stripped.  <a href="structMessage.html#a1d0f1cbb4310a8a11a4f60e147f36d36">More...</a><br /></td></tr>
 <tr class="separator:a1d0f1cbb4310a8a11a4f60e147f36d36"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Struct holding parts of the incoming IRC message. </p>
+<p>The message can take two formats:</p><ul>
+<li><code>:nick!user@host COMMAND [parameters ...] :[trailing content]</code> for client messages</li>
+<li><code>:servername COMMAND [parameters ...] :[trailing content]</code> for server messages </li>
+</ul>
+</div><h2 class="groupheader">Field Documentation</h2>
+<a id="ae453c8254117e34c3cff61b94b1c63a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae453c8254117e34c3cff61b94b1c63a9">&#9670;&nbsp;</a></span>command</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char Message::command[<a class="el" href="chatter_8h.html#a8d5a5e278b38e6919f31ffee0444f08c">MAX_ARRAY_LEN</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Extracted command from the incoming message. </p>
+<p>Something like PRIVMSG, VERSION, or a numeric equivalent such as <code>375</code> (<code>RPL_MOTDSTART</code>). </p>
+
+</div>
+</div>
+<a id="a5f3337a1bdbb701efb7807f7fda37593"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f3337a1bdbb701efb7807f7fda37593">&#9670;&nbsp;</a></span>host</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char Message::host[<a class="el" href="chatter_8h.html#a8d5a5e278b38e6919f31ffee0444f08c">MAX_ARRAY_LEN</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Extracted hostname from the incoming message. </p>
+<p>Usually IP address, hostmask or custom vhost. </p>
+
+</div>
+</div>
+<a id="ac24007a76c32e6e75992b410f2cd00b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac24007a76c32e6e75992b410f2cd00b1">&#9670;&nbsp;</a></span>msg_copy</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char Message::msg_copy[<a class="el" href="chatter_8h.html#a8d5a5e278b38e6919f31ffee0444f08c">MAX_ARRAY_LEN</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Copy of the message taken from struct <a class="el" href="structIRC__Bot.html" title="Struct holding relevant data to the actual bot.">IRC_Bot</a> last_msg[]. </p>
+<p>It is copied so we don't alter the original via repeated calls to <code>strtok()</code>. </p>
+
+</div>
+</div>
+<a id="af65d7c5c5b558a8a901febe8ab9c88e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af65d7c5c5b558a8a901febe8ab9c88e8">&#9670;&nbsp;</a></span>nickname</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char Message::nickname[<a class="el" href="chatter_8h.html#a8d5a5e278b38e6919f31ffee0444f08c">MAX_ARRAY_LEN</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Extracted nickname from the incoming message. </p>
+<p>Present in messages originating from a client. </p>
+
+</div>
+</div>
+<a id="a07215f5d4a634f4075746f5e0175909a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07215f5d4a634f4075746f5e0175909a">&#9670;&nbsp;</a></span>parameters</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char Message::parameters[<a class="el" href="chatter_8h.html#a8d5a5e278b38e6919f31ffee0444f08c">MAX_ARRAY_LEN</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Extracted parameters of the issued command. </p>
+<p>Can be empty. IRC protocol suggests sending up to 15 parameters in a single message. </p>
+
+</div>
+</div>
+<a id="acefe014af7523794d219acbe5863eec6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acefe014af7523794d219acbe5863eec6">&#9670;&nbsp;</a></span>servername</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char Message::servername[<a class="el" href="chatter_8h.html#a8d5a5e278b38e6919f31ffee0444f08c">MAX_ARRAY_LEN</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Extracted server name / address. </p>
+<p>Present in messages originating from a server. </p>
+
+</div>
+</div>
+<a id="a1d0f1cbb4310a8a11a4f60e147f36d36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d0f1cbb4310a8a11a4f60e147f36d36">&#9670;&nbsp;</a></span>trailing</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char Message::trailing[<a class="el" href="chatter_8h.html#a8d5a5e278b38e6919f31ffee0444f08c">MAX_ARRAY_LEN</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>What's left of the message after all technical stuff is stripped. </p>
+<p>Usually just plain-text message from another client. </p>
+
+</div>
+</div>
+<a id="aa363eda229a5299bce1a80c9d7ca1795"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa363eda229a5299bce1a80c9d7ca1795">&#9670;&nbsp;</a></span>user</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char Message::user[<a class="el" href="chatter_8h.html#a8d5a5e278b38e6919f31ffee0444f08c">MAX_ARRAY_LEN</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Extracted username from the incoming message. </p>
+<p>Present in messages originating from a client. </p>
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li>chatter/<a class="el" href="chatter_8h_source.html">chatter.h</a></li>
 </ul>

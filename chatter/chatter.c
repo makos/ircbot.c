@@ -1,3 +1,9 @@
+/**
+ * @file chatter.c
+ * @author Mateusz Makowski
+ * @date 27.01.2020
+ * @brief Implementation of chatter.h along with many `static` functions.
+ */
 // Yes MS, I know those functions can cause memory errors.
 #ifdef _MSC_VER
 #define _CRT_SECURE_NO_WARNINGS

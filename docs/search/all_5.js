@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['max_5farray_5flen_30',['MAX_ARRAY_LEN',['../debug_8h.html#a8d5a5e278b38e6919f31ffee0444f08c',1,'debug.h']]],
-  ['message_31',['Message',['../structMessage.html',1,'']]]
+  ['last_5fmsg_34',['last_msg',['../structIRC__Bot.html#a141de91b1a3da2cc537b11802dd019b7',1,'IRC_Bot']]]
 ];
