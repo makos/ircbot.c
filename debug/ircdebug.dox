@@ -1,23 +1,23 @@
 /**
-@page ircdebug ircdebug - a simple logging library
+@page ircdebug Ircdebug - simple logging library
 
-@section ircdebug_about About
-    `ircdebug` is a very simple logging library, that can be used in place of
+@section debugAbout About
+    ircdebug is a very simple logging library, that can be used in place of
     debugging and logging `printf()` statements. It provides functions to
     enable and disable logging programatically, so you can disable all logging
     with one statement without having to comment out or delete blocks of code.
 
-@section ircdebug_reference API Reference
+@section debugRef API Reference 
     - File debug.h
-        - debug_log()
-        - debug_set_out()
-        - debug_enable()
-        - debug_disable()
-        - debug_is_enabled()
-        - debug_get_fd_str()
+      - debug_log()
+      - debug_set_out()
+      - debug_enable()
+      - debug_disable()
+      - debug_is_enabled()
+      - debug_get_fd_str()
 
-@section ircdebug_building Building
-    Building instructions are similar to @ref index "libbot's".
+@section debugBuild Building
+    Building instructions are similar to @ref index "libbot".
 
     @code
     git clone https://github.com/makos/ircbot.c.git
@@ -25,7 +25,7 @@
     mkdir build && cd build
     cmake .. && make ircdebug
     @endcode
-    
+
     This will create a library file `libircdebug.a` in `build/lib/`.
 
 */

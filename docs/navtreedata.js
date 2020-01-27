@@ -23,24 +23,24 @@ for the JavaScript code in this file
 var NAVTREE =
 [
   [ "ircbot.c", "index.html", [
-    [ "About", "index.html#index_about", null ],
-    [ "Example usage", "index.html#index_example", null ],
-    [ "Building", "index.html#index_building", [
-      [ "Requirements", "index.html#building_reqs", null ],
-      [ "Steps", "index.html#building_guide", null ]
+    [ "About", "index.html#indexAbout", null ],
+    [ "Example usage", "index.html#indexExample", null ],
+    [ "Building", "index.html#indexBuilding", [
+      [ "Requirements", "index.html#buildingReqs", null ],
+      [ "Steps", "index.html#buildingGuide", null ]
     ] ],
-    [ "Public API reference", "index.html#index_api", null ],
-    [ "Changelog", "md__changelog.html", null ],
-    [ "TODO page", "todo_page.html", null ],
-    [ "ircdebug - a simple logging library", "ircdebug.html", [
-      [ "About", "ircdebug.html#ircdebug_about", null ],
-      [ "API Reference", "ircdebug.html#ircdebug_reference", null ],
-      [ "Building", "ircdebug.html#ircdebug_building", null ]
+    [ "Public API reference", "index.html#indexApi", null ],
+    [ "Changelog", "md_Changelog.html", null ],
+    [ "TODO page", "todoPage.html", null ],
+    [ "Ircdebug - simple logging library", "ircdebug.html", [
+      [ "About", "ircdebug.html#debugAbout", null ],
+      [ "API Reference", "ircdebug.html#debugRef", null ],
+      [ "Building", "ircdebug.html#debugBuild", null ]
     ] ],
     [ "Chatter - example bot using libbot", "chatter.html", [
-      [ "About", "chatter.html#chatter_about", null ],
-      [ "chatter_building", "chatter.html#chatter_building", null ],
-      [ "Files", "chatter.html#chatter_files", null ]
+      [ "About", "chatter.html#chatterAbout", null ],
+      [ "Building", "chatter.html#chatterBuilding", null ],
+      [ "Files", "chatter.html#chatterFiles", null ]
     ] ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],

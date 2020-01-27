@@ -1,7 +1,7 @@
 /**
 @page chatter Chatter - example bot using libbot
 
-@section chatter_about About
+@section chatterAbout About
     Chatter is a simple, and quite useless, IRC bot written in pure C language,
     conforming to the C99 standard. While this doc page is merely here to inform
     you of the bot's presence, all the inner workings are documented in the
@@ -10,7 +10,7 @@
     The bot uses the @ref bot.h "libbot" library (obviously), and the 
     @ref debug.h "ircdebug" utility library.
 
-@section chatter_building
+@section chatterBuilding Building
     Building instructions are similar to @ref index "libbot's".
 
     @code
@@ -22,7 +22,7 @@
 
     This will create an executable file `chatter` in `build/bin/`.
 
-@section chatter_files Files
+@section chatterFiles Files
     - File chatter.c
     - File chatter.h
 

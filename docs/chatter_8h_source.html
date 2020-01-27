@@ -103,9 +103,9 @@ $(document).ready(function(){initNavTree('chatter_8h_source.html',''); initResiz
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#define MAX_ARRAY_LEN 512</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#define PREFIX_DELIMITER_OFFSET 1</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">struct </span><a class="code" href="struct_i_r_c___bot.html">IRC_Bot</a>;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">struct </span><a class="code" href="structIRC__Bot.html">IRC_Bot</a>;</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="struct_message.html">    9</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct_message.html">Message</a> {</div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="structMessage.html">    9</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structMessage.html">Message</a> {</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="comment">// Copy the message so we don&#39;t change bot&#39;s last_msg value.</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordtype">char</span> msg_copy[<a class="code" href="debug_8h.html#a8d5a5e278b38e6919f31ffee0444f08c">MAX_ARRAY_LEN</a>];</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordtype">char</span> servername[<a class="code" href="debug_8h.html#a8d5a5e278b38e6919f31ffee0444f08c">MAX_ARRAY_LEN</a>];</div>
@@ -117,20 +117,20 @@ $(document).ready(function(){initNavTree('chatter_8h_source.html',''); initResiz
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="comment">// What&#39;s left of the message after all technical stuff is stripped.</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="comment">// Usually just plain-text message from another client.</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">char</span> trailing[<a class="code" href="debug_8h.html#a8d5a5e278b38e6919f31ffee0444f08c">MAX_ARRAY_LEN</a>];</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;} <a class="code" href="struct_message.html">Message</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;} <a class="code" href="structMessage.html">Message</a>;</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="struct_chatter_status.html">   23</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct_chatter_status.html">ChatterStatus</a> {</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="structChatterStatus.html">   23</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structChatterStatus.html">ChatterStatus</a> {</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">int</span> motd_finished;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">int</span> connected;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;} <a class="code" href="struct_chatter_status.html">ChatterStatus</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;} <a class="code" href="structChatterStatus.html">ChatterStatus</a>;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#endif // CHATTER_H_</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="astruct_chatter_status_html"><div class="ttname"><a href="struct_chatter_status.html">ChatterStatus</a></div><div class="ttdef"><b>Definition:</b> chatter.h:23</div></div>
 <div class="ttc" id="adebug_8h_html_a8d5a5e278b38e6919f31ffee0444f08c"><div class="ttname"><a href="debug_8h.html#a8d5a5e278b38e6919f31ffee0444f08c">MAX_ARRAY_LEN</a></div><div class="ttdeci">#define MAX_ARRAY_LEN</div><div class="ttdoc">Maximum size of an array (in bytes).</div><div class="ttdef"><b>Definition:</b> debug.h:12</div></div>
-<div class="ttc" id="astruct_i_r_c___bot_html"><div class="ttname"><a href="struct_i_r_c___bot.html">IRC_Bot</a></div><div class="ttdoc">Struct holding relevant data to the actual bot.</div><div class="ttdef"><b>Definition:</b> bot.h:20</div></div>
-<div class="ttc" id="astruct_message_html"><div class="ttname"><a href="struct_message.html">Message</a></div><div class="ttdef"><b>Definition:</b> chatter.h:9</div></div>
+<div class="ttc" id="astructChatterStatus_html"><div class="ttname"><a href="structChatterStatus.html">ChatterStatus</a></div><div class="ttdef"><b>Definition:</b> chatter.h:23</div></div>
+<div class="ttc" id="astructIRC__Bot_html"><div class="ttname"><a href="structIRC__Bot.html">IRC_Bot</a></div><div class="ttdoc">Struct holding relevant data to the actual bot.</div><div class="ttdef"><b>Definition:</b> bot.h:20</div></div>
+<div class="ttc" id="astructMessage_html"><div class="ttname"><a href="structMessage.html">Message</a></div><div class="ttdef"><b>Definition:</b> chatter.h:9</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

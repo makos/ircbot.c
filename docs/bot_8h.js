@@ -1,6 +1,6 @@
 var bot_8h =
 [
-    [ "IRC_Bot", "struct_i_r_c___bot.html", "struct_i_r_c___bot" ],
+    [ "IRC_Bot", "structIRC__Bot.html", "structIRC__Bot" ],
     [ "BOT_MAX_CHANNEL_AMT", "bot_8h.html#aa5963984eba423bd57bcb00f86a0f2f3", null ],
     [ "BOT_MAX_CHANNEL_LEN", "bot_8h.html#aaadc957329749ba1557032ef81dd0912", null ],
     [ "BOT_MAX_MSGLEN", "bot_8h.html#acd424ff452694da663e7615a89fd013c", null ],

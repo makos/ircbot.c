@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['message_37',['Message',['../struct_message.html',1,'']]]
+  ['message_37',['Message',['../structMessage.html',1,'']]]
 ];

@@ -1,0 +1,41 @@
+\hypertarget{md_Changelog_autotoc_md1}{}\doxysection{1.\+0.\+0}\label{md_Changelog_autotoc_md1}
+\hypertarget{md_Changelog_autotoc_md2}{}\doxysubsection{W\+IP}\label{md_Changelog_autotoc_md2}
+
+\begin{DoxyItemize}
+\item Major version change because of incompatible A\+PI changes.
+\item New helper library {\ttfamily libdebug}, for toggleable logging or printing various messages.
+\item Unit tests for {\ttfamily libdebug}.
+\item Documentation for {\ttfamily libdebug}. 
+\end{DoxyItemize}\hypertarget{md_Changelog_autotoc_md3}{}\doxysubsubsection{A\+P\+I change}\label{md_Changelog_autotoc_md3}
+
+\begin{DoxyItemize}
+\item Remove Commands system from I\+R\+C\+\_\+\+Bot, in favor of user-\/defined functions in their software to carry out functions. Example in Chatterbot.
+\item Fixed (removed) tests that were broken because of A\+PI change. 
+\end{DoxyItemize}\hypertarget{md_Changelog_autotoc_md4}{}\doxysubsubsection{Chatter, simple bot as an example}\label{md_Changelog_autotoc_md4}
+
+\begin{DoxyItemize}
+\item Basic functionality\+: connecting, maintaining connection, reading and sending data, parsing of incoming traffic and responding to basic queries ({\ttfamily P\+I\+NG}, {\ttfamily V\+E\+R\+S\+I\+ON}).
+\end{DoxyItemize}\hypertarget{md_Changelog_autotoc_md5}{}\doxysection{0.\+3.\+0}\label{md_Changelog_autotoc_md5}
+\hypertarget{md_Changelog_autotoc_md6}{}\doxysubsection{22.\+09.\+2018}\label{md_Changelog_autotoc_md6}
+
+\begin{DoxyItemize}
+\item Doxygen-\/generated documentation for libbot A\+PI available at \href{https://makos.github.io/ircbot.c/index.html}{\texttt{ Git\+Hub pages}}.
+\item I\+R\+C\+\_\+\+Bot, along with internal I\+R\+C\+\_\+\+Connection is now compiled into a shared library {\ttfamily libbot}.
+\item Unit tests for all functions.
+\item Mock server for testing purposes ({\ttfamily tests/server}).
+\item I\+R\+C\+\_\+\+Bot has all the required features to be able to connect to a server, send and receive messages and execute arbitrary commands that can be added at runtime ({\ttfamily Bot\+\_\+\+Command}).
+\end{DoxyItemize}\hypertarget{md_Changelog_autotoc_md7}{}\doxysection{0.\+2.\+0}\label{md_Changelog_autotoc_md7}
+\hypertarget{md_Changelog_autotoc_md8}{}\doxysubsection{15.\+09.\+2018}\label{md_Changelog_autotoc_md8}
+
+\begin{DoxyItemize}
+\item Consolidate {\ttfamily server} and {\ttfamily client} functionality into one {\ttfamily connection} file.
+\item Cross-\/platform (at least it compiles on Arch Linux VM)
+\item Tests using custom minimal {\ttfamily minunit} test suite
+\item New {\ttfamily bot} skeleton
+\end{DoxyItemize}\hypertarget{md_Changelog_autotoc_md9}{}\doxysection{0.\+1.\+0}\label{md_Changelog_autotoc_md9}
+\hypertarget{md_Changelog_autotoc_md10}{}\doxysubsection{13.\+09.\+2018}\label{md_Changelog_autotoc_md10}
+
+\begin{DoxyItemize}
+\item Stable connection with an irc server
+\item First version 
+\end{DoxyItemize}

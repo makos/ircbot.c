@@ -1,6 +1,6 @@
 var commands_8h =
 [
-    [ "Command_Switches", "struct_command___switches.html", "struct_command___switches" ],
+    [ "Command_Switches", "structCommand__Switches.html", "structCommand__Switches" ],
     [ "MAX_ARRAY_LEN", "commands_8h.html#a8d5a5e278b38e6919f31ffee0444f08c", null ],
     [ "Command_Switches", "commands_8h.html#a5600e5b5c239b435abc327762bc24b08", null ],
     [ "commands_ident", "commands_8h.html#a30d39221e9416094142e4629124df302", null ],
