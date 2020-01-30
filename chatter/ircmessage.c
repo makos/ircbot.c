@@ -2,14 +2,13 @@
 #include "debug.h"
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 
-#define TRUE 1
-#define FALSE 0
 #define PREFIX_DELIMITER_OFFSET 1
 
 char *TOK = NULL;
 char *MSG = NULL;
-int FIRST_TOKEN = TRUE;
+int FIRST_TOKEN = true;
 
 static Message *construct_message()
 {
@@ -19,8 +18,8 @@ static Message *construct_message()
 static int check_prefix(const char *msg)
 {
     if (strncmp(msg, ":", 1) == 0)
-        return TRUE;
-    return FALSE;
+        return true;
+    return false;
 }
 
 static void backup_msg(char *dest, const char *source)
@@ -40,13 +39,13 @@ static int get_nick_end_index(const char *msg)
 
 static void extract_chunk(char *dest, const char *delim)
 {
-    if (TOK == NULL && FIRST_TOKEN == TRUE) {
+    if (TOK == NULL && FIRST_TOKEN == true) {
         TOK = strtok(MSG + PREFIX_DELIMITER_OFFSET, delim);
     } else {
         TOK = strtok(NULL, delim);
     }
 
-    FIRST_TOKEN = FALSE;
+    FIRST_TOKEN = false;
     strcpy(dest, TOK);
 }
 
@@ -92,7 +91,7 @@ Message *split_message(const char *msg)
     // TODO: MSG is ugly, find another way to initialize strtok() without code
     // duplication.
     MSG = temp->msg_copy;
-    FIRST_TOKEN = TRUE;
+    FIRST_TOKEN = true;
 
     if (has_prefix) {
         int prefix_len = get_prefix_len(msg);

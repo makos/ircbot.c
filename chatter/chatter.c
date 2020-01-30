@@ -11,9 +11,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-#define TRUE 1
-#define FALSE 0
+#include <stdbool.h>
 
 int main()
 {
@@ -22,18 +20,18 @@ int main()
     debug_enable();
 
     ChatterStatus *status = malloc(sizeof(ChatterStatus));
-    status->connected = FALSE;
-    status->motd_finished = FALSE;
+    status->connected = false;
+    status->motd_finished = false;
 
     IRC_Bot *chatter = bot_create("chatterbot");
 
     // Localhost server testing.
-    if (bot_connect(chatter, "127.0.0.1", "8080") == TRUE)
-        status->connected = TRUE;
+    if (bot_connect(chatter, "127.0.0.1", "8080") == true)
+        status->connected = true;
 
-    /*if (bot_connect(chatter, "chat.freenode.org", "6665") == TRUE)
-        status->connected = TRUE;*/
-
+    /*if (bot_connect(chatter, "chat.freenode.org", "6665") == true)
+        status->connected = true;*/
+    
     bot_send(chatter, "USER chatterbot chatterbot chatterbot chatterbot");
     bot_send(chatter, "NICK chatterbot");
 

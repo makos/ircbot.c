@@ -10,12 +10,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-#define TRUE 1
-#define FALSE 0
+#include <stdbool.h>
 
 static FILE *FD_OUT;
-static int ENABLED = FALSE;
+static int ENABLED = false;
 static char FD_STR[MAX_ARRAY_LEN] = {'\0'};
 
 static void close_fd_out()
@@ -86,13 +84,13 @@ void debug_log(const char *string, ...)
 void debug_enable()
 {
     if (!ENABLED)
-        ENABLED = TRUE;
+        ENABLED = true;
 }
 
 void debug_disable()
 {
     if (ENABLED)
-        ENABLED = FALSE;
+        ENABLED = false;
 }
 
 int debug_is_enabled()
