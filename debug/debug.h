@@ -39,7 +39,7 @@ void debug_disable();
  * Check if logging is enabled or not.
  * @return 0 if logging is disabled, 1 if enabled.
  */
-int debug_is_enabled();
+_Bool debug_is_enabled();
 /**
  * Get null-terminated string describing the file descriptor in use.
  * @return null-terminated string that was passed to debug_set_out()

@@ -13,7 +13,7 @@
 #include <stdbool.h>
 
 static FILE *FD_OUT;
-static int ENABLED = false;
+static bool ENABLED = false;
 static char FD_STR[MAX_ARRAY_LEN] = {'\0'};
 
 static void close_fd_out()
@@ -93,7 +93,7 @@ void debug_disable()
         ENABLED = false;
 }
 
-int debug_is_enabled()
+bool debug_is_enabled()
 {
     return ENABLED;
 }

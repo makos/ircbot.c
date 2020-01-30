@@ -12,7 +12,6 @@
 #define MAX_ARRAY_LEN 512
 #endif
 
-
 /**
  * Struct holding parts of the incoming IRC message. The message can take two
  * formats:

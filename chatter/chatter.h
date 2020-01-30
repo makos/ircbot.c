@@ -27,12 +27,13 @@ typedef struct ChatterStatus {
      * Boolean value representing whether numeric command `RPL_ENDOFMOTD` 
      * (`376`) was received. 
      */
-    int motd_finished;
+    
+    _Bool motd_finished;
     /**
      * Boolean value representing whether the bot is currently connected to a
      * server.
      */
-    int connected;
+    _Bool connected;
 } ChatterStatus;
 
 #endif // CHATTER_H_

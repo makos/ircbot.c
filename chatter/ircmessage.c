@@ -8,7 +8,7 @@
 
 char *TOK = NULL;
 char *MSG = NULL;
-int FIRST_TOKEN = true;
+bool FIRST_TOKEN = true;
 
 static Message *construct_message()
 {
