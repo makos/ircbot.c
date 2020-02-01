@@ -43,7 +43,7 @@ Mock_Server *server_create()
     }
 
     listen(temp->socket_fd, 3);
-    // fcntl(temp->socket_fd, F_SETFL, O_NONBLOCK);
+    fcntl(temp->socket_fd, F_SETFL, O_NONBLOCK);
 
     return temp;
 }
@@ -52,26 +52,23 @@ int server_read(Mock_Server *server)
 {
     int sockaddr_size = sizeof(struct sockaddr_in);
     char hello_msg[] =
-        ":nick!user@host PRIVMSG :VERSION\r\n";
-    char server_msg[] = ":server.lol 666 param1 param2 :hello\r\n";
+        ":nick!user@host PRIVMSG :\001VERSION\001\r\n";
+    char server_msg[] = ":server.lol PRIVMSG param1 param2 :hello\r\n";
     int hello_msg_len = strlen(hello_msg);
     int server_msg_len = strlen(server_msg);
 
     int bytes = 0;
     while ((server->socket_client =
                 accept(server->socket_fd, (struct sockaddr *)server->client,
-                       (socklen_t *)&sockaddr_size))
-           >= 0) {
-        // fcntl(server->socket_client, F_SETFL, O_NONBLOCK);
+                       (socklen_t *)&sockaddr_size)) >= 0) {
+        fcntl(server->socket_client, F_SETFL, O_NONBLOCK);
 
         if (send(server->socket_client, hello_msg, hello_msg_len, 0) == -1) {
             fprintf(stderr, "%d %s", errno, strerror(errno));
         }
 
         do {
-            memset(server->buffer, 0, MAXBUFLEN);
-            bytes = recv(server->socket_client, server->buffer, MAXBUFLEN,
-                         MSG_DONTWAIT);
+            bytes = read(server->socket_client, server->buffer, MAXBUFLEN);
 
             for (int i = 0; i < bytes; i++) {
                 printf("%c", server->buffer[i]);
@@ -80,14 +77,18 @@ int server_read(Mock_Server *server)
             // if (bytes > 0) {
             //    send(server->socket_client, server->buffer, bytes, 0);
             //}
+            memset(server->buffer, 0, MAXBUFLEN);
         } while (bytes > 0);
 
         if (send(server->socket_client, server_msg, server_msg_len, 0) == -1) {
             fprintf(stderr, "%d %s", errno, strerror(errno));
         }
+
     }
 
-    close(server->socket_client);
+    if (server->socket_client != INVALID_SOCKET) {
+        close(server->socket_client);
+    }
 
     return OK;
 }

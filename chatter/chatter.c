@@ -22,6 +22,8 @@ static ChatterStatus *construct_status()
     return temp;
 }
 
+// TODO: Split incoming datagrams into messages separated by
+// CRLF characters.
 int main()
 {
     // char *channels[] = {"#dailyprog", "#ircbot_ctest"};
@@ -38,8 +40,14 @@ int main()
     if (bot_connect(chatter, "127.0.0.1", "8080") == true)
         status->connected = true;
 
-    /*if (bot_connect(chatter, "chat.freenode.org", "6665") == true)
-        status->connected = true;*/
+    //if (bot_connect(chatter, "chat.freenode.org", "6665") == true)
+        //status->connected = true;
+
+    // On Rizon the bot can't get past PING query. That's because Rizon for some
+    // reason sends multiple lines of data in one datagram, separated by CRLF
+    // characters. 
+    //if (bot_connect(chatter, "irc.rizon.net", "6660") == true)
+        //status->connected = true;
     
     bot_send(chatter, "USER chatterbot chatterbot chatterbot chatterbot");
     bot_send(chatter, "NICK chatterbot");

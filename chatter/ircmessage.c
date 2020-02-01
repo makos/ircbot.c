@@ -124,6 +124,11 @@ Message *split_message(const char *msg)
         debug_log("DEBUG trailing: |%s|", temp->trailing);
 
         debug_log("[%s]: %s", temp->nickname, temp->trailing);
+    } else { // No prefix.
+        // Probably a PING command.
+        extract_chunk(temp->command, " ");
+        // temp->trailing will be the server ID.
+        extract_chunk(temp->trailing, "");
     }
     TOK = NULL;
 

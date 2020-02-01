@@ -11,6 +11,8 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
+#include <stdbool.h>
 
 #define OK 1
 #define ERROR 0
@@ -44,20 +46,15 @@ static int commands_ident(IRC_Bot *bot)
     return bot_send(bot, msg);
 }
 
-static int commands_pong(IRC_Bot *bot)
+static int commands_pong(IRC_Bot *bot, const char *id)
 {
     if (!bot) {
         return ERROR;
     }
-
-    char *pong_id = malloc(32 * sizeof(char));
-    pong_id = strtok(bot->last_msg, ":");
-    pong_id = strtok(NULL, ":");
-
     // Prepare the message.
-    char *pong_msg = malloc(48 * sizeof(char));
+    char *pong_msg = malloc(MAX_ARRAY_LEN * sizeof(char));
     strcpy(pong_msg, "PONG ");
-    strcat(pong_msg, pong_id);
+    strcat(pong_msg, id + 1);
 
     return bot_send(bot, pong_msg);
 }
@@ -87,7 +84,7 @@ static void commands_version(IRC_Bot *bot, const char *to)
 {
     char version[] =
         "Chatterbot 1.0.0 - simple and useless chat bot written in not so \
-useless ircbot.c library - https://github.com/makos/ircbot.c\r\n";
+useless ircbot.c library - https://github.com/makos/ircbot.c";
 
     send_privmsg(bot, to, version);
 }
@@ -120,13 +117,31 @@ static void handle_irc_cmd(IRC_Bot *bot, Message *msg)
         if (strncmp(cmd, "PRIVMSG", strlen("PRIVMSG")) == 0) {
             handle_bot_cmd(bot, msg);
         } else if (strncmp(cmd, "PING", strlen("PING")) == 0) {
-            commands_pong(bot);
+            commands_pong(bot, msg->trailing);
         }
     }
 }
 
+static void strip_msg(Message *msg)
+{
+    char *temp = calloc((size_t)MAX_ARRAY_LEN, sizeof(char));
+    char *cp = msg->trailing;
+    int i = 0;
+
+    while (*cp != '\0') {
+        if (isprint(*cp)) {
+            temp[i] = *cp;
+            i++;
+        }
+        cp++;
+    }
+
+    strcpy(msg->trailing, temp);
+}
+
 void handle_command(IRC_Bot *bot, Message *msg)
 {
+    strip_msg(msg);
     handle_irc_cmd(bot, msg);
 }
 
