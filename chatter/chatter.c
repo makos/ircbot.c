@@ -13,15 +13,22 @@
 #include <string.h>
 #include <stdbool.h>
 
+static ChatterStatus *construct_status()
+{
+    ChatterStatus *temp = malloc(sizeof(ChatterStatus));
+    temp->connected = false;
+    temp->motd_finished = false;
+
+    return temp;
+}
+
 int main()
 {
     // char *channels[] = {"#dailyprog", "#ircbot_ctest"};
     debug_set_out("stderr");
     debug_enable();
 
-    ChatterStatus *status = malloc(sizeof(ChatterStatus));
-    status->connected = false;
-    status->motd_finished = false;
+    ChatterStatus *status = construct_status();
 
     IRC_Bot *chatter = bot_create("chatterbot");
 
