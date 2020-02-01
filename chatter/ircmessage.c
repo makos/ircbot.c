@@ -124,10 +124,6 @@ Message *split_message(const char *msg)
         debug_log("DEBUG trailing: |%s|", temp->trailing);
 
         debug_log("[%s]: %s", temp->nickname, temp->trailing);
-
-        // TODO: Send the parsed command and parameters to some handler.
-        // e.g.
-        // handle_command(temp->command, temp->parameters);
     }
     TOK = NULL;
 
