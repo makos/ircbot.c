@@ -11,6 +11,10 @@
 
 struct IRC_Bot;
 
+
+/**
+ * Struct holding strings that the bot will react to when received in a PRIVMSG.
+ */
 typedef struct Command_Switches {
     char version[MAX_ARRAY_LEN];
     char say_hello[MAX_ARRAY_LEN];
@@ -30,7 +34,7 @@ int commands_ident(struct IRC_Bot *bot);
  */
 int commands_pong(struct IRC_Bot *bot);
 
-/*
+/**
  * Send a VERSION response.
  * @param bot pointer to IRC_Bot structure
  * @return 0 on failure, 1 on success
