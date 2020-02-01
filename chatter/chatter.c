@@ -26,11 +26,13 @@ int main()
 {
     // char *channels[] = {"#dailyprog", "#ircbot_ctest"};
     debug_set_out("stderr");
-    debug_enable();
+    //debug_enable();
 
     ChatterStatus *status = construct_status();
 
     IRC_Bot *chatter = bot_create("chatterbot");
+
+    Message *current_msg = NULL;
 
     // Localhost server testing.
     if (bot_connect(chatter, "127.0.0.1", "8080") == true)
@@ -45,9 +47,11 @@ int main()
     while (1) {
         bot_read(chatter);
 
+        current_msg = split_message(chatter->last_msg);
+
         printf("%s", chatter->last_msg);
 
-        split_message(chatter->last_msg);
+        handle_command(chatter, current_msg);
     }
 
     bot_disconnect(chatter);

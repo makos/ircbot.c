@@ -7,6 +7,7 @@
 #include "commands.h"
 #include "bot.h"
 #include "debug.h"
+#include "ircmessage.h"
 #include <stddef.h>
 #include <stdlib.h>
 #include <string.h>
@@ -14,10 +15,9 @@
 #define OK 1
 #define ERROR 0
 
-static const Command_Switches commands = {.version = "VERSION",
-                                          .say_hello = "hello"};
+static char CMDS[] = "PING PRIVMSG VERSION hello";
 
-int commands_ident(IRC_Bot *bot)
+static int commands_ident(IRC_Bot *bot)
 {
     if (!bot) {
         return ERROR;
@@ -44,7 +44,7 @@ int commands_ident(IRC_Bot *bot)
     return bot_send(bot, msg);
 }
 
-int commands_pong(IRC_Bot *bot)
+static int commands_pong(IRC_Bot *bot)
 {
     if (!bot) {
         return ERROR;
@@ -62,7 +62,7 @@ int commands_pong(IRC_Bot *bot)
     return bot_send(bot, pong_msg);
 }
 
-int commands_privmsg(IRC_Bot *bot, const char *origin_username,
+/*static int commands_privmsg(IRC_Bot *bot, const char *origin_username,
                      const char *message)
 {
     char response[MAX_ARRAY_LEN];
@@ -81,4 +81,66 @@ int commands_privmsg(IRC_Bot *bot, const char *origin_username,
     }
 
     return bot_send(bot, response);
+}*/
+
+static void commands_version(IRC_Bot *bot, const char *to)
+{
+    char version[] =
+        "Chatterbot 1.0.0 - simple and useless chat bot written in not so \
+useless ircbot.c library - https://github.com/makos/ircbot.c\r\n";
+
+    send_privmsg(bot, to, version);
+}
+
+static void commands_hello(IRC_Bot *bot, const char *to)
+{
+    char hello[] = "Hello there, I'm Chatterbot!";
+
+    send_privmsg(bot, to, hello);
+}
+
+static void handle_bot_cmd(IRC_Bot *bot, Message *msg)
+{
+    if (strncmp(msg->trailing, "VERSION", strlen("VERSION")) == 0) {
+        commands_version(bot, msg->nickname);
+    } else if (strncmp(msg->trailing, "hello", strlen("hello")) == 0) {
+        commands_hello(bot, msg->nickname);
+    }
+}
+
+static void handle_irc_cmd(IRC_Bot *bot, Message *msg)
+{
+    if (strlen(msg->command) < 3) {
+        return;
+    }
+
+    char *cmd = strstr(CMDS, msg->command);
+
+    if (cmd) {
+        if (strncmp(cmd, "PRIVMSG", strlen("PRIVMSG")) == 0) {
+            handle_bot_cmd(bot, msg);
+        } else if (strncmp(cmd, "PING", strlen("PING")) == 0) {
+            commands_pong(bot);
+        }
+    }
+}
+
+void handle_command(IRC_Bot *bot, Message *msg)
+{
+    handle_irc_cmd(bot, msg);
+}
+
+void send_privmsg(IRC_Bot *bot, const char *to, const char *msg)
+{
+    char privmsg[MAX_ARRAY_LEN];
+
+    strcpy(privmsg, "PRIVMSG ");
+    strcat(privmsg, to);
+    strcat(privmsg, " :");
+
+    strcat(privmsg, msg);
+
+    debug_log("DEBUG: send_privmsg(): %s", privmsg);
+
+    bot_send(bot, privmsg);
 }
